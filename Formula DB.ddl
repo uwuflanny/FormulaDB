@@ -12,9 +12,13 @@
 -- Database Section
 -- ________________ 
 
-DROP DATABASE Formula1;
-create database Formula1;
-use Formula1;
+DROP database FormulaDB;
+create database FormulaDB;
+use FormulaDB;
+
+
+-- TODO: normalizzare macchina e motore
+
 
 
 -- DBSpace Section
@@ -84,11 +88,12 @@ create table Pilota (
 );
 
 create table Motore (
-	ID_produttore	numeric(4) 	not null,
+	ID 				numeric(4) 	not null,
+	produttore		numeric(4) 	not null,
 	nome 			varchar(20) not null,
 	cavalli 		numeric(5) 	not null,
 	alimentazione 	varchar(20) not null,
-	constraint ID_Motore_ID primary key (ID_produttore, nome);
+	constraint ID_Motore_ID primary key (ID)
 );
 
 create table Macchina (
@@ -130,7 +135,7 @@ create table Risultati_gara (
 	ID_riepilogo 	numeric(4) 	not null,
 	posizione 		numeric(2) 	not null,
 	stato 			varchar(10) not null,
-	constraint ID_Risultati_gara_ID primary key (ID_riepilogo);
+	constraint ID_Risultati_gara_ID primary key (ID_riepilogo)
 );
 
 create table Risultati_qualifica (   
@@ -156,13 +161,13 @@ create table Scuderia (
 
 alter table Contratto_pilota add constraint FK_Contratto_Pilota_ID
 	foreign key(ID_pilota)
-	references Pilota(ID)
+	references Pilota(ID);
 	
 alter table Contratto_pilota add constraint FK_Contratto_Scuderia_Pilota_ID
 	foreign key(ID_scuderia)
-	references Scuderia(ID)
+	references Scuderia(ID);
 
-alter table Risultati_gara add contraint FK_Riep_gara_ID
+alter table Risultati_gara add constraint FK_Riep_gara_ID
 	foreign key(ID_riepilogo)
 	references Riepilogo(ID);
 
@@ -214,12 +219,12 @@ alter table Risultati_qualifica add constraint FK_Qual_riepilogo_ID
 	foreign key(ID_riepilogo)
 	references Riepilogo(ID);
 	
-alter table Macchina add constraint FK_Motore_ID
+alter table Macchina add constraint FK_Macchina_Motore_ID
 	foreign key(motore)
 	references Motore(ID);
 
 alter table Motore add constraint FK_Produttore_ID
-	foreign key(ID_produttore)
+	foreign key(produttore)
 	references Scuderia(ID);
 	
 -- Index Section
@@ -227,13 +232,13 @@ alter table Motore add constraint FK_Produttore_ID
 
 
 create unique index ID_Contratto_Pilota_IND
-	on Contratto_pilota(ID_pilota, ID_scuderia, data_inizio)
+	on Contratto_pilota(ID_pilota, ID_scuderia, data_inizio);
 
 create index FK_ID_Pilota_IND
-	on Contratto_pilota(ID_pilota)
+	on Contratto_pilota(ID_pilota);
 	
 create index FK_ID_Scuderia_Pilota_IND
-	on Contratto_pilota(ID_scuderia)
+	on Contratto_pilota(ID_scuderia);
 	
 create unique index ID_Risultati_gara_IND
 	on Risultati_gara(ID_riepilogo);
@@ -242,10 +247,10 @@ create index FK_Risultati_gara_IND
 	on Risultati_gara(ID_riepilogo);
 
 create unique index ID_Motore_IND
-	on Motore (ID_produttore, nome);
+	on Motore(ID);
 	
 create index FK_Produttore_IND
-	on Motore(ID_produttore);
+	on Motore(produttore);
 	
 create index FK_Motore_IND
 	on Macchina(motore);
