@@ -109,6 +109,14 @@ create table Pit_stop (
      constraint ID_Pit_stop_ID primary key (ID_riepilogo, numero)
 );
 
+create table Contratto_pilota (
+	ID_pilota 		numeric(4) 	not null,
+	ID_scuderia		numeric(4) 	not null,
+	data_inizio		date	 	not null,
+	durata_anni		numeric(5),
+	constraint ID_Contratto_ID primary key(ID_pilota, ID_scuderia, data_inizio)
+);
+
 create table Riepilogo (
      ID 			numeric(4) 	not null,
 	 gara 			numeric(4) 	not null,
@@ -145,6 +153,14 @@ create table Scuderia (
 
 -- Constraints Section
 -- ___________________ 
+
+alter table Contratto_pilota add constraint FK_Contratto_Pilota_ID
+	foreign key(ID_pilota)
+	references Pilota(ID)
+	
+alter table Contratto_pilota add constraint FK_Contratto_Scuderia_Pilota_ID
+	foreign key(ID_scuderia)
+	references Scuderia(ID)
 
 alter table Risultati_gara add contraint FK_Riep_gara_ID
 	foreign key(ID_riepilogo)
@@ -209,11 +225,21 @@ alter table Motore add constraint FK_Produttore_ID
 -- Index Section
 -- _____________ 
 
+
+create unique index ID_Contratto_Pilota_IND
+	on Contratto_pilota(ID_pilota, ID_scuderia, data_inizio)
+
+create index FK_ID_Pilota_IND
+	on Contratto_pilota(ID_pilota)
+	
+create index FK_ID_Scuderia_Pilota_IND
+	on Contratto_pilota(ID_scuderia)
+	
 create unique index ID_Risultati_gara_IND
 	on Risultati_gara(ID_riepilogo);
 	
 create index FK_Risultati_gara_IND
-	on Riepilogo(ID);
+	on Risultati_gara(ID_riepilogo);
 
 create unique index ID_Motore_IND
 	on Motore (ID_produttore, nome);
