@@ -35,7 +35,9 @@ create table Circuito (
      ID 			numeric(4) 	not null,
      nome 			varchar(20) not null,
      nazione 		varchar(20) not null,
-     indirizzo 		varchar(20) not null,
+     via	 		varchar(20) not null,
+	 civico	 		numeric(10) not null,
+	 cap	 		numeric(10) not null,
      constraint ID_CIRCUITO_ID primary key (ID)
 );
 
@@ -54,7 +56,7 @@ create table Giro (
 
 create table Info_gara (
      ID 			numeric(4) 	not null,
-     data_gara 		date 		not null,
+     data_gara 		datetime	not null,
      n_giri 		numeric(3) 	not null,
      meteo 			varchar(20) not null,
      circuito 		numeric(4) 	not null,
@@ -65,30 +67,35 @@ create table Ingegnere (
      CF 			varchar(40) not null,
      specialita 	varchar(20) not null,
 	 nazionalita 	varchar(20) not null,
-	 nascita 		date 		not null,
+	 nascita 		datetime	not null,
 	 nome 			varchar(20) not null,
 	 cognome 		varchar(40) not null,
      constraint ID_Ingegnere_ID primary key (CF)
 );
 
 create table Pilota (
-     ID 			numeric(4) 	not null,
-     numero 		varchar(2) 	not null,
+     ID 			numeric(4) 	not null, -- il numero del pilota
      sigla 			varchar(5) 	not null,
 	 nazionalita 	varchar(20) not null,
-	 nascita 		date 		not null,
+	 nascita 		datetime	not null,
 	 nome 			varchar(20) not null,
 	 cognome 		varchar(40) not null,
      constraint ID_Pilota_ID primary key (ID)
+);
+
+create table Motore (
+	ID_produttore	numeric(4) 	not null,
+	nome 			varchar(20) not null,
+	cavalli 		numeric(5) 	not null,
+	alimentazione 	varchar(20) not null,
+	constraint ID_Motore_ID primary key (ID_produttore, nome);
 );
 
 create table Macchina (
      ID_scuderia 	numeric(4) 	not null,
      ID_campionato 	numeric(4) 	not null,
      nome 			varchar(20) not null,
-     motore 		varchar(20) not null,
-     cavalli 		numeric(5) 	not null,
-	 alimentazione 	varchar(20) not null,
+     motore 		numeric(4) not null,
      peso 			numeric(4),
      lunghezza 		numeric(5),
      larghezza 		numeric(5),  
@@ -102,13 +109,8 @@ create table Pit_stop (
      constraint ID_Pit_stop_ID primary key (ID_riepilogo, numero)
 );
 
-
-
 create table Riepilogo (
      ID 			numeric(4) 	not null,
-     top_giro 		varchar(20) not null,
-     stato 		varchar(10) not null,
-     posizione 		numeric(2) 	not null,
 	 gara 			numeric(4) 	not null,
      pilota 		numeric(4) 	not null,
      campionato 	numeric(4) 	not null,
@@ -116,11 +118,17 @@ create table Riepilogo (
 	 constraint ID_Riepilogo_ID primary key(ID)
 );
 
-create table Risultati_qualifica (    
+create table Risultati_gara (
+	ID_riepilogo 	numeric(4) 	not null,
+	posizione 		numeric(2) 	not null,
+	stato 			varchar(10) not null,
+	constraint ID_Risultati_gara_ID primary key (ID_riepilogo);
+);
+
+create table Risultati_qualifica (   
+	 ID_riepilogo 	numeric(4) 	not null, 
      posizione 		numeric(2) 	not null,
-     taglio 		numeric(1) 	not null,
-     tempo 			varchar(20) not null,
-	 ID_riepilogo 	numeric(4) 	not null,
+     tempo 			varchar(20) not null, 
      constraint ID_Risultati_qualifica_ID primary key (ID_riepilogo)
 );
 
@@ -138,8 +146,11 @@ create table Scuderia (
 -- Constraints Section
 -- ___________________ 
 
+alter table Risultati_gara add contraint FK_Riep_gara_ID
+	foreign key(ID_riepilogo)
+	references Riepilogo(ID);
 
-alter table Contratto add constraint FK_Ingnegnere_CF
+alter table Contratto add constraint FK_Ingnegnere_ID
 	foreign key (CF)
 	references Ingegnere (CF);
 	
@@ -187,10 +198,31 @@ alter table Risultati_qualifica add constraint FK_Qual_riepilogo_ID
 	foreign key(ID_riepilogo)
 	references Riepilogo(ID);
 	
+alter table Macchina add constraint FK_Motore_ID
+	foreign key(motore)
+	references Motore(ID);
 
+alter table Motore add constraint FK_Produttore_ID
+	foreign key(ID_produttore)
+	references Scuderia(ID);
+	
 -- Index Section
 -- _____________ 
 
+create unique index ID_Risultati_gara_IND
+	on Risultati_gara(ID_riepilogo);
+	
+create index FK_Risultati_gara_IND
+	on Riepilogo(ID);
+
+create unique index ID_Motore_IND
+	on Motore (ID_produttore, nome);
+	
+create index FK_Produttore_IND
+	on Motore(ID_produttore);
+	
+create index FK_Motore_IND
+	on Macchina(motore);
 
 create unique index ID_Campionato_IND
      on Campionato (ID);
