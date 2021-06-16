@@ -95,6 +95,11 @@ insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) 
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("GRO", 5, "2016-11-10", 1 );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("MAG", 5, "2017-10-04", null );
 
+-- motori
+insert into motore (nome, produttore, cavalli, alimentazione) values ("065 1.6 V6 turbo", "Ferrari", 930, "ibrido");
+insert into motore (nome, produttore, cavalli, alimentazione) values ("M11 EQ Performance V6 turbo", "Mercedes", 1022, "ibrido");
+insert into motore (nome, produttore, cavalli, alimentazione) values ("RA620H, V6 1.6 a 90° Turbo", "Honda", 740, "ibrido");
+insert into motore (nome, produttore, cavalli, alimentazione) values ("E-TECH 20, V6 1.6 turbo", "Renault", 780, "ibrido");
 
 
 
