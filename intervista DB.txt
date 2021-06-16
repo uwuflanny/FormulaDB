@@ -1,0 +1,27 @@
+Si vuole tenere traccia di tutti gli aspetti
+relativi ad un campionato automobilistico mondiale per ogni categoria.
+Per ciascun campionato verranno memorizzati i risultati delle varie gare
+di ogni pilota e della sua scuderia, tenendo conto anche dell'ordine di partenza
+ottenuto in qualifica, dei pit-stop effettuati e di tutti i giri percorsi in gara.
+
+In ogni campionato gareggiano 20 piloti, dei quale vengono salvate informazioni quali il ed il cognome del concorrente,
+la nazionalita', la data di nascita ed il numero di macchina con il quale corre.
+Per poter gareggiare, ogni pilota stipula un contratto con una scuderia, la quale gli offre un veicolo, con il quale
+prendere parte alle competizioni. Il contratto ha solitamente durata di qualche anno, tuttavia, in rare occasioni,
+la scuderia concede al pilota di gareggiare per un team diverso.
+
+Nei test effettuati durante il periodo di pausa tra le varie competizioni, eseguiti da ingegneri specializzati appartenenti al team,
+permettono alla scuderia di migliorare la propria autovettura, offrendo cosi' la possibilita' di gareggiare
+con un nuovo modello per il campionato che verra'.
+In particolare, le migliorie apportate interessano il peso e le dimensioni dell'auto.
+Inoltre, le scuderie, in caso di budget ridotto, possono eventulmente acquistare il motore da team avversari.
+
+Di ogni Gran Premio viene memorizzato, oltre alla data, al numero di giri (deciso dalla FIA) ed il meteo;
+la posizione ed il nome del circuito dove viene disputato.
+
+
+
+
+
+!!limiti dell'er: 
+il motore non puo' cambiare ogni anno

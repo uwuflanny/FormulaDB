@@ -17,10 +17,6 @@ create database FormulaDB;
 use FormulaDB;
 
 
--- TODO: normalizzare macchina e motore
-
-
-
 -- DBSpace Section
 -- _______________
 
@@ -88,19 +84,18 @@ create table Pilota (
 );
 
 create table Motore (
-	ID 				numeric(4) 	not null,
-	produttore		numeric(4) 	not null,
 	nome 			varchar(20) not null,
+	produttore		numeric(4) 	not null,
 	cavalli 		numeric(5) 	not null,
 	alimentazione 	varchar(20) not null,
-	constraint ID_Motore_ID primary key (ID)
+	constraint ID_Motore_ID primary key (nome)
 );
 
 create table Macchina (
      ID_scuderia 	numeric(4) 	not null,
      ID_campionato 	numeric(4) 	not null,
      nome 			varchar(20) not null,
-     motore 		numeric(4) not null,
+     motore 		varchar(20) not null,
      peso 			numeric(4),
      lunghezza 		numeric(5),
      larghezza 		numeric(5),  
@@ -221,7 +216,7 @@ alter table Risultati_qualifica add constraint FK_Qual_riepilogo_ID
 	
 alter table Macchina add constraint FK_Macchina_Motore_ID
 	foreign key(motore)
-	references Motore(ID);
+	references Motore(nome);
 
 alter table Motore add constraint FK_Produttore_ID
 	foreign key(produttore)
@@ -247,7 +242,7 @@ create index FK_Risultati_gara_IND
 	on Risultati_gara(ID_riepilogo);
 
 create unique index ID_Motore_IND
-	on Motore(ID);
+	on Motore(nome);
 	
 create index FK_Produttore_IND
 	on Motore(produttore);
