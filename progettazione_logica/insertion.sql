@@ -1,14 +1,12 @@
 use formuladb;
 
 
--- campionati
-delete from campionato;
+-- campionato
 insert into campionato (anno, classe) values (2020, "Formula 1");
 
 
 
 -- circuito
-delete from circuito;
 insert into circuito (lunghezza, nome, nazione, citta) value (4381, "Hungaroring", "Ungheria", "Mogyorod");
 insert into circuito (lunghezza, nome, nazione, citta) value (5807, "Suzuka F1", "Giappone", "Nagoya");
 insert into circuito (lunghezza, nome, nazione, citta) value (5513, "circuito delle Americhe", "Stati Uniti d'America", "Austin");
@@ -25,15 +23,17 @@ insert into circuito (lunghezza, nome, nazione, citta) value (5848, "circuito di
 insert into circuito (lunghezza, nome, nazione, citta) value (6003, "circuito di Baku Street", "Azerbaigian", "Baku");
 insert into circuito (lunghezza, nome, nazione, citta) value (5148, "Nürburgring", "Germania", "Nürburg");
 insert into circuito (lunghezza, nome, nazione, citta) value (5891, "circuito di Silverstone F1", "Gran Bretagna", "Silverstone");
-insert into circuito (lunghezza, nome, nazione, citta) value (7004, "Spa-Francorchamps", "terme", "Belgio");
+insert into circuito (lunghezza, nome, nazione, citta) value (7004, "Spa-Francorchamps", "Belgio", "Terme");
 insert into circuito (lunghezza, nome, nazione, citta) value (5303, "Albert Park F1", "Australia", "Melbourne");
 insert into circuito (lunghezza, nome, nazione, citta) value (5451, "circuito internazionale di Shanghai", "Cina", "Shanghai");
-insert into circuito (lunghezza, nome, nazione, citta) value (4252, "circuito Zandvoort", "The Netherlands", "Zandvoort");
+insert into circuito (lunghezza, nome, nazione, citta) value (4252, "circuito Zandvoort", "Paesi Bassi", "Zandvoort");
+insert into circuito (lunghezza, nome, nazione, citta) value (5554, "circuito di Yas Marina", "Turchia", "Abu Dhabi");
 
 
+
+-- TODO tabella nazione
 
 -- piloti
-delete from pilota;
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (16, "LEC", "Monaco", "1997-10-16", "Charles", "Leclerc");
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (5, "VET", "Germania", "1987-07-03", "Sebastian", "Vettel");
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (77, "BOT", "Finlandia", "1989-08-28", "Valtteri", "Bottas");
@@ -46,7 +46,7 @@ insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (3
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (31, "OCO", "Francia", "1996-09-17", "Esteban", "Ocon");
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (26, "KVY", "Russia", "1994-04-26", "Daniil", "Kvjat");
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (10, "GAS", "Francia", "1996-02-07", "Pierre", "Gasly");
-insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (11, "PER", "Messico", "1990-01-26", "Sergio", "PÃ©rez");
+insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (11, "PER", "Messico", "1990-01-26", "Sergio", "Perez");
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (18, "STR", "Canada", "1998-10-29", "Lance", "Stroll");
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (7, "RAI", "Finlandia", "1979-10-17", "Kimi", "Raikkonen");
 insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (99, "GIO", "Italia", "1993-12-14", "Antonio", "Giovinazzi");
@@ -58,7 +58,6 @@ insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (6
 
 
 -- scuderia
-delete from scuderia;
 insert into scuderia (nome, nazionalita) values ("Mercedes", "Germania");
 insert into scuderia (nome, nazionalita) values ("Ferrari", "Italia");
 insert into scuderia (nome, nazionalita) values ("Red Bull", "Austria");
@@ -73,7 +72,6 @@ insert into scuderia (nome, nazionalita) values ("Williams", "Regno Unito");
 
 
 -- contratti scuderia pilota
-delete from contratto_pilota;
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("BOT", "Mercedes", "2018-06-25", null );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("HAM", "Mercedes", "2017-10-21", 3 );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("VET", "Ferrari", "2016-07-16", null );
@@ -88,12 +86,14 @@ insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) 
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("PER", "Racing Point", "2016-10-16", 5 );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("RIC", "Renault", "2017-07-14", null );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("OCO", "Renault", "2016-10-16", 5 );
-insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("RUS", "Williams", "2018-08-05", 2 );
-insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("LAT", "Williams", "2016-06-11", null );
+insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("RUS", "WilliPMs", "2018-08-05", 2 );
+insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("LAT", "WilliPMs", "2016-06-11", null );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("GAS", "AlphaTauri", "2017-10-16", 2 );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("KVY", "AlphaTauri", "2018-08-21", 1 );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("GRO", "Haas", "2016-11-10", 1 );
 insert into contratto_pilota (ID_pilota, ID_scuderia, data_inizio, durata_anni) values ("MAG", "Haas", "2017-10-04", null );
+
+
 
 -- motori
 insert into motore (nome, produttore, cavalli, alimentazione) values ("065 1.6 V6 turbo", "Ferrari", 930, "ibrido");
@@ -101,12 +101,45 @@ insert into motore (nome, produttore, cavalli, alimentazione) values ("M11 EQ Pe
 insert into motore (nome, produttore, cavalli, alimentazione) values ("RA620H, V6 1.6 a 90° Turbo", "Red Bull", 740, "ibrido");
 insert into motore (nome, produttore, cavalli, alimentazione) values ("E-TECH 20, V6 1.6 turbo", "Renault", 780, "ibrido");
 
+-- TODO MACCHINE
+
+
+-- info_gara
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-07-05 15-10-00", 60, "sole", "anello Red Bull");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-07-12 15-10-00", 60, "pioggia", "anello Red Bull");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-07-19 15-10-00", 60, "sole", "Hungaroring");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-08-02 15-10-00", 60, "sole", "circuito di Silverstone F1");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-08-09 15-10-00", 60, "nuvoloso", "circuito di Silverstone F1");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-08-16 15-10-00", 60, "sole", "circuito di Catalunya");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-08-30 15-10-00", 60, "nuvoloso", "Spa-Francorchamps");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-09-06 15-10-00", 60, "sole", "Autodromo Nazionale Monza");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-09-13 15-10-00", 60, "pioggia", "Mugello");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-09-27 13-10-00", 60, "sole", "circuito di Sochi F1 Street");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-10-11 14-10-00", 60, "pioggia", "Nürburgring");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-11-01 14-10-00", 60, "sole", "circuito di Portimão");  -- forse data sbagliata ref https-//wheels.iconmagazine.it/sport/formula1/calendario-f1-2020-date-orari-gp#1gpaustriaredbullring5luglio2020
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-11-15 13-10-00", 60, "nuvoloso", "Autodromo E. & D. Ferrari");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-11-29 11-10-00", 60, "sole", "circuito internazionale del Bahrain");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-12-06 16-10-00", 60, "sole", "circuito internazionale del Bahrain");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-12-13 18-10-00", 60, "nuvoloso", "circuito internazionale del Bahrain");
+insert into info_gara (data_gara, n_giri, meteo, circuito) values ("2020-11-29 14-10-00", 60, "sole", "circuito di Yas Marina");
 
 
 
-
-
-
-
+-- ingegneri
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("fASEVSETFGHH", "spoiler", "Italia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("RBYSDRBYDRSD", "motore", "Italia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("BSDRYBDRBCKY", "minigonne", "Italia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("EOJKGFSKLERG", "ruote", "", "Belgio", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("RGMSEPJKGWES", "spoiler", "Stati Uniti", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("IOGJROIRHGES", "motore", "Francia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("LSGKLEMGPKSM", "ruote", "Regno Unito", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("GOKSRGOKASRG", "spoiler", "Regno Unito", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("KRGMHALKRHNM", "motore", "Francia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("EKGJPAOSJFOF", "minigonne", "Turchia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("GGPWIOEGMJWG", "spoiler", "Regno Unito", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("OCFWOPEGMIOW", "motore", "Francia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("FOAEKOPFKPOK", "ruote", "Turchia", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("NEOFNEJONJEB", "motore", "Regno Unito", "", "", "", "");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("OPAOJPEJIJFI", "minigonne", "Turchia", "", "", "", "");
 
 

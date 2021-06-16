@@ -29,14 +29,9 @@ namespace FormulaDB_GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            using (StreamReader sr = new StreamReader("item.txt")) {
-                string item = sr.ReadToEnd().Replace("<tr>", "").Replace("</tr>", "").Replace("<td>","x").Replace("</td>","x");
-                string[] items = item.Split('x');
-                foreach(string s in items)
-                {
-                    MessageBox.Show(s);
-                }
-            }
+            WebClient wc = new WebClient();
+            MessageBox.Show(wc.DownloadString("https://colintalkscrypto.com/cbbi/"));
+            
         }
     }
 }

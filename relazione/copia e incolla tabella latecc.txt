@@ -1,0 +1,23 @@
+\renewcommand{\arraystretch}{1.8}
+\arrayrulecolor[HTML]{a7acb1}
+\begin{table}[h!]
+\begin{center}
+    \begin{tabular}{ l l l }
+    \rowcolor[HTML]{deecdc}
+    \textbf{Termine} & \textbf{Breve descrizione} & \textbf{Eventuali sinonimi} \\
+    Utente & Colui che accede al servizio e interagisce con i giochi presenti. & Nessuno \\
+    \hline    
+    Videogioco & TODO & TODO \\
+    \hline
+    Piano & TODO & Abbonamento \\
+    \hline
+    Copia Videogioco & TODO & Copia \\
+    \hline
+    Statistiche & TODO & TODO \\
+    \hline
+    Sessione di gioco & TODO & Sessione, \\
+    \hline
+    \end{tabular}
+\end{center}
+\caption{La tabella dei concetti principali.}
+\end{table}

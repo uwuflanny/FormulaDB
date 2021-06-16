@@ -24,6 +24,9 @@ use FormulaDB;
 -- Tables Section
 -- _____________ 
 
+
+
+
 create table Campionato (
      ID 			int 		not null auto_increment,
      anno 			int 		not null,
@@ -32,12 +35,11 @@ create table Campionato (
 );
 
 create table Circuito (
-     ID 			int		 	not null auto_increment,
      lunghezza  	int 		not null,
      nome 			varchar(60) not null,
      nazione 		varchar(60) not null,
      citta	 		varchar(60) not null,
-     constraint ID_CIRCUITO_ID primary key (ID)
+     constraint ID_CIRCUITO_ID primary key (nome)
 );
 
 create table Contratto (
@@ -58,13 +60,13 @@ create table Info_gara (
      data_gara 		datetime	not null,
      n_giri 		int		 	not null,
      meteo 			varchar(20) not null,
-     circuito 		int		 	not null,
+     circuito 		varchar(60)	not null,
      constraint ID_Info_gara_ID primary key (ID)
 );
 
 create table Ingegnere (
      CF 			varchar(40) not null,
-     specialita 	varchar(20) not null,
+     specialita 	enum ('Motore', 'Spoiler', 'Telaio', 'Ruote') default "Telaio" not null,
 	 nazionalita 	varchar(20) not null,
 	 nascita 		date 		not null,
 	 nome 			varchar(20) not null,
@@ -139,7 +141,6 @@ create table Risultati_qualifica (
      constraint ID_Risultati_qualifica_ID primary key (ID_riepilogo)
 );
 
-
 create table Scuderia (
      nome 			varchar(20) not null,
      nazionalita 	varchar(20) not null,
@@ -178,7 +179,7 @@ alter table Giro add constraint FK_Giro_riepilogo_ID
 
 alter table Info_gara add constraint FK_Circuito_ID
 	 foreign key (circuito)
-	 references Circuito(ID);
+	 references Circuito(nome);
 
 alter table Macchina add constraint FK_ID_scuderia_ID
 	foreign key (ID_scuderia)
@@ -252,7 +253,7 @@ create unique index ID_Campionato_IND
      on Campionato (ID);
 
 create unique index ID_Circuito_IND
-     on Circuito (ID);
+     on Circuito (nome);
 	 
 create unique index ID_Contratto_IND
      on Contratto (CF, ID_scuderia);
