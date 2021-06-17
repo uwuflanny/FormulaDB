@@ -262,7 +262,7 @@ namespace FormulaDB_GUI
             sw.Close();
             srg.Close();
         }
-        public void randomize(List<int> list, List<string> times)
+        private void randomize(List<int> list, List<string> times)
         {
             Random rand = new Random();
             int n = list.Count;
@@ -284,52 +284,82 @@ namespace FormulaDB_GUI
 
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
+        enum queryType
+        {
+            empty,
+            single,
+            table
+        }
 
         string conn = "server=localhost;userid=root;password=flan;database=formuladb";
 
-        private void Btn_query_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string strQuery = txt_query.Text;
+            this.load_buttons();
 
+
+        }
+
+        private void load_buttons()
+        {
+            // tags
+            btn1.Tag = new KeyValuePair<queryType, string>(queryType.single, "select * from giro order by tempo limit 1000");
+            btn2.Tag = new KeyValuePair<queryType, string>(queryType.table, "select * from scuderia");
+            // events
+            btn1.Click   += query_button;
+            btn2.Click += query_button;
+        }
+
+        private void query_button(object sender, RoutedEventArgs e)
+        {
+            // get query specs
+            Button sender_btn = (Button)sender;
+            KeyValuePair<queryType, string> args = (KeyValuePair<queryType, string>)(sender_btn.Tag);
+            queryType type = args.Key;
+            string query   = args.Value;
+
+            // prepare query
             MySqlConnection mysqlconnection = new MySqlConnection(conn);
             mysqlconnection.Open();
             MySqlCommand cmd = mysqlconnection.CreateCommand();
-            cmd.CommandText = strQuery;
+            cmd.CommandText = query;
 
-            MySqlDataReader reader;
             try
             {
-                reader = cmd.ExecuteReader();
+                switch (type)
+                {
+                    case queryType.table:
+                        this.executeReader(cmd);
+                        break;
+                    case queryType.single:
+                        this.executeReader(cmd);
+                        break;
+                    case queryType.empty:
+                        this.executeEmpty(cmd);
+                        break;
+                }
             }
-            catch (Exception ex)
+            catch
             {
-                txt_query.AppendText("error in query!\n");
-                txt_query.AppendText(ex.ToString() + "\n");
-                cmd.Dispose();
-                mysqlconnection.Close();
-                return;
+                MessageBox.Show("error occurred :/");
             }
-
-            if (reader.HasRows)
-            {
-                DataTable dt = new DataTable("Query Result");
-                dt.Load(reader);
-                txt_query.AppendText("got " + dt.Rows.Count + " row(s)\n");
-                dg_result.ItemsSource = dt.DefaultView;
-            }
-            else
-            {
-                txt_query.AppendText("query executed\n");
-            }
-
 
             cmd.Dispose();
             mysqlconnection.Close();
+        }
+
+        private void executeEmpty(MySqlCommand cmd)
+        {
+            int affected = cmd.ExecuteNonQuery();
+            MessageBox.Show("affected rows: " + affected);
+        }
+        private void executeReader(MySqlCommand cmd)
+        {
+            MySqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable("Query Result");
+            dt.Load(reader);
+            dg_result.ItemsSource = dt.DefaultView;
         }
     }
 }

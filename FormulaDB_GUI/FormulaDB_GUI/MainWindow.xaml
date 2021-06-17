@@ -9,6 +9,7 @@
     <Grid>
         <TextBox Name="txt_query" HorizontalAlignment="Left" Height="102" Margin="323,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300"/>
         <DataGrid Name="dg_result" CanUserAddRows="false" HorizontalAlignment="Left" Height="271" Margin="21,125,0,0" VerticalAlignment="Top" Width="602"/>
-        <Button Name="btn_query" Content="Button" HorizontalAlignment="Left" Margin="52,38,0,0" VerticalAlignment="Top" Width="109" Height="31" Click="Btn_query_Click"/>
+        <Button Name="btn1" Content="1" HorizontalAlignment="Left" Margin="52,38,0,0" VerticalAlignment="Top" Width="109" Height="31"/>
+        <Button Name="btn2" Content="2" HorizontalAlignment="Left" Margin="52,74,0,0" VerticalAlignment="Top" Width="109" Height="38"/>
     </Grid>
 </Window>
