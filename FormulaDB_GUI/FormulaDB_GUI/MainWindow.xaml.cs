@@ -304,12 +304,37 @@ namespace FormulaDB_GUI
         private void load_buttons()
         {
             // tags
-            btn1.Tag = new KeyValuePair<queryType, string>(queryType.single, "select * from giro order by tempo limit 1000");
-            btn2.Tag = new KeyValuePair<queryType, string>(queryType.table, "select * from scuderia");
+            //btn1.Tag = new KeyValuePair<queryType, string>(queryType.single, "select * from info_gara");
+            //btn2.Tag = new KeyValuePair<queryType, string>(queryType.table, "select * from scuderia");
             // events
-            btn1.Click   += query_button;
-            btn2.Click += query_button;
+            //btn1.Click += query_button;
+            //btn2.Click += query_button;
+
+            btn_insert.IsEnabled = false;
+            cnv_storico.Visibility = Visibility.Hidden;
+            btn_insert.Click += switch_button;
+            btn_history.Click += switch_button;
         }
+
+
+
+        private void switch_button(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).IsEnabled = false;
+            if(sender as Button == btn_insert)
+            {
+                cnv_insert.Visibility = Visibility.Visible;
+                cnv_storico.Visibility = Visibility.Hidden;
+                btn_history.IsEnabled = true;
+            }
+            else
+            {
+                cnv_storico.Visibility = Visibility.Visible;
+                cnv_insert.Visibility = Visibility.Hidden;
+                btn_insert.IsEnabled = true;
+            }
+        }
+
 
         private void query_button(object sender, RoutedEventArgs e)
         {
@@ -360,6 +385,21 @@ namespace FormulaDB_GUI
             DataTable dt = new DataTable("Query Result");
             dt.Load(reader);
             dg_result.ItemsSource = dt.DefaultView;
+        }
+
+
+
+
+
+        private void Dg_result_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            DataRowView row = dg_result.SelectedItem as DataRowView;
+            foreach (var asd in row.Row.ItemArray)
+            {
+                MessageBox.Show(asd.ToString());
+            }
+
         }
     }
 }
