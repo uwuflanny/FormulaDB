@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="68.056" Width="95.833" Loaded="Window_Loaded">
+        Title="Formula DB" Height="455.056" Width="662.833" Loaded="Window_Loaded">
     <Grid>
-
+        <TextBox Name="txt_query" HorizontalAlignment="Left" Height="102" Margin="323,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300"/>
+        <DataGrid Name="dg_result" CanUserAddRows="false" HorizontalAlignment="Left" Height="271" Margin="21,125,0,0" VerticalAlignment="Top" Width="602"/>
+        <Button Name="btn_query" Content="Button" HorizontalAlignment="Left" Margin="52,38,0,0" VerticalAlignment="Top" Width="109" Height="31" Click="Btn_query_Click"/>
     </Grid>
 </Window>

@@ -709,26 +709,44 @@ insert into riepilogo(gara, pilota, scuderia) values(17, 'MAG', 'Haas');
 
 
 
-
-
-
-
-/*
 -- ingegneri
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("fASEVSETFGHH", "spoiler", "Italia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("RBYSDRBYDRSD", "motore", "Italia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("BSDRYBDRBCKY", "minigonne", "Italia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("EOJKGFSKLERG", "ruote", "", "Belgio", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("RGMSEPJKGWES", "spoiler", "Stati Uniti", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("IOGJROIRHGES", "motore", "Francia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("LSGKLEMGPKSM", "ruote", "Regno Unito", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("GOKSRGOKASRG", "spoiler", "Regno Unito", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("KRGMHALKRHNM", "motore", "Francia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("EKGJPAOSJFOF", "minigonne", "Turchia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("GGPWIOEGMJWG", "spoiler", "Regno Unito", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("OCFWOPEGMIOW", "motore", "Francia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("FOAEKOPFKPOK", "ruote", "Turchia", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("NEOFNEJONJEB", "motore", "Regno Unito", "", "", "", "");
-insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("OPAOJPEJIJFI", "minigonne", "Turchia", "", "", "", "");
-*/
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("fASEVSETFGHH", "spoiler", "IT", "1989-07-01", "Jacquelyn", "Watkins");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("RBYSDRBYDRSD", "motore", "IT", "1997-10-16", "Marta", "Osborne");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("BSDRYBDRBCKY", "minigonne", "IT", "1990-01-26", "Mercedes", "Hammond");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("EOJKGFSKLERG", "ruote", "BE", "1994-04-26", "Brent", "James");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("RGMSEPJKGWES", "spoiler", "US", "1994-04-26", "Alexandra", "Arnold");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("IOGJROIRHGES", "Telaio", "FR", "1993-12-14", "Pablo", "May");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("LSGKLEMGPKSM", "ruote", "GB", "1994-04-26", "Alice", "Quinn");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("GOKSRGOKASRG", "spoiler", "GB", "1997-10-16", "Andrew", "Yates");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("KRGMHALKRHNM", "motore", "FR", "1993-12-14", "Orville", "Bennett");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("EKGJPAOSJFOF", "Telaio", "TR", "1993-12-14", "Tommie", "Carr");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("GGPWIOEGMJWG", "spoiler", "GB", "1997-10-16", "Diane", "Ortiz");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("OCFWOPEGMIOW", "motore", "FR", "1992-10-05", "Don", "Saunders");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("FOAEKOPFKPOK", "Telaio", "TR", "1992-10-05", "Edna", "Bates");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("NEOFNEJONJEB", "motore", "GB", "1990-01-26", "Olivia", "Washington");
+insert into ingegnere (CF, specialita, nazionalita, nascita, nome, cognome) values ("OPAOJPEJIJFI", "minigonne", "TR", "1992-10-05", "Ramiro", "Maxwell");
+
+
+
+-- contratti piltoa
+insert into contratto (CF, ID_scuderia) values ("fASEVSETFGHH", "Mercedes");
+insert into contratto (CF, ID_scuderia) values ("RBYSDRBYDRSD", "Mercedes");
+insert into contratto (CF, ID_scuderia) values ("BSDRYBDRBCKY", "Ferrari");
+insert into contratto (CF, ID_scuderia) values ("EOJKGFSKLERG", "Ferrari");
+insert into contratto (CF, ID_scuderia) values ("RGMSEPJKGWES", "Red Bull");
+insert into contratto (CF, ID_scuderia) values ("IOGJROIRHGES", "Renault");
+insert into contratto (CF, ID_scuderia) values ("LSGKLEMGPKSM", "Haas");
+insert into contratto (CF, ID_scuderia) values ("GOKSRGOKASRG", "McLaren");
+insert into contratto (CF, ID_scuderia) values ("KRGMHALKRHNM", "Racing Point");
+insert into contratto (CF, ID_scuderia) values ("EKGJPAOSJFOF", "Alfa Romeo");
+insert into contratto (CF, ID_scuderia) values ("GGPWIOEGMJWG", "AlphaTauri");
+insert into contratto (CF, ID_scuderia) values ("OCFWOPEGMIOW", "Williams");
+insert into contratto (CF, ID_scuderia) values ("FOAEKOPFKPOK", "Williams");
+insert into contratto (CF, ID_scuderia) values ("NEOFNEJONJEB", "AlphaTauri");
+insert into contratto (CF, ID_scuderia) values ("OPAOJPEJIJFI", "Alfa Romeo");
+
+
+
+
+
 

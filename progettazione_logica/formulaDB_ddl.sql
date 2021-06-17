@@ -71,7 +71,7 @@ create table Info_gara (
 
 create table Ingegnere (
      CF 			varchar(40) not null,
-     specialita 	enum ('Motore', 'Spoiler', 'Telaio', 'Ruote') default "Telaio" not null,
+     specialita 	enum ('Motore', 'Spoiler', 'Telaio', 'Ruote', 'minigonne') default "Telaio" not null,
 	 nazionalita 	varchar(2)  not null,
 	 nascita 		date 		not null,
 	 nome 			varchar(20) not null,

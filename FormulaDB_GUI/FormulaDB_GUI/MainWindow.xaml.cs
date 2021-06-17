@@ -1,7 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,8 +16,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Drawing;
 using System.IO;
-using System.Net;
 
 namespace FormulaDB_GUI
 {
@@ -268,9 +279,57 @@ namespace FormulaDB_GUI
             }
         }
 
+
+
+
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
+        }
+
+
+        string conn = "server=localhost;userid=root;password=flan;database=formuladb";
+
+        private void Btn_query_Click(object sender, RoutedEventArgs e)
+        {
+            string strQuery = txt_query.Text;
+
+            MySqlConnection mysqlconnection = new MySqlConnection(conn);
+            mysqlconnection.Open();
+            MySqlCommand cmd = mysqlconnection.CreateCommand();
+            cmd.CommandText = strQuery;
+
+            MySqlDataReader reader;
+            try
+            {
+                reader = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                txt_query.AppendText("error in query!\n");
+                txt_query.AppendText(ex.ToString() + "\n");
+                cmd.Dispose();
+                mysqlconnection.Close();
+                return;
+            }
+
+            if (reader.HasRows)
+            {
+                DataTable dt = new DataTable("Query Result");
+                dt.Load(reader);
+                txt_query.AppendText("got " + dt.Rows.Count + " row(s)\n");
+                dg_result.ItemsSource = dt.DefaultView;
+            }
+            else
+            {
+                txt_query.AppendText("query executed\n");
+            }
+
+
+            cmd.Dispose();
+            mysqlconnection.Close();
         }
     }
 }
