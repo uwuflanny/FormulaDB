@@ -25,7 +25,11 @@ use FormulaDB;
 -- _____________ 
 
 
-
+create table Nazione (
+	sigla 			varchar(2) not null,
+    nome 			varchar(60) not null,
+    constraint ID_NAZIONE_ID primary key (sigla)
+);
 
 create table Campionato (
      ID 			int 		not null auto_increment,
@@ -37,7 +41,7 @@ create table Campionato (
 create table Circuito (
      lunghezza  	int 		not null,
      nome 			varchar(60) not null,
-     nazione 		varchar(60) not null,
+     nazione 		varchar(2) not null,
      citta	 		varchar(60) not null,
      constraint ID_CIRCUITO_ID primary key (nome)
 );
@@ -61,13 +65,14 @@ create table Info_gara (
      n_giri 		int		 	not null,
      meteo 			varchar(20) not null,
      circuito 		varchar(60)	not null,
+     campionato 	int		 	not null,
      constraint ID_Info_gara_ID primary key (ID)
 );
 
 create table Ingegnere (
      CF 			varchar(40) not null,
      specialita 	enum ('Motore', 'Spoiler', 'Telaio', 'Ruote') default "Telaio" not null,
-	 nazionalita 	varchar(20) not null,
+	 nazionalita 	varchar(2)  not null,
 	 nascita 		date 		not null,
 	 nome 			varchar(20) not null,
 	 cognome 		varchar(40) not null,
@@ -77,7 +82,7 @@ create table Ingegnere (
 create table Pilota (
 	 numero			int		 	not null, -- il numero del pilota  
 	 sigla 			varchar(3) 	not null,
-	 nazionalita 	varchar(20) not null,
+	 nazionalita 	varchar(2)  not null,
 	 nascita 		date		not null,
 	 nome 			varchar(20) not null,
 	 cognome 		varchar(40) not null,
@@ -122,7 +127,6 @@ create table Riepilogo (
      ID 			int		 	not null auto_increment,
 	 gara 			int		 	not null,
      pilota 		varchar(3) 	not null,
-     campionato 	int		 	not null,
 	 scuderia 		varchar(20)	not null,
 	 constraint ID_Riepilogo_ID primary key(ID)
 );
@@ -143,7 +147,7 @@ create table Risultati_qualifica (
 
 create table Scuderia (
      nome 			varchar(20) not null,
-     nazionalita 	varchar(20) not null,
+     nazionalita 	varchar(2)  not null,
      constraint ID_Scuderia_ID primary key (nome)
 );
 
@@ -152,6 +156,22 @@ create table Scuderia (
 
 -- Constraints Section
 -- ___________________ 
+
+alter table circuito add constraint FK_Nazionalita_ID
+	foreign key(nazione)
+    references nazione(sigla);
+    
+alter table ingegnere add constraint FK_Nazionalita_Ing_ID
+	foreign key(nazionalita)
+    references nazione(sigla);
+
+alter table pilota add constraint FK_Nazionalita_pilota_ID
+	foreign key(nazionalita)
+    references nazione(sigla);
+
+alter table scuderia add constraint FK_Nazionalita_scud_ID
+	foreign key(nazionalita)
+    references nazione(sigla);
 
 alter table Contratto_pilota add constraint FK_Contratto_Pilota_ID
 	foreign key(ID_pilota)
@@ -201,7 +221,7 @@ alter table Riepilogo add constraint FK_gara_ID
 	foreign key(gara)
 	references Info_gara(ID);
 	
-alter table Riepilogo add constraint FK_Riep_campionato_ID
+alter table Info_gara add constraint FK_Info_campionato_ID
 	foreign key(campionato)
 	references Campionato(ID);
 	
@@ -224,6 +244,20 @@ alter table Motore add constraint FK_Produttore_ID
 -- Index Section
 -- _____________ 
 
+create index FK_Nazione_IND
+	on circuito(nazione);
+
+create index FK_Nazione_pil_IND
+	on pilota(nazionalita);
+    
+create index FK_Nazione_ing_IND
+	on ingegnere(nazionalita);
+    
+create index FK_Nazione_scud_IND
+	on scuderia(nazionalita);
+
+create unique index ID_Nazione_IND
+	on Nazione(sigla);
 
 create unique index ID_Contratto_Pilota_IND
 	on Contratto_pilota(ID_pilota, ID_scuderia, data_inizio);
@@ -307,7 +341,7 @@ create index FK_pilota_IND
      on Riepilogo (pilota);
 
 create index FK_campionato_IND
-     on Riepilogo (campionato);
+     on Info_gara (campionato);
 	
 create index FK_scuderia_IND
      on Riepilogo (scuderia);
