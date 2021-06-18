@@ -280,36 +280,13 @@ namespace FormulaDB_GUI
         }
 
 
-
-
-
-
-
-        enum queryType
-        {
-            empty,
-            single,
-            table
-        }
-
-        string conn = "server=localhost;userid=root;password=flan;database=formuladb";
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.load_buttons();
-
-
         }
 
         private void load_buttons()
         {
-            // tags
-            //btn1.Tag = new KeyValuePair<queryType, string>(queryType.single, "select * from info_gara");
-            //btn2.Tag = new KeyValuePair<queryType, string>(queryType.table, "select * from scuderia");
-            // events
-            //btn1.Click += query_button;
-            //btn2.Click += query_button;
-
             btn_insert.IsEnabled = false;
             cnv_storico.Visibility = Visibility.Hidden;
             btn_insert.Click += switch_button;
@@ -336,70 +313,25 @@ namespace FormulaDB_GUI
         }
 
 
-        private void query_button(object sender, RoutedEventArgs e)
+
+
+
+
+
+
+        private void add_cammpionato_click(object sender, RoutedEventArgs e)
         {
-            // get query specs
-            Button sender_btn = (Button)sender;
-            KeyValuePair<queryType, string> args = (KeyValuePair<queryType, string>)(sender_btn.Tag);
-            queryType type = args.Key;
-            string query   = args.Value;
-
-            // prepare query
-            MySqlConnection mysqlconnection = new MySqlConnection(conn);
-            mysqlconnection.Open();
-            MySqlCommand cmd = mysqlconnection.CreateCommand();
-            cmd.CommandText = query;
-
-            try
-            {
-                switch (type)
-                {
-                    case queryType.table:
-                        this.executeReader(cmd);
-                        break;
-                    case queryType.single:
-                        this.executeReader(cmd);
-                        break;
-                    case queryType.empty:
-                        this.executeEmpty(cmd);
-                        break;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("error occurred :/");
-            }
-
-            cmd.Dispose();
-            mysqlconnection.Close();
+            new AddCampionato().Show();
         }
 
-        private void executeEmpty(MySqlCommand cmd)
+        private void Btn_new_gara_Click(object sender, RoutedEventArgs e)
         {
-            int affected = cmd.ExecuteNonQuery();
-            MessageBox.Show("affected rows: " + affected);
-        }
-        private void executeReader(MySqlCommand cmd)
-        {
-            MySqlDataReader reader = cmd.ExecuteReader();
-            DataTable dt = new DataTable("Query Result");
-            dt.Load(reader);
-            dg_result.ItemsSource = dt.DefaultView;
+            new AddGara().Show();
         }
 
-
-
-
-
-        private void Dg_result_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Btn_new_riepilogo_Click(object sender, RoutedEventArgs e)
         {
-
-            DataRowView row = dg_result.SelectedItem as DataRowView;
-            foreach (var asd in row.Row.ItemArray)
-            {
-                MessageBox.Show(asd.ToString());
-            }
-
+            new AddRiepilogo().Show();
         }
     }
 }

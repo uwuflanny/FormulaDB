@@ -98,10 +98,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddGara.xaml.cs">
+      <DependentUpon>AddGara.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddRiepilogo.xaml.cs">
+      <DependentUpon>AddRiepilogo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="queryExecutor.cs" />
+    <Page Include="AddCampionato.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddGara.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddRiepilogo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddCampionato.xaml.cs">
+      <DependentUpon>AddCampionato.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
