@@ -101,6 +101,9 @@
     <Compile Include="AddGara.xaml.cs">
       <DependentUpon>AddGara.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddMacchina.xaml.cs">
+      <DependentUpon>AddMacchina.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddRiepilogo.xaml.cs">
       <DependentUpon>AddRiepilogo.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddGara.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddMacchina.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

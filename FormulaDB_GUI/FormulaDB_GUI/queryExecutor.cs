@@ -27,7 +27,6 @@ namespace FormulaDB_GUI
             try
             {
                 int affected = cmd.ExecuteNonQuery();
-                MessageBox.Show("affected rows: " + affected);
             }
             catch(Exception e)
             {

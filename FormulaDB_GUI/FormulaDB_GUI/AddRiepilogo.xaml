@@ -15,9 +15,14 @@
                 <Label Content="posizione in qualifica" HorizontalAlignment="Left" Margin="42,95,0,0" VerticalAlignment="Top"/>
                 <ComboBox Name="cmb_stato" HorizontalAlignment="Left" Margin="42,187,0,0" VerticalAlignment="Top" Width="132"/>
                 <Label Content="stato della gara" HorizontalAlignment="Left" Margin="42,161,0,0" VerticalAlignment="Top"/>
-                <ListBox x:Name="lst_giri" HorizontalAlignment="Left" Height="488" Margin="235,22,0,0" VerticalAlignment="Top" Width="228"/>
-                <Button Name="btninsert" Content="inserisci" HorizontalAlignment="Left" Margin="54,424,0,0" VerticalAlignment="Top" Width="132" Height="46" Click="Btninsert_Click"/>
-                <TextBox Name="txttempoquali" HorizontalAlignment="Left" Height="24" Margin="42,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
+                <ListBox x:Name="lst_giri" HorizontalAlignment="Left" Height="303" Margin="235,22,0,0" VerticalAlignment="Top" Width="228"/>
+                <Button Name="btninsert" Content="inserisci" HorizontalAlignment="Left" Margin="64,464,0,0" VerticalAlignment="Top" Width="132" Height="46" Click="Btninsert_Click"/>
+                <TextBox Name="txttempoquali" HorizontalAlignment="Left" Height="24" Margin="42,301,0,0" TextWrapping="Wrap" Text="00:01:08.303" VerticalAlignment="Top" Width="133"/>
+                <Label Content="tempo qualifica" HorizontalAlignment="Left" Margin="42,275,0,0" VerticalAlignment="Top"/>
+                <ComboBox Name="cmb_npit" HorizontalAlignment="Left" Margin="43,393,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="Cmb_npit_SelectionChanged"/>
+                <Label Content="pitstop effettuati" HorizontalAlignment="Left" Margin="43,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.289,0.077" Width="120"/>
+                <ListBox x:Name="lst_pit" HorizontalAlignment="Left" Height="180" Margin="235,330,0,0" VerticalAlignment="Top" Width="228"/>
+                <Button Name="randvalues" Content="randomize" HorizontalAlignment="Left" Margin="388,515,0,0" VerticalAlignment="Top" Width="75" Click="Randvalues_Click"/>
             </Grid>
         </GroupBox>
         <GroupBox Name="grp_info" Header="dati riepilogo" HorizontalAlignment="Left" Height="587" Margin="29,19,0,0" VerticalAlignment="Top" Width="614">

@@ -100,8 +100,8 @@ create table Motore (
 create table Macchina (
      ID_scuderia 	varchar(20)	not null,
      ID_campionato 	int 		not null,
-     nome 			varchar(20) not null,
-     motore 		varchar(20) not null,
+     nome 			varchar(40) not null,
+     motore 		varchar(40) not null,
      peso 			int,
      lunghezza 		int,
      larghezza 		int,  

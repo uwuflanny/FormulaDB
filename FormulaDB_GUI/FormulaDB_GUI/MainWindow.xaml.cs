@@ -333,5 +333,10 @@ namespace FormulaDB_GUI
         {
             new AddRiepilogo().Show();
         }
+
+        private void Btn_new_macchina_Click(object sender, RoutedEventArgs e)
+        {
+            new AddMacchina().Show();
+        }
     }
 }

@@ -53,6 +53,8 @@ RIASSUNTO CONCETTI:
 
 ...
 
+-- TODO DA CAMBIAREEEEE
+
 AZIONI PRINCIPALI RICHIESTE:
 aggiungere un pilota
 aggiungere macchina ad una scuderia
@@ -76,16 +78,124 @@ in modo da poterlo utilizzare semplicemente nelle operazioni.
 SCHEMA FINALE -->
 PROGETTAZIONE LOGICA:
 STIMA VOLUME DATI:
+
+Nazione				E		240     
+Circuito			E 		200  
+
+scuderia			E		50
+Pilota				E		100
+contratto_pilota    R 		200
+Contratto			R 		3000
+scuderia			E		50
+ingegnere			E 		3000
+ 
+Campionato			E		50	     
+Giro 				E 		12000000
+info_gara			E    	2000  
+riepilogo			R		2000
+risultati_gara		E		2000
+risultati_qualifica	E		2000
+pit_stop			E		8000
+
+Motore				E		300
+Macchina			E		1000
+
+
+
+
+
+
+
+
+
 DESCRIZIONE OPERAZIONI PRINCIPALI E STIMA DELLA LORO FREQUENZA:
 Le operazioni da effettuare sono quelle già elencate nella fase di analisi. Segue una tabella
 riportante la loro descrizione e relativa frequenza:
 
-	<TABLE>
+-- TODO DA CAMBIAREEEEEE
+
+OPERAZIONE										FREQUENZA
+aggiungere un pilota							4 / anno
+aggiungere macchina ad una scuderia				50 / anno
+aggiungere un circuito							1 / due anni
+aggiungere un campionato						3 / anno
+aggiungere gara ad un campionato				60 / anno
+aggiungere un riepilogo di un pilota			1200 / anno
+
+
+
+
 	
 SCHEMI NAVIGAZIONE ACCESSI:
 Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riportate; inoltre, ove
 non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo degli
 costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura. 
+
+
+CONCETTO:			COSTRUTTO:		ACCESSI:	TIPO:
+
+Aggiunta di un pilota:
+un pilota novizio viene registrato nel database stipulando un contratto con una scuderia,
+viene letta la lista delle scuderie con la quale il pilota puo' eseguire il contratto
+pilota				E				1			S
+contratto_pilota	R				1			L
+contratto_pilota	R				1			S
+
+Aggiunta di una macchina ad una scuderia:
+viene registrata una macchina ad una scuderia con la quale gareggiare in un certo campionato,
+vengono lette le tabelle scuderia, campionato e motore per la selezione da parte dell'utente
+campionato			E				1			L
+scuderia			E				1			L
+motore				E				1			L
+macchina			E				1			S
+
+Aggiungere un circuito:
+viene registrato un nuovo circuito
+circuito 			E				1			S
+
+Aggiungere un campionato:
+viene aggiunto un nuovo campionato, specificandone l'anno e la classe di veicoli concorrenti
+campionato 			E				1			S
+
+Aggiungere una gara ad un campionato:
+viene registrata una gara in un campionato, vengono accedute le tabelle
+campionato e circuito per decidere i dettagli della competizione
+campionato			E				1			L
+circuito			E				1			L
+info_gara			E				1			S
+
+Aggiungere il riepilogo in un pilota:
+viene registrato di un pilota il risultato nella qualifica, la posizione e lo stato di conclusione della gara,
+i tempi dei vari giri e dei pit stop effettuati, prima di effettuare l'inserimento dei dati, vengono 
+controllate le posizioni non ancora riempite nel podio per la gara richiesta, sia per i risultati
+della gara che per quelli della qualifica. In media per gara si eseguono 60 giri e 3 pit stop
+risultati_gara		E				1			L
+risultati_qualifica E				1			L			
+riepilogo			R				1			S
+riepilogo			R				1			L -- lettura dell' ultimo id auto incrementato
+risultati_gara		E				1			S
+risultati_qualifica	E				1			S
+giro				E				60			S
+pit_stop			E				3			S
+
+Ottenere la classifica di una certa gara:
+a partire da una gara avvenuta in un certo campionato, viene visualizzata la classifica dei piloti
+e la somma dei relativi tempi
+info_gara 			E				1			L
+riepilogo			R				1			L
+giro				E				20			L
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<OP1 TABLE>
 	<OP2 TABLE>
