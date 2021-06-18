@@ -1,27 +1,110 @@
+ANALISI DEI REQUISITI
+...
 Si vuole tenere traccia di tutti gli aspetti
 relativi ad un campionato automobilistico mondiale per ogni categoria.
 Per ciascun campionato verranno memorizzati i risultati delle varie gare
 di ogni pilota e della sua scuderia, tenendo conto anche dell'ordine di partenza
 ottenuto in qualifica, dei pit-stop effettuati e di tutti i giri percorsi in gara.
+...
 
-In ogni campionato gareggiano 20 piloti, dei quale vengono salvate informazioni quali il ed il cognome del concorrente,
+INTERVISTA:
+Si vuole tenere traccia dei campionati del mondo Formula, memorizzando per ciascuno l'anno del campionato e la categoria di auto che corre al suo interno.
+
+In ogni campionato gareggiano circa 20 piloti, dei quale vengono salvate informazioni quali il ed il cognome del concorrente,
 la nazionalita', la data di nascita ed il numero di macchina con il quale corre.
+
 Per poter gareggiare, ogni pilota stipula un contratto con una scuderia, la quale gli offre un veicolo, con il quale
 prendere parte alle competizioni. Il contratto ha solitamente durata di qualche anno, tuttavia, in rare occasioni,
 la scuderia concede al pilota di gareggiare per un team diverso.
 
+Per ogni scuderia si tiene traccia del suo nome e la nazione per la quale corre.
+
 Nei test effettuati durante il periodo di pausa tra le varie competizioni, eseguiti da ingegneri specializzati appartenenti al team,
 permettono alla scuderia di migliorare la propria autovettura, offrendo cosi' la possibilita' di gareggiare
-con un nuovo modello per il campionato che verra'.
-In particolare, le migliorie apportate interessano il peso e le dimensioni dell'auto.
+con un nuovo modello per il campionato che verra'. In particolare, le migliorie apportate interessano il peso e le dimensioni dell'auto.
 Inoltre, le scuderie, in caso di budget ridotto, possono eventulmente acquistare il motore da team avversari.
 
-Di ogni Gran Premio viene memorizzato, oltre alla data, al numero di giri (deciso dalla FIA) ed il meteo;
+Per ogni scuderia, e' necessario tenere traccia degli ingegneri che ci lavorano e della loro specializzazione.
+
+Di ogni Gran Premio viene memorizzato, oltre alla data, al numero di giri ed il meteo;
 la posizione ed il nome del circuito dove viene disputato.
 
+Per quanto riguarda i circuiti, e' necessario permetterne la localizzazione salvando il nome, la nazione in cui sono situati e il loro indirizzo.
 
-
+Inoltre, per una memorizzazione migliore di ogni gara, viene memorizzato ogni giro di ogni pilota effettuato in gara con il rispettivo tempo,
+i pitstop effettuati con il tempo impiegato in essi, l'ordine di partenza (dato dalle qualifiche) e l'ordine di arrivo
 
 
 !!limiti dell'er: 
 il motore non puo' cambiare ogni anno
+
+
+ESTRAZIONE CONCETTI PRINCIPALI:
+Pilota:			Colui che, tramite la sua auto, tenta di vincere il campionato accumulando il maggior numero di punti nelle gare da disputare		Driver 
+Auto:			Auto utilizzata per correre nei campionati Formula, che con l'avanzare del tempo subisce modifiche a 360 gradi per migliorarne le prestazioni		Monoposto
+Scuderia:		Team che si occupa della preparazione della macchina in ogni fase del campionato per ognuno dei piloti a lei legati
+Campionato:		Serie di gare con la quale determinare il vincitore del campionato
+Qualifica:		Periodo di 1 ora circa che precede la gara, nella quale viene determinata la griglia di partenza, ordinata in base al miglior tempo del giro di ogni pilota
+Gara:			Serie di giri al termine dei quali si otterrà l'ordine di arrivo dei piloti. In base alla posizione di arrivo il pilota riceverà un determinato numero di punti		Gran Premio, GP
+Giro:			Giro del circuito dal quale verrà estratto il tempo impiegato dal pilota									Lap
+Pit-stop:		breve sosta effettuata in gara, nella quale gli pneumatici vengono sostituiti in seguito all'usura
+
+RIASSUNTO CONCETTI:
+
+...
+
+AZIONI PRINCIPALI RICHIESTE:
+aggiungere un pilota
+aggiungere macchina ad una scuderia
+aggiungere un circuito
+aggiungere un campionato
+aggiungere gara ad un campionato
+aggiungere un riepilogo di un pilota, comprendente della sua qualifica, dei sui giri e dei suoi pit-stop
+...
+
+PROGETTAZIONE CONCETTUALE:
+SCHEMA SCHELETRO -->
+Le entita' di Pilota e Ingegnere sono la generalizzazione di una entita' Persona, identificata dal CF (codice fiscale). Un pilota od un ingegnere, 
+nel corso degli anni possono cambiare scuderia per cui correre/lavorare, motivo delle associazioni 1-N.
+Inoltre il pilota è identificato da una sigla abbandonando il CF di persona, per rendere la visualizzazione dei dati in riepilogo piu' veloce.
+Nella sua carriera il pilota correra' un numero indefinito di gare, 
+ma sicuramente maggiore di 1, il che rende ancora una volta l'associazione una associazione 1-N.
+*ripetere stessa cosa tra scuderia e macchina*
+L'entita' riepilogo e' identificata da un proprio ID, scelta derivata dalla necessita' di identificare un certo riepilogo con un singolo valore, 
+in modo da poterlo utilizzare semplicemente nelle operazioni.
+
+SCHEMA FINALE -->
+PROGETTAZIONE LOGICA:
+STIMA VOLUME DATI:
+DESCRIZIONE OPERAZIONI PRINCIPALI E STIMA DELLA LORO FREQUENZA:
+Le operazioni da effettuare sono quelle già elencate nella fase di analisi. Segue una tabella
+riportante la loro descrizione e relativa frequenza:
+
+	<TABLE>
+	
+SCHEMI NAVIGAZIONE ACCESSI:
+Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riportate; inoltre, ove
+non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo degli
+costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura. 
+
+	<OP1 TABLE>
+	<OP2 TABLE>
+
+RAFFINAMENTO SCHEMA:
+1-ELIMINAZIONE GERARCHIE:
+2-ELIMINAZIONE ATTRIBUTI COMPOSTI:
+3-SCELTA CHIAVI PRIMARIE:
+4-ELIMINAZIONE IDENTIFICATORI ESTERNI:
+
+ANALISI RIDONDANZE:
+
+TRADUZIONE ENTITA' E ASSOCIAZIONI IN RELAZIONI
+bla bla bla
+SCHEMA RELAZIONALE FINALE -->
+
+TRADUZIONE OPERAZIONI IN QUERY SQL:
+OP1
+OP2
+...
+
+PROGETTAZIONE APPLICAZIONE:
