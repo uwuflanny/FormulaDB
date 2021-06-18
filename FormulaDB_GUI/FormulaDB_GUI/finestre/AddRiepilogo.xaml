@@ -16,7 +16,7 @@
                 <ComboBox Name="cmb_stato" HorizontalAlignment="Left" Margin="42,187,0,0" VerticalAlignment="Top" Width="132"/>
                 <Label Content="stato della gara" HorizontalAlignment="Left" Margin="42,161,0,0" VerticalAlignment="Top"/>
                 <ListBox x:Name="lst_giri" HorizontalAlignment="Left" Height="303" Margin="235,22,0,0" VerticalAlignment="Top" Width="228"/>
-                <Button Name="btninsert" Content="inserisci" HorizontalAlignment="Left" Margin="64,464,0,0" VerticalAlignment="Top" Width="132" Height="46" Click="Btninsert_Click"/>
+                <Button Name="btninsert" Content="inserisci" HorizontalAlignment="Left" Margin="43,464,0,0" VerticalAlignment="Top" Width="132" Height="46" Click="Btninsert_Click"/>
                 <TextBox Name="txttempoquali" HorizontalAlignment="Left" Height="24" Margin="42,301,0,0" TextWrapping="Wrap" Text="00:01:08.303" VerticalAlignment="Top" Width="133"/>
                 <Label Content="tempo qualifica" HorizontalAlignment="Left" Margin="42,275,0,0" VerticalAlignment="Top"/>
                 <ComboBox Name="cmb_npit" HorizontalAlignment="Left" Margin="43,393,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="Cmb_npit_SelectionChanged"/>
