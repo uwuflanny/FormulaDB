@@ -13,6 +13,9 @@
             <Button Name="btn_new_gara" Content="nuova gara" Canvas.Left="156" Canvas.Top="10" Width="119" Height="40" Click="Btn_new_gara_Click"/>
             <Button Name="btn_new_riepilogo" Content="nuovo riepilogo" Canvas.Left="300" Canvas.Top="10" Width="117" Height="40" Click="Btn_new_riepilogo_Click"/>
             <Button Name="btn_new_macchina" Content="nuova macchina" Canvas.Left="443" Canvas.Top="10" Width="122" Height="40" Click="Btn_new_macchina_Click"/>
+            <Button Name="btn_new_pilota" Content="nuovo pilota" Canvas.Left="10" Canvas.Top="65" Width="123" Height="39" Click="Btn_new_pilota_Click"/>
+            <Button Name="btn_newscuderia" Content="aggiungi scuderia" Canvas.Left="156" Canvas.Top="65" Width="119" Height="39" Click="Btn_newscuderia_Click"/>
+            <Button Name="btn_nuovo_motore" Content="nuovo motore" Canvas.Left="300" Canvas.Top="65" Width="117" Height="39" Click="Btn_nuovo_motore_Click"/>
         </Canvas>
         <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="114" Margin="21,196,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
             <Button Content="Button" Canvas.Left="10" Canvas.Top="10" Width="75"/>

@@ -1,0 +1,15 @@
+﻿<Window x:Class="FormulaDB_GUI.finestre.AddScuderia"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
+        mc:Ignorable="d"
+        Title="AddScuderia" Height="307.992" Width="387.807">
+    <Grid>
+        <TextBox Name="txtnome" HorizontalAlignment="Left" Height="23" Margin="36,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+        <Button Name="btninsert" Content="Button" HorizontalAlignment="Left" Margin="49,218,0,0" VerticalAlignment="Top" Width="75" Click="Btninsert_Click"/>
+        <DataGrid Name="dgnazione" HorizontalAlignment="Left" Height="111" Margin="36,73,0,0" VerticalAlignment="Top" Width="240"/>
+
+    </Grid>
+</Window>

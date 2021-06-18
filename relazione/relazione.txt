@@ -64,6 +64,16 @@ aggiungere gara ad un campionato
 aggiungere un riepilogo di un pilota, comprendente della sua qualifica, dei sui giri e dei suoi pit-stop
 ...
 
+
+
+
+ANALISI DELLE RIDONDANZE:
+ci salviamo la pos al posto che leggere fare la somma dei tempi
+
+
+
+
+
 PROGETTAZIONE CONCETTUALE:
 SCHEMA SCHELETRO -->
 Le entita' di Pilota e Ingegnere sono la generalizzazione di una entita' Persona, identificata dal CF (codice fiscale). Un pilota od un ingegnere, 
@@ -134,6 +144,17 @@ costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli 
 
 CONCETTO:			COSTRUTTO:		ACCESSI:	TIPO:
 
+Aggiunta di un motore:
+viene aggiunto un motore, oltre a specificarne i valori viene scelto dall'utente
+la scuderie produttrice
+scuderia			E				1			L
+motore				E				1			S
+
+Aggiunta di una scuderia:
+viene aggiunta una scuderia, la nazione viene selezionata dall'utente tra quelle disponibili
+nazione				E				1			L
+scuderia			E				1			S
+
 Aggiunta di un pilota:
 un pilota novizio viene registrato nel database stipulando un contratto con una scuderia,
 viene letta la lista delle scuderie con la quale il pilota puo' eseguire il contratto
@@ -195,10 +216,6 @@ giro				E				20			L
 
 
 
-
-
-	<OP1 TABLE>
-	<OP2 TABLE>
 
 RAFFINAMENTO SCHEMA:
 1-ELIMINAZIONE GERARCHIE:

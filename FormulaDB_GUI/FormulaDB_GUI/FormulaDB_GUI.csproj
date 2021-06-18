@@ -98,29 +98,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddGara.xaml.cs">
+    <Compile Include="finestre\AddGara.xaml.cs">
       <DependentUpon>AddGara.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddMacchina.xaml.cs">
+    <Compile Include="finestre\AddMacchina.xaml.cs">
       <DependentUpon>AddMacchina.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddRiepilogo.xaml.cs">
+    <Compile Include="finestre\AddMotore.xaml.cs">
+      <DependentUpon>AddMotore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="finestre\AddPilota.xaml.cs">
+      <DependentUpon>AddPilota.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="finestre\AddRiepilogo.xaml.cs">
       <DependentUpon>AddRiepilogo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="finestre\AddScuderia.xaml.cs">
+      <DependentUpon>AddScuderia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="queryExecutor.cs" />
-    <Page Include="AddCampionato.xaml">
+    <Page Include="finestre\AddCampionato.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddGara.xaml">
+    <Page Include="finestre\AddGara.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddMacchina.xaml">
+    <Page Include="finestre\AddMacchina.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddRiepilogo.xaml">
+    <Page Include="finestre\AddMotore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finestre\AddPilota.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finestre\AddRiepilogo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finestre\AddScuderia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,7 +149,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddCampionato.xaml.cs">
+    <Compile Include="finestre\AddCampionato.xaml.cs">
       <DependentUpon>AddCampionato.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
