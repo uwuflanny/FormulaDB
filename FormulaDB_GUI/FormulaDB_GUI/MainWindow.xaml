@@ -5,11 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="Formula DB" Height="455.056" Width="662.833" Loaded="Window_Loaded">
+        Title="Formula DB" Height="516.056" Width="732.833" Loaded="Window_Loaded">
     <Grid>
-        <TextBox Name="txt_query" HorizontalAlignment="Left" Height="102" Margin="323,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300"/>
-        <DataGrid Name="dg_result" CanUserAddRows="false" HorizontalAlignment="Left" Height="271" Margin="21,125,0,0" VerticalAlignment="Top" Width="602"/>
-        <Button Name="btn1" Content="1" HorizontalAlignment="Left" Margin="52,38,0,0" VerticalAlignment="Top" Width="109" Height="31"/>
-        <Button Name="btn2" Content="2" HorizontalAlignment="Left" Margin="52,74,0,0" VerticalAlignment="Top" Width="109" Height="38"/>
+        <DataGrid Name="dg_result" CanUserAddRows="false" HorizontalAlignment="Left" Height="271" Margin="21,191,0,0" VerticalAlignment="Top" Width="602" SelectionChanged="Dg_result_SelectionChanged"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="114,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Canvas Name="cnv_insert" HorizontalAlignment="Left" Height="114" Margin="21,53,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
+            <Button Content="Button" Canvas.Left="424" Canvas.Top="28" Width="75"/>
+        </Canvas>
+        <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="114" Margin="21,53,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
+            <Button Content="Button" Canvas.Left="10" Canvas.Top="10" Width="75"/>
+        </Canvas>
+        <Button Name="btn_insert" Content="insert" HorizontalAlignment="Left" Margin="399,14,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btn_history" Content="history" HorizontalAlignment="Left" Margin="501,14,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
