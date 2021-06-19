@@ -158,8 +158,9 @@ scuderia			E				1			S
 Aggiunta di un pilota:
 un pilota novizio viene registrato nel database stipulando un contratto con una scuderia,
 viene letta la lista delle scuderie con la quale il pilota puo' eseguire il contratto
-pilota				E				1			S
+nazione 			E				1			L
 contratto_pilota	R				1			L
+pilota				E				1			S
 contratto_pilota	R				1			S
 
 Aggiunta di una macchina ad una scuderia:
@@ -172,6 +173,7 @@ macchina			E				1			S
 
 Aggiungere un circuito:
 viene registrato un nuovo circuito
+nazione				E				1			L
 circuito 			E				1			S
 
 Aggiungere un campionato:
@@ -190,6 +192,10 @@ viene registrato di un pilota il risultato nella qualifica, la posizione e lo st
 i tempi dei vari giri e dei pit stop effettuati, prima di effettuare l'inserimento dei dati, vengono 
 controllate le posizioni non ancora riempite nel podio per la gara richiesta, sia per i risultati
 della gara che per quelli della qualifica. In media per gara si eseguono 60 giri e 3 pit stop
+campionato			E				1			L
+info_gara			E				1			L
+pilota				E				1			L
+scuderia			E				1			L
 risultati_gara		E				1			L
 risultati_qualifica E				1			L			
 riepilogo			R				1			S
