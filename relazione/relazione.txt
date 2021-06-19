@@ -209,14 +209,34 @@ info_gara 			E				1			L
 riepilogo			R				1			L
 giro				E				20			L
 
-Classifica del campionato:
+Classifica piloti nel campionato:
 una volta selezionado dall'utente un campionato, viene visualizzata la classifica dei piloti
 tenendo conto dei punteggi delle gare vinte e degli eventuali bonus derivati da giri migliori
 campionato 			E				1			L
+punteggi_posizione	E				1			L
 riepilogo 			R				2			L
 info_gara			E				1			L
 risultati_gara		E				1			L
 giro				E				1			L
+
+Classifica scuderie nel campionato:
+una volta selezionato un campionato, viene visuializzata la classifica delle scuderie
+campionato 			E				1			L
+reipilogo			R				2			L
+info_gara			E				1			L
+risultati_gara		E				1			L
+punti_posizione		E				1			L
+giro				E				1			L
+
+Numero vittorie di ogni pilota:
+viene visualizzato il numero di vittorie compiute da ogni pilota nella sua carriera
+riepilogo			R				1			L
+Risultati_gara		E				1			L
+
+
+
+
+
 
 
 
