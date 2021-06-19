@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿//using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -116,6 +116,11 @@ namespace FormulaDB_GUI
         private void Risultaticampionato_Click(object sender, RoutedEventArgs e)
         {
             new GetCampionatoData().Show();
+        }
+
+        private void btn_winner_Click(object sender, RoutedEventArgs e)
+        {
+            new getWinner().Show();
         }
     }
 }

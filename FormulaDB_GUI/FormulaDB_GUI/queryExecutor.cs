@@ -14,7 +14,7 @@ namespace FormulaDB_GUI
     {
 
 
-        static string conn = "server=localhost;userid=root;password=flan;database=formuladb";
+        static string conn = "server=localhost;userid=utonto;password=zeb89acegamer;database=formuladb";
 
 
         public static void executeEmpty(string query)
