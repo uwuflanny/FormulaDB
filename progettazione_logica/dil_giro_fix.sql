@@ -59,7 +59,7 @@ insert into giro (numero, tempo, ID_riepilogo) values (58, "00:01:09.570", 1);
 insert into giro (numero, tempo, ID_riepilogo) values (59, "00:01:09.632", 1);
 insert into giro (numero, tempo, ID_riepilogo) values (60, "00:01:08.937", 1);
 insert into giro (numero, tempo, ID_riepilogo) values (1, "00:01:09.417", 2);
-insert into giro (numero, tempo, ID_riepilogo) values (2, "00:01:08.454", 2);
+insert into giro (numero, tempo, ID_riepilogo) values (2, "00:00:08.454", 2);
 insert into giro (numero, tempo, ID_riepilogo) values (3, "00:01:08.328", 2);
 insert into giro (numero, tempo, ID_riepilogo) values (4, "00:01:09.660", 2);
 insert into giro (numero, tempo, ID_riepilogo) values (5, "00:01:08.132", 2);

@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Formula DB" Height="516.056" Width="732.833" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid Name="dg_result" CanUserAddRows="false" HorizontalAlignment="Left" Height="124" Margin="21,338,0,0" VerticalAlignment="Top" Width="602"/>
         <Canvas Name="cnv_insert" HorizontalAlignment="Left" Height="114" Margin="21,53,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
             <Button Name="btn_new_camionato" Content="nuovo campionato" Canvas.Left="10" Canvas.Top="10" Width="123" Click="add_cammpionato_click" Height="40"/>
             <Button Name="btn_new_gara" Content="nuova gara" Canvas.Left="156" Canvas.Top="10" Width="119" Height="40" Click="Btn_new_gara_Click"/>
@@ -17,8 +16,8 @@
             <Button Name="btn_newscuderia" Content="aggiungi scuderia" Canvas.Left="156" Canvas.Top="65" Width="119" Height="39" Click="Btn_newscuderia_Click"/>
             <Button Name="btn_nuovo_motore" Content="nuovo motore" Canvas.Left="300" Canvas.Top="65" Width="117" Height="39" Click="Btn_nuovo_motore_Click"/>
         </Canvas>
-        <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="114" Margin="21,196,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
-            <Button Content="Button" Canvas.Left="10" Canvas.Top="10" Width="75"/>
+        <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="114" Margin="21,229,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
+            <Button Name="risultaticampionato" Content="dati campionato" Canvas.Left="10" Canvas.Top="10" Width="122" Height="40" Click="Risultaticampionato_Click"/>
         </Canvas>
         <Button Name="btn_insert" Content="insert" HorizontalAlignment="Left" Margin="399,14,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="btn_history" Content="history" HorizontalAlignment="Left" Margin="501,14,0,0" VerticalAlignment="Top" Width="75"/>

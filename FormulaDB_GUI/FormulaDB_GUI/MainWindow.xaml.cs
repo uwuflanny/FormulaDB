@@ -112,5 +112,10 @@ namespace FormulaDB_GUI
         {
             new AddMotore().Show();
         }
+
+        private void Risultaticampionato_Click(object sender, RoutedEventArgs e)
+        {
+            new GetCampionatoData().Show();
+        }
     }
 }

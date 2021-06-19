@@ -53,22 +53,14 @@ RIASSUNTO CONCETTI:
 
 ...
 
--- TODO DA CAMBIAREEEEE
 
+
+-- TODO DA CAMBIAREEEEE
 AZIONI PRINCIPALI RICHIESTE:
-aggiungere un pilota
-aggiungere macchina ad una scuderia
-aggiungere un circuito
-aggiungere un campionato
-aggiungere gara ad un campionato
-aggiungere un riepilogo di un pilota, comprendente della sua qualifica, dei sui giri e dei suoi pit-stop
 ...
 
 
 
-
-ANALISI DELLE RIDONDANZE:
-ci salviamo la pos al posto che leggere fare la somma dei tempi
 
 
 
@@ -87,8 +79,13 @@ in modo da poterlo utilizzare semplicemente nelle operazioni.
 
 SCHEMA FINALE -->
 PROGETTAZIONE LOGICA:
+
+
+
+
 STIMA VOLUME DATI:
 
+Punteggio_posizione	E		10	
 Nazione				E		240     
 Circuito			E 		200  
 
@@ -146,7 +143,7 @@ CONCETTO:			COSTRUTTO:		ACCESSI:	TIPO:
 
 Aggiunta di un motore:
 viene aggiunto un motore, oltre a specificarne i valori viene scelto dall'utente
-la scuderie produttrice
+la scuderie produttrice tra le disponibili
 scuderia			E				1			L
 motore				E				1			S
 
@@ -211,6 +208,62 @@ e la somma dei relativi tempi
 info_gara 			E				1			L
 riepilogo			R				1			L
 giro				E				20			L
+
+Classifica del campionato:
+una volta selezionado dall'utente un campionato, viene visualizzata la classifica dei piloti
+tenendo conto dei punteggi delle gare vinte e degli eventuali bonus derivati da giri migliori
+campionato 			E				1			L
+riepilogo 			R				2			L
+info_gara			E				1			L
+risultati_gara		E				1			L
+giro				E				1			L
+
+
+
+
+ANALISI DELLE RIDONDANZE:
+E' stata introdotto l'attributo ridondante 'posizione' all'entita' info_gara al fine di
+evitare i passi che coinvolgono il calcolo, quali, per esempio, la somma di tutti i tempi dei vari giri
+per calcolare in quanto un pilota ha concluso una gara;
+
+Questa ridondanza semplifica notevolente tutte le query ove e' necessario calcolare la posizione dei piloti
+Esempio nella operazione: Classifica del campionato
+
+lettura della posizione di un pilota in una gara:
+con ridondanza:
+campionato 			E				1			L
+riepilogo 			R				2			L
+info_gara			E				1			L
+risultati_gara		E				1			L
+giro				E				1			L
+
+senza ridondanza:
+campionato 			E				1			L
+riepilogo 			R				2			L
+info_gara			E				1			L
+giro				E				61			L
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

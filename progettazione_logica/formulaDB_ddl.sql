@@ -24,6 +24,11 @@ use FormulaDB;
 -- Tables Section
 -- _____________ 
 
+create table punti_posizione(
+	posizione		int not null,
+    punteggio		int not null,
+    constraint pos_punti primary key (posizione)
+);
 
 create table Nazione (
 	sigla 			varchar(2) not null,
@@ -54,7 +59,7 @@ create table Contratto (
 
 create table Giro (     
 	 numero 		int		 	not null,
-	 tempo 			time	    not null,
+	 tempo 			time(3)	    not null,
 	 ID_riepilogo 	int		 	not null,
      constraint ID_GIRO_ID primary key (ID_riepilogo, numero)
 );
@@ -110,7 +115,7 @@ create table Macchina (
 
 create table Pit_stop (
 	 numero 		int		 	not null,
-	 durata 		time		not null,
+	 durata 		time(3)		not null,
 	 ID_riepilogo 	int		 	not null,
      constraint ID_Pit_stop_ID primary key (ID_riepilogo, numero)
 );
@@ -156,6 +161,10 @@ create table Scuderia (
 
 -- Constraints Section
 -- ___________________ 
+
+alter table Risultati_gara add constraint FK_pos_punti_ID
+	foreign key(posizione)
+    references punti_posizione(posizione);
 
 alter table circuito add constraint FK_Nazionalita_ID
 	foreign key(nazione)
@@ -243,6 +252,12 @@ alter table Motore add constraint FK_Produttore_ID
 	
 -- Index Section
 -- _____________ 
+
+create index FK_Punti_IND
+	on Risultati_gara(posizione);
+    
+create unique index ID_punti_pos_IND
+	on punti_posizione(posizione);
 
 create index FK_Nazione_IND
 	on circuito(nazione);

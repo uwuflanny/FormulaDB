@@ -363,6 +363,27 @@ insert into info_gara (data_gara, n_giri, meteo, circuito, campionato) values ("
 
 
 
+insert into punti_posizione (posizione, punteggio) values (1, 25);
+insert into punti_posizione (posizione, punteggio) values (2, 18);
+insert into punti_posizione (posizione, punteggio) values (3, 15);
+insert into punti_posizione (posizione, punteggio) values (4, 12);
+insert into punti_posizione (posizione, punteggio) values (5, 10);
+insert into punti_posizione (posizione, punteggio) values (6, 8);
+insert into punti_posizione (posizione, punteggio) values (7, 6);
+insert into punti_posizione (posizione, punteggio) values (8, 4);
+insert into punti_posizione (posizione, punteggio) values (9, 2);
+insert into punti_posizione (posizione, punteggio) values (10, 1);
+insert into punti_posizione (posizione, punteggio) values (11, 0);
+insert into punti_posizione (posizione, punteggio) values (12, 0);
+insert into punti_posizione (posizione, punteggio) values (13, 0);
+insert into punti_posizione (posizione, punteggio) values (14, 0);
+insert into punti_posizione (posizione, punteggio) values (15, 0);
+insert into punti_posizione (posizione, punteggio) values (16, 0);
+insert into punti_posizione (posizione, punteggio) values (17, 0);
+insert into punti_posizione (posizione, punteggio) values (18, 0);
+insert into punti_posizione (posizione, punteggio) values (19, 0);
+insert into punti_posizione (posizione, punteggio) values (20, 0);
+
 
 insert into riepilogo(gara, pilota, scuderia) values(1, 'BOT', 'Mercedes');
 insert into riepilogo(gara, pilota, scuderia) values(1, 'HAM', 'Mercedes');

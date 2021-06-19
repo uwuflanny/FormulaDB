@@ -116,6 +116,9 @@
     <Compile Include="finestre\AddScuderia.xaml.cs">
       <DependentUpon>AddScuderia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="finestre\GetCampionatoData.xaml.cs">
+      <DependentUpon>GetCampionatoData.xaml</DependentUpon>
+    </Compile>
     <Compile Include="queryExecutor.cs" />
     <Page Include="finestre\AddCampionato.xaml">
       <SubType>Designer</SubType>
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="finestre\AddScuderia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finestre\GetCampionatoData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
