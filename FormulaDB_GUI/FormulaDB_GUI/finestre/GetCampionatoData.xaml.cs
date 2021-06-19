@@ -24,14 +24,12 @@ namespace FormulaDB_GUI.finestre
         {
             InitializeComponent();
             dg_campionato.ItemsSource = (queryExecutor.executeReader("select * from campionato")).DefaultView;
+            this.load_queries();
         }
 
-        private void dg_campionato_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void load_queries()
         {
-            if (dg_campionato.SelectedIndex == -1) return;
-
-            string idCampionato = (dg_campionato.SelectedItem as DataRowView).Row.ItemArray[0].ToString();
-            string query = @"select res1.pilota, punteggio + IFNULL(girimigliori, 0)*2 as punteggio from
+            btn_piloti.Tag = @"select res1.pilota, punteggio + IFNULL(girimigliori, 0)*2 as punteggio from
 	                            (select pilota, sum(punteggio) as punteggio from (
 		                            select gara, pilota, posizione as pos
 		                            from (riepilogo join info_gara on riepilogo.gara = info_gara.ID join risultati_gara on risultati_gara.ID_riepilogo = riepilogo.ID)
@@ -54,7 +52,38 @@ namespace FormulaDB_GUI.finestre
     
                                 on res1.pilota = res2.pilota";
 
+            btn_scuderie.Tag = @"select res1.scuderia, punteggio + IFNULL(girimigliori, 0) as punteggio from 
+	                            ( select scuderia, sum(punteggio) as punteggio
+	                            from (riepilogo join info_gara on riepilogo.gara = info_gara.ID join risultati_gara on risultati_gara.ID_riepilogo = riepilogo.ID join punti_posizione on risultati_gara.posizione = punti_posizione.posizione)
+	                            where campionato = 1 
+	                            group by scuderia) as res1
+    
+                                left join 
+    
+                                (select scuderia, count(*) as girimigliori from ( -- migliore giro per scuderia
+		                            select *
+		                            from (
+			                            select ID_riepilogo, gara, pilota ,scuderia ,min(tempo) as best
+			                            from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo
+			                            group by gara, pilota
+			                            order by gara, best ) as res
+		                            group by gara ) as res
+	                            group by scuderia) as res2
+    
+                                on res1.scuderia = res2.scuderia
+	                            order by punteggio desc";
+        }
+
+        private void execute(string query)
+        {
+            if (dg_campionato.SelectedIndex == -1) return;
+            string idCampionato = (dg_campionato.SelectedItem as DataRowView).Row.ItemArray[0].ToString();
             dg_res.ItemsSource = queryExecutor.executeReader(query.Replace("xx", idCampionato)).DefaultView;
+        }
+
+        private void btn_press(object sender, RoutedEventArgs e)
+        {
+            this.execute((sender as Button).Tag.ToString());
         }
     }
 }

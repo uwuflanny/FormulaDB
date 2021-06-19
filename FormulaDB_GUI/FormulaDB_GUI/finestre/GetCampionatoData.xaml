@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="GetCampionatoData" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dg_campionato" HorizontalAlignment="Left" Height="110" Margin="30,37,0,0" VerticalAlignment="Top" Width="189" SelectionChanged="dg_campionato_SelectionChanged"/>
+        <DataGrid x:Name="dg_campionato" HorizontalAlignment="Left" Height="110" Margin="30,37,0,0" VerticalAlignment="Top" Width="189"/>
         <DataGrid Name="dg_res" HorizontalAlignment="Left" Height="325" Margin="366,49,0,0" VerticalAlignment="Top" Width="369"/>
+        <Button Name="btn_piloti" Content="classifica piloti" HorizontalAlignment="Left" Margin="65,182,0,0" VerticalAlignment="Top" Width="154" Height="32" Click="btn_press"/>
+        <Button Name="btn_scuderie" Content="classifica scuderie" HorizontalAlignment="Left" Margin="65,295,0,0" VerticalAlignment="Top" Width="154" Height="31" Click="btn_press"/>
     </Grid>
 </Window>

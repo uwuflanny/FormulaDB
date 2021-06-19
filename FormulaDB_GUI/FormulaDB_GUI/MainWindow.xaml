@@ -17,7 +17,7 @@
             <Button Name="btn_nuovo_motore" Content="nuovo motore" Canvas.Left="300" Canvas.Top="65" Width="117" Height="39" Click="Btn_nuovo_motore_Click"/>
         </Canvas>
         <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="114" Margin="21,229,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
-            <Button Name="risultaticampionato" Content="dati campionato" Canvas.Left="10" Canvas.Top="10" Width="122" Height="40" Click="Risultaticampionato_Click"/>
+            <Button Name="risultaticampionato" Content="classifica campionato" Canvas.Left="10" Canvas.Top="10" Width="122" Height="40" Click="Risultaticampionato_Click"/>
             <Button x:Name="btn_winner" Content="vincitori" Canvas.Left="157" Canvas.Top="10" Width="122" Height="40" Click="btn_winner_Click"/>
         </Canvas>
         <Button Name="btn_insert" Content="insert" HorizontalAlignment="Left" Margin="399,14,0,0" VerticalAlignment="Top" Width="75"/>
