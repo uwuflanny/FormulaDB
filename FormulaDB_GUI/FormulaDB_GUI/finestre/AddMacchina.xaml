@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="AddMacchina" Height="450" Width="800">
+        Title="AddMacchina" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <TextBox Name="txtnome" HorizontalAlignment="Left" Height="23" Margin="55,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.841,2.172"/>
         <DataGrid Name="dgmotore" HorizontalAlignment="Left" Height="132" Margin="45,215,0,0" VerticalAlignment="Top" Width="215"/>

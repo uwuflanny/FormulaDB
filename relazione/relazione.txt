@@ -261,7 +261,7 @@ senza ridondanza:
 campionato 			E				1			L
 riepilogo 			R				2			L
 info_gara			E				1			L
-giro				E				61			L
+giro				E				21			L
 
 
 

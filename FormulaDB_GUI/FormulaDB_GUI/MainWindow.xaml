@@ -19,6 +19,8 @@
         <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="114" Margin="21,229,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
             <Button Name="risultaticampionato" Content="classifica campionato" Canvas.Left="10" Canvas.Top="10" Width="122" Height="40" Click="Risultaticampionato_Click"/>
             <Button x:Name="btn_winner" Content="vincitori" Canvas.Left="157" Canvas.Top="10" Width="122" Height="40" Click="btn_winner_Click"/>
+            <Button Name="btn_best_giri" Content="giri migliori" Canvas.Left="306" Canvas.Top="10" Width="108" Height="40" Click="Btn_best_giri_Click"/>
+            <Button Name="btn_best_macchine" Content="classifica automobili" Canvas.Left="441" Canvas.Top="10" Width="120" Height="40" Click="Btn_best_macchine_Click"/>
         </Canvas>
         <Button Name="btn_insert" Content="insert" HorizontalAlignment="Left" Margin="399,14,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="btn_history" Content="history" HorizontalAlignment="Left" Margin="501,14,0,0" VerticalAlignment="Top" Width="75"/>

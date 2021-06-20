@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Monta\Documents\Ubibo\Basi di dati\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\
+C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\
 FormulaDB_GUI
 none
 false
 DEBUG;TRACE
-C:\Users\Monta\Documents\Ubibo\Basi di dati\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\App.xaml
-10-1122459046
+C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\App.xaml
+12-491077973
 
-16978407628
-137982396554
-finestre\AddCampionato.xaml;finestre\AddGara.xaml;finestre\AddMacchina.xaml;finestre\AddMotore.xaml;finestre\AddPilota.xaml;finestre\AddRiepilogo.xaml;finestre\AddScuderia.xaml;finestre\GetCampionatoData.xaml;finestre\getWinner.xaml;MainWindow.xaml;
+22-1253100062
+137-1951914134
+finestre\AddCampionato.xaml;finestre\AddGara.xaml;finestre\AddMacchina.xaml;finestre\AddMotore.xaml;finestre\AddPilota.xaml;finestre\AddRiepilogo.xaml;finestre\AddScuderia.xaml;finestre\GetBestGiri.xaml;finestre\GetCampionatoData.xaml;finestre\GetClassificaMacchine.xaml;finestre\getWinner.xaml;MainWindow.xaml;
 
 True
 

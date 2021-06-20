@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormulaDB_GUI.finestre;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -33,9 +34,9 @@ namespace FormulaDB_GUI
 
         private void Btn_add_gara_Click(object sender, RoutedEventArgs e)
         {
-            if(cmbmeteo.SelectedIndex== -1 || txtgiri.Text=="" || datepicker.SelectedDate == null || dg_campionato.SelectedIndex == -1 || dg_circuito.SelectedIndex == -1)
+            if (utility.checkAll(this as DependencyObject) == false)
             {
-                MessageBox.Show("incorrect input");
+                MessageBox.Show("input errato");
                 return;
             }
 
@@ -49,6 +50,11 @@ namespace FormulaDB_GUI
 
             query = query.Replace("xx", final).Replace("yy", txtgiri.Text).Replace("zz", cmbmeteo.SelectedItem.ToString()).Replace("ll", campionato).Replace("kk", circuito);
             queryExecutor.executeEmpty(query);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            utility.setDataGridReadOnly(this as DependencyObject);
         }
     }
 }

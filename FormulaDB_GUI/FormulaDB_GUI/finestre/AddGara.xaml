@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="AddGara" Height="438.934" Width="684.734">
+        Title="AddGara" Height="438.934" Width="684.734" Loaded="Window_Loaded">
     <Grid>
         <Button Name="btn_add_gara" Content="aggiungi" HorizontalAlignment="Left" Margin="249,116,0,0" VerticalAlignment="Top" Width="75" Click="Btn_add_gara_Click"/>
         <DataGrid Name="dg_campionato" HorizontalAlignment="Left" Height="123" Margin="407,47,0,0" VerticalAlignment="Top" Width="228"/>

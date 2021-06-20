@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="AddRiepilogo" Height="680.447" Width="1295">
+        Title="AddRiepilogo" Height="680.447" Width="1295" Loaded="Window_Loaded">
     <Grid Name="main">
         <GroupBox Name="grp_risultati" Header="risultati" HorizontalAlignment="Left" Height="587" Margin="702,19,0,0" VerticalAlignment="Top" Width="526">
             <Grid HorizontalAlignment="Left" Height="555" Margin="10,10,-2,-12" VerticalAlignment="Top" Width="507">

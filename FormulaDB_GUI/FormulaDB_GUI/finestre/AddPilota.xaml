@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
         mc:Ignorable="d"
-        Title="AddPilota" Height="450" Width="800">
+        Title="AddPilota" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <DataGrid Name="dg_nazioni" HorizontalAlignment="Left" Height="174" Margin="46,182,0,0" VerticalAlignment="Top" Width="257"/>
         <TextBox Name="txtnumero" HorizontalAlignment="Left" Height="23" Margin="46,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

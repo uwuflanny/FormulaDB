@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormulaDB_GUI.finestre;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,9 +27,9 @@ namespace FormulaDB_GUI
 
         private void Btn_insert_Click(object sender, RoutedEventArgs e)
         {
-            if(txt_anno.Text=="" || txt_classe.Text == "")
+            if (utility.checkAll(this as DependencyObject) == false)
             {
-                MessageBox.Show("dati incorretti");
+                MessageBox.Show("input errato");
                 return;
             }
             string query = "insert into campionato (anno, classe) values (xx, 'yy')";

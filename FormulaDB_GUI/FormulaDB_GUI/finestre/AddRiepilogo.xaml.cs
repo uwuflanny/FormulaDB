@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormulaDB_GUI.finestre;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -25,7 +26,6 @@ namespace FormulaDB_GUI
         {
             InitializeComponent();
             dg_campionato.ItemsSource = (queryExecutor.executeReader("select * from campionato")).DefaultView;
-            dg_campionato.IsReadOnly = true;
             cmb_stato.Items.Add("END");
             cmb_stato.Items.Add("DNS");
             cmb_stato.Items.Add("DNF");
@@ -79,27 +79,10 @@ namespace FormulaDB_GUI
 
         private void Btninsert_Click(object sender, RoutedEventArgs e)
         {
-            if(dg_gare.SelectedIndex == -1 || dg_piloti.SelectedIndex == -1 || dg_scuderie.SelectedIndex == -1 || dg_campionato.SelectedIndex == -1
-                || cmb_poiszione_gara.SelectedIndex == -1 || cmb_risultati_qualifica.SelectedIndex == -1 || cmb_stato.SelectedIndex == -1 || txttempoquali.Text==""||cmb_npit.SelectedIndex==-1)
+            if(utility.checkAll(this as DependencyObject) == false)
             {
-                MessageBox.Show("input error");
+                MessageBox.Show("input errato");
                 return;
-            }
-            foreach(var item in lst_giri.Items)
-            {
-                if (item.ToString() == "")
-                {
-                    MessageBox.Show("input errato");
-                    return;
-                }
-            }
-            foreach (var item in lst_pit.Items)
-            {
-                if (item.ToString() == "")
-                {
-                    MessageBox.Show("input errato");
-                    return;
-                }
             }
 
             //aggiunta riepilogo
@@ -175,6 +158,11 @@ namespace FormulaDB_GUI
 
             foreach (var item in lst_pit.Items)
                 (item as TextBox).Text = "00:00:02.204";
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            utility.setDataGridReadOnly(this as DependencyObject);
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
         mc:Ignorable="d"
-        Title="AddScuderia" Height="307.992" Width="387.807">
+        Title="AddScuderia" Height="307.992" Width="387.807" Loaded="Window_Loaded">
     <Grid>
         <TextBox Name="txtnome" HorizontalAlignment="Left" Height="23" Margin="36,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
         <Button Name="btninsert" Content="Button" HorizontalAlignment="Left" Margin="49,218,0,0" VerticalAlignment="Top" Width="75" Click="Btninsert_Click"/>

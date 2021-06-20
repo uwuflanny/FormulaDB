@@ -304,3 +304,7 @@ C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\FormulaDB_
 C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\FormulaDB_GUI.csproj.CopyComplete
 C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\FormulaDB_GUI.exe
 C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\FormulaDB_GUI.pdb
+C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\finestre\GetBestGiri.g.cs
+C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\finestre\GetBestGiri.baml
+C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\finestre\GetClassificaMacchine.g.cs
+C:\Users\N3KO\Desktop\FormulaDB\FormulaDB_GUI\FormulaDB_GUI\obj\Debug\finestre\GetClassificaMacchine.baml

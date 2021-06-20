@@ -116,12 +116,19 @@
     <Compile Include="finestre\AddScuderia.xaml.cs">
       <DependentUpon>AddScuderia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="finestre\GetBestGiri.xaml.cs">
+      <DependentUpon>GetBestGiri.xaml</DependentUpon>
+    </Compile>
     <Compile Include="finestre\GetCampionatoData.xaml.cs">
       <DependentUpon>GetCampionatoData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="finestre\GetClassificaMacchine.xaml.cs">
+      <DependentUpon>GetClassificaMacchine.xaml</DependentUpon>
     </Compile>
     <Compile Include="finestre\getWinner.xaml.cs">
       <DependentUpon>getWinner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="utility.cs" />
     <Compile Include="queryExecutor.cs" />
     <Page Include="finestre\AddCampionato.xaml">
       <SubType>Designer</SubType>
@@ -151,7 +158,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="finestre\GetBestGiri.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="finestre\GetCampionatoData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finestre\GetClassificaMacchine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

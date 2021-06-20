@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
         mc:Ignorable="d"
-        Title="getWinner" Height="450" Width="304.332">
+        Title="vittorie per pilota" Height="450" Width="336.607" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dg_winner" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="276"/>
+        <DataGrid x:Name="dg_winner" HorizontalAlignment="Left" Height="357" Margin="10,42,0,0" VerticalAlignment="Top" Width="302"/>
+        <Label Content="numero di vittorie conseguite da un pilota se esistenti" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

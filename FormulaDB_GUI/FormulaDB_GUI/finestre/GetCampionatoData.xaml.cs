@@ -23,6 +23,7 @@ namespace FormulaDB_GUI.finestre
         public GetCampionatoData()
         {
             InitializeComponent();
+
             dg_campionato.ItemsSource = (queryExecutor.executeReader("select * from campionato")).DefaultView;
             this.load_queries();
         }
@@ -84,6 +85,11 @@ namespace FormulaDB_GUI.finestre
         private void btn_press(object sender, RoutedEventArgs e)
         {
             this.execute((sender as Button).Tag.ToString());
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            utility.setDataGridReadOnly(this as DependencyObject);
         }
     }
 }

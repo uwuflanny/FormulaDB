@@ -122,5 +122,15 @@ namespace FormulaDB_GUI
         {
             new getWinner().Show();
         }
+
+        private void Btn_best_giri_Click(object sender, RoutedEventArgs e)
+        {
+            new GetBestGiri().Show();
+        }
+
+        private void Btn_best_macchine_Click(object sender, RoutedEventArgs e)
+        {
+            new GetClassificaMacchine().Show();
+        }
     }
 }

@@ -30,6 +30,11 @@ namespace FormulaDB_GUI.finestre
 
         private void Btninsert_Click(object sender, RoutedEventArgs e)
         {
+            if (utility.checkAll(this as DependencyObject) == false)
+            {
+                MessageBox.Show("input errato");
+                return;
+            }
             string query = "insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (xx, 'yy', 'zz', 'kk', 'll', 'qq');";
             string naz = (dg_nazioni.SelectedItem as DataRowView).Row.ItemArray[0].ToString();
             string date = dgnascita.SelectedDate.ToString();
@@ -42,6 +47,11 @@ namespace FormulaDB_GUI.finestre
             var dtt = DateTime.ParseExact(dcontratto.SelectedDate.ToString(), "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
             string finalt = dtt.ToString("yyyy-MM-dd");
             queryExecutor.executeEmpty(queryContratto.Replace("xx", txtsigla.Text).Replace("yy", scuderia).Replace("zz", finalt));
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            utility.setDataGridReadOnly(this as DependencyObject);
         }
     }
 }
