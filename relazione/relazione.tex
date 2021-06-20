@@ -1,0 +1,114 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[italian]{babel}
+\usepackage[italian]{cleveref}
+
+\usepackage{booktabs} % For prettier tables
+\usepackage{graphicx}
+\usepackage{array}
+
+\title{Relazione\break``progetto FormulaDB''}
+
+\author{Migliarini Gianluca - Montali Giacomo}
+\date{Giugno 2021}
+
+\begin{document}
+	
+\maketitle
+\chapter{Analisi dei requisiti}
+	\section{intervista}
+		Si vuole tenere traccia dei campionati del mondo Formula, memorizzando per ciascuno l'anno del campionato e la categoria di auto che corre al suo interno.
+		
+		In ogni campionato gareggiano circa 20 piloti, dei quale vengono salvate informazioni quali il ed il cognome del concorrente,
+		la nazionalita', la data di nascita ed il numero di macchina con il quale corre.
+		
+		Per poter gareggiare, ogni pilota stipula un contratto con una scuderia, la quale gli offre un veicolo, con il quale
+		prendere parte alle competizioni. Il contratto ha solitamente durata di qualche anno, tuttavia, in rare occasioni,
+		la scuderia concede al pilota di gareggiare per un team diverso.
+		
+		Per ogni scuderia si tiene traccia del suo nome e la nazione per la quale corre.
+		
+		Nei test effettuati durante il periodo di pausa tra le varie competizioni, eseguiti da ingegneri specializzati appartenenti al team,
+		permettono alla scuderia di migliorare la propria autovettura, offrendo cosi' la possibilita' di gareggiare
+		con un nuovo modello per il campionato che verra'. In particolare, le migliorie apportate interessano il peso e le dimensioni dell'auto.
+		Inoltre, le scuderie, in caso di budget ridotto, possono eventulmente acquistare il motore da team avversari.
+		
+		Per ogni scuderia, e' necessario tenere traccia degli ingegneri che ci lavorano e della loro specializzazione.
+		
+		Di ogni Gran Premio viene memorizzato, oltre alla data, al numero di giri ed il meteo;
+		la posizione ed il nome del circuito dove viene disputato.
+		
+		Per quanto riguarda i circuiti, e' necessario permetterne la localizzazione salvando il nome, la nazione in cui sono situati e il loro indirizzo.
+		
+		Inoltre, per una memorizzazione migliore di ogni gara, viene memorizzato ogni giro di ogni pilota effettuato in gara con il rispettivo tempo,
+		i pitstop effettuati con il tempo impiegato in essi, l'ordine di partenza (dato dalle qualifiche) e l'ordine di arrivo.
+		
+	\hfill
+	\small\addtolength{\tabcolsep}{+15pt}
+	\begin{table}[h!]
+		\begin{center}
+			\caption{Stima volume dati}
+			\label{tab:table1}
+			
+			\scalebox{1.5}{
+			\begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\toprule
+				\textbf{Dato} & \textbf{Tipo} & \textbf{Quantità}\\
+				
+				\midrule		
+				Nazione				&	E	&	210\\     
+				Circuito			&	E 	&	100\\
+				scuderia			&	E	&	35\\
+				Pilota				&	E	&	70\\
+				contratto\_pilota	&   R 	&	100\\
+				Contratto			&	R 	&	1150\\
+				ingegnere			&	E 	&	1000\\
+				Campionato			&	E	&	15\\	     
+				Giro 				&	E 	&	18000\\
+				info\_gara			&	E   &	300\\ 
+				riepilogo			&	R	&	6000\\
+				risultati\_gara		&	E	&	6000\\
+				risultati\_qualifica&	E	&	6000\\
+				pit\_stop			&	E	&	7500\\
+				Motore				&	E	&	18\\
+				Macchina			&	E	&	175\\
+				
+				\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}
+	
+	\section{Operazioni principali e frequenza:}
+	Le operazioni da effettuare sono quelle già elencate nella fase di analisi. Segue una tabella
+	riportante la loro descrizione e relativa frequenza:
+	
+	\hfill
+	\small\addtolength{\tabcolsep}{+15pt}
+	\begin{table}[h!]
+		\begin{center}
+			\caption{Stima volume dati}
+			\label{tab:table1}
+			
+			\scalebox{1.1}{
+				\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Operazione} & \textbf{Frequenza}\\
+					\midrule
+					aggiungere un pilota								& 4 / anno\\
+					aggiungere una scuderia								& 1 / 3 anni\\
+					aggiungere un motore								& 4 / 3 anni\\
+					aggiungere macchina ad una scuderia					& 10 / anno\\
+					aggiungere un circuito								& 1 / 5 anni\\
+					aggiungere un campionato							& 1 / anno\\
+					aggiungere gara ad un campionato					& 20 / anno\\
+					aggiungere un riepilogo di un pilota				& 1200 / anno\\		
+					ottenere la classifica piloti di un campionato  	& 20 / anno\\
+					ottenere la classifica scuderie di un campionato 	& 20 / anno\\
+					ottenere numero vittorie di ogni pilota				& 12 / anno\\
+					ottenere classifica veicoli di una certa categoria	& 10 / anno\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}
+	
+	
+\end{document}

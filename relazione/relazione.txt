@@ -51,17 +51,12 @@ Pit-stop:		breve sosta effettuata in gara, nella quale gli pneumatici vengono so
 
 RIASSUNTO CONCETTI:
 
-...
-
+riassunto intervista...
 
 
 -- TODO DA CAMBIAREEEEE
 AZIONI PRINCIPALI RICHIESTE:
 ...
-
-
-
-
 
 
 
@@ -86,32 +81,25 @@ PROGETTAZIONE LOGICA:
 STIMA VOLUME DATI:
 
 Punteggio_posizione	E		10	
-Nazione				E		240     
-Circuito			E 		200  
+Nazione				E		210     
+Circuito			E 		100  
 
-scuderia			E		50
-Pilota				E		100
-contratto_pilota    R 		200
-Contratto			R 		3000
-scuderia			E		50
-ingegnere			E 		3000
+scuderia			E		35
+Pilota				E		70
+contratto_pilota    R 		100
+Contratto			R 		1150
+ingegnere			E 		1000
  
-Campionato			E		50	     
-Giro 				E 		12000000
-info_gara			E    	2000  
-riepilogo			R		2000
-risultati_gara		E		2000
-risultati_qualifica	E		2000
-pit_stop			E		8000
+Campionato			E		15	     
+Giro 				E 		18000
+info_gara			E    	300 
+riepilogo			R		6000
+risultati_gara		E		6000
+risultati_qualifica	E		6000
+pit_stop			E		7500
 
-Motore				E		300
-Macchina			E		1000
-
-
-
-
-
-
+Motore				E		18
+Macchina			E		175
 
 
 
@@ -122,12 +110,18 @@ riportante la loro descrizione e relativa frequenza:
 -- TODO DA CAMBIAREEEEEE
 
 OPERAZIONE										FREQUENZA
-aggiungere un pilota							4 / anno
-aggiungere macchina ad una scuderia				50 / anno
-aggiungere un circuito							1 / due anni
-aggiungere un campionato						3 / anno
-aggiungere gara ad un campionato				60 / anno
-aggiungere un riepilogo di un pilota			1200 / anno
+aggiungere un pilota								4 / anno
+aggiungere una scuderia								1 / 3 anni
+aggiungere un motore								4 / 3 anni
+aggiungere macchina ad una scuderia					10 / anno
+aggiungere un circuito								1 / 5 anni
+aggiungere un campionato							1 / anno
+aggiungere gara ad un campionato					20 / anno
+aggiungere un riepilogo di un pilota				1200 / anno		
+ottenere la classifica piloti di un campionato  	20 / anno
+ottenere la classifica scuderie di un campionato 	20 / anno
+ottenere numero vittorie di ogni pilota				12 / anno
+ottenere classifica veicoli di una certa categoria	10 / anno
 
 
 
@@ -138,12 +132,11 @@ Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riport
 non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo degli
 costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura. 
 
-
 CONCETTO:			COSTRUTTO:		ACCESSI:	TIPO:
 
 Aggiunta di un motore:
 viene aggiunto un motore, oltre a specificarne i valori viene scelto dall'utente
-la scuderie produttrice tra le disponibili
+la scuderia produttrice tra le disponibili
 scuderia			E				1			L
 motore				E				1			S
 
@@ -156,7 +149,7 @@ Aggiunta di un pilota:
 un pilota novizio viene registrato nel database stipulando un contratto con una scuderia,
 viene letta la lista delle scuderie con la quale il pilota puo' eseguire il contratto
 nazione 			E				1			L
-contratto_pilota	R				1			L
+scuderia			E				1			L
 pilota				E				1			S
 contratto_pilota	R				1			S
 
@@ -202,15 +195,8 @@ risultati_qualifica	E				1			S
 giro				E				60			S
 pit_stop			E				3			S
 
-Ottenere la classifica di una certa gara:
-a partire da una gara avvenuta in un certo campionato, viene visualizzata la classifica dei piloti
-e la somma dei relativi tempi
-info_gara 			E				1			L
-riepilogo			R				1			L
-giro				E				20			L
-
 Classifica piloti nel campionato:
-una volta selezionado dall'utente un campionato, viene visualizzata la classifica dei piloti
+una volta selezionato dall'utente un campionato, viene visualizzata la classifica dei piloti
 tenendo conto dei punteggi delle gare vinte e degli eventuali bonus derivati da giri migliori
 campionato 			E				1			L
 punteggi_posizione	E				1			L
@@ -234,15 +220,17 @@ riepilogo			R				1			L
 Risultati_gara		E				1			L
 
 
-
-
-
-
-
+Classifica veicoli in una categoria:
+selezionata la categoria dei veicoli, viene visualizzata la classifica delle macchine piu' performanti in base al numero
+di giri migliori ottenuti nelle varie competizioni
+campionato			E				2			L
+giro 				E 				1			L 
+riepilogo 			L 				1 			L 
+macchina 			E 				1 			L 
 
 
 ANALISI DELLE RIDONDANZE:
-E' stata introdotto l'attributo ridondante 'posizione' all'entita' info_gara al fine di
+E' stata introdotto l'attributo ridondante 'posizione' all'entita' risultati_gara al fine di
 evitare i passi che coinvolgono il calcolo, quali, per esempio, la somma di tutti i tempi dei vari giri
 per calcolare in quanto un pilota ha concluso una gara;
 
@@ -262,6 +250,7 @@ campionato 			E				1			L
 riepilogo 			R				2			L
 info_gara			E				1			L
 giro				E				21			L
+<<<<<<< Updated upstream
 
 
 
@@ -293,6 +282,8 @@ giro				E				21			L
 
 
 
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -302,10 +293,9 @@ RAFFINAMENTO SCHEMA:
 3-SCELTA CHIAVI PRIMARIE:
 4-ELIMINAZIONE IDENTIFICATORI ESTERNI:
 
-ANALISI RIDONDANZE:
-
 TRADUZIONE ENTITA' E ASSOCIAZIONI IN RELAZIONI
-bla bla bla
+bla bla bla...
+
 SCHEMA RELAZIONALE FINALE -->
 
 TRADUZIONE OPERAZIONI IN QUERY SQL:
