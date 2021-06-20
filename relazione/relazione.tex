@@ -5,6 +5,9 @@
 \usepackage{booktabs} % For prettier tables
 \usepackage{graphicx}
 \usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage[section]{placeins}
+\usepackage{float}
 
 \title{Relazione\break``progetto FormulaDB''}
 
@@ -28,7 +31,7 @@
 		Per ogni scuderia si tiene traccia del suo nome e la nazione per la quale corre.
 		
 		Nei test effettuati durante il periodo di pausa tra le varie competizioni, eseguiti da ingegneri specializzati appartenenti al team,
-		permettono alla scuderia di migliorare la propria autovettura, offrendo cosi' la possibilita' di gareggiare
+		permettono alla scuderia di migliorare la propria autovettura, offrendo cosi' la possibilità di gareggiare
 		con un nuovo modello per il campionato che verra'. In particolare, le migliorie apportate interessano il peso e le dimensioni dell'auto.
 		Inoltre, le scuderie, in caso di budget ridotto, possono eventulmente acquistare il motore da team avversari.
 		
@@ -43,8 +46,9 @@
 		i pitstop effettuati con il tempo impiegato in essi, l'ordine di partenza (dato dalle qualifiche) e l'ordine di arrivo.
 		
 	\hfill
-	\small\addtolength{\tabcolsep}{+15pt}
+	\small\addtolength{\tabcolsep}{+10pt}
 	\begin{table}[h!]
+		\centering
 		\begin{center}
 			\caption{Stima volume dati}
 			\label{tab:table1}
@@ -63,7 +67,7 @@
 				Contratto			&	R 	&	1150\\
 				ingegnere			&	E 	&	1000\\
 				Campionato			&	E	&	15\\	     
-				Giro 				&	E 	&	18000\\
+				Giro 				&	E 	&	360000\\
 				info\_gara			&	E   &	300\\ 
 				riepilogo			&	R	&	6000\\
 				risultati\_gara		&	E	&	6000\\
@@ -82,12 +86,11 @@
 	riportante la loro descrizione e relativa frequenza:
 	
 	\hfill
-	\small\addtolength{\tabcolsep}{+15pt}
+	\small\addtolength{\tabcolsep}{+1pt}
 	\begin{table}[h!]
 		\begin{center}
 			\caption{Stima volume dati}
 			\label{tab:table1}
-			
 			\scalebox{1.1}{
 				\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
@@ -109,6 +112,285 @@
 			\end{tabular}}
 		\end{center}
 	\end{table}
-	
-	
+	\newpage
+	\section{Schemi navigazione accessi}
+	Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riportate; inoltre, ove
+	non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo degli
+	costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura.\\\\
+	\subsection{aggiunta di un motore}
+	Aggiunta di un motore:\\
+	viene aggiunto un motore, oltre a specificarne i valori viene scelto dall'utente
+	la scuderia produttrice tra le disponibili.
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					scuderia 	& E & 1 & L\\
+					motore	 	& E & 1 & S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{aggiunta di una scuderia}
+	Aggiunta di una scuderia:\\
+	viene aggiunta una scuderia, la nazione viene selezionata dall'utente tra quelle disponibili.
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					nazione 	& E & 1 & L\\
+					scuderia	& E & 1 & S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{aggiunta di un pilota}
+	Aggiunta di un pilota:\\
+	un pilota novizio viene registrato nel database stipulando un contratto con una scuderia,
+	viene letta la lista delle scuderie con la quale il pilota può eseguire il contratto.
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					nazione 			& E & 1 & L\\
+					scuderia			& E & 1 & L\\
+					pilota 				& E & 1 & S\\
+					contratto\_pilota	& R & 1 & S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\\\
+	\subsection{aggiunta di una macchina ad una scuderia}
+	Aggiunta di una macchina ad una scuderia:\\
+	viene registrata una macchina ad una scuderia con la quale gareggiare in un certo campionato,
+	vengono lette le tabelle scuderia, campionato e motore per la selezione da parte dell'utente.
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato 	& E & 1 & L\\
+					scuderia	& E & 1 & L\\
+					motore 		& E & 1 & L\\
+					macchina	& E & 1 & S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\newpage
+	\subsection{aggiunta di un circuito}
+	Aggiungere un circuito:
+	viene registrato un nuovo circuito
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					nazione  & E & 1 & L\\
+					circuito & E & 1 & S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{aggiunta di un campionato}
+	Aggiungere un campionato:
+	viene aggiunto un nuovo campionato, specificandone l'anno e la classe di veicoli concorrenti
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato  & E & 1 & S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{aggiungere una gara ad un campionato}
+	Aggiungere una gara ad un campionato:
+	viene registrata una gara in un campionato, vengono accedute le tabelle
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato  & E & 1 & L\\
+					circuito	& E & 1 & L\\
+					info\_gara	& E & 1 & S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{aggiungere il riepilogo di un pilota}
+	Aggiungere il riepilogo in un pilota:\\
+	viene registrato di un pilota il risultato nella qualifica, la posizione e lo stato di conclusione della gara,
+	i tempi dei vari giri e dei pit stop effettuati, prima di effettuare l'inserimento dei dati, vengono 
+	controllate le posizioni non ancora riempite nel podio per la gara richiesta, sia per i risultati
+	della gara che per quelli della qualifica. In media per gara si eseguono 60 giri e 3 pit stop
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato  			& E & 1 	& L\\
+					info\_gara				& E & 1 	& L\\
+					pilota 					& E & 1 	& L\\
+					scuderia				& E & 1 	& L\\
+					risultati\_gara			& E & 1 	& L\\
+					risultati\_qualifica 	& E & 1 	& L\\
+					riepilogo 				& R & 1 	& S\\
+					riepilogo 				& R & 1 	& L\\
+					risultati\_gara 		& E & 1 	& S\\
+					risultati\_qualifica 	& E & 1 	& S\\
+					giro 					& E & 60 	& S\\
+					pit\_stop 				& E & 3 	& S\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{Classifica piloti nel campionato}
+	una volta selezionato dall'utente un campionato, viene visualizzata la classifica dei piloti
+	tenendo conto dei punteggi delle gare vinte e degli eventuali bonus derivati da giri migliori
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato  			& E & 1 	& L\\
+					punteggi\_posizione		& E & 1		& L\\
+					riepilogo 				& R & 2 	& L\\
+					info\_gara				& E & 1 	& L\\
+					risultati\_gara			& E & 1 	& L\\
+					giro 					& E & 1 	& L\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{Classifica scuderie nel campionato}
+	una volta selezionato un campionato, viene visuializzata la classifica delle scuderie
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato  			& E & 1 	& L\\
+					riepilogo 				& R & 2 	& L\\
+					info\_gara				& E & 1 	& L\\
+					risultati\_gara			& E & 1 	& L\\
+					punteggi\_posizione		& E & 1		& L\\
+					giro 					& E & 1 	& L\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{Numero vittore di ogni pilota}
+	viene visualizzato il numero di vittorie compiute da ogni pilota nella sua carriera
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					riepilogo 				& R & 1 	& L\\
+					risultati\_gara			& E & 1 	& L\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	\subsection{Classifica veicoli in una categoria}
+	selezionata la categoria dei veicoli, viene visualizzata la classifica delle macchine piu' performanti in base al numero
+	di giri migliori ottenuti nelle varie competizioni
+	\begin{table}[!htb]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato 				& E & 2 	& L\\
+					giro 					& E & 1 	& L\\
+					riepilogo 				& R & 1 	& L\\
+					macchina 				& E & 1 	& L\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+
+
+	\section{Analisi delle ridondanze}
+	È stata introdotto l'attributo ridondante `posizione` all'entità risultati\_gara al fine di evitare i passi che coinvolgono il calcolo, quali, per esempio, la somma di tutti i tempi dei vari giri per calcolare in quanto un pilota ha concluso una gara;	
+	Questa ridondanza semplifica notevolmente tutte le query ove è necessario calcolare la posizione dei piloti\\
+	Esempio nella operazione: Classifica del campionato\\
+	lettura della posizione di un pilota in una gara\\
+	con ridondanza:
+	\begin{table}[h!]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato 		& E & 1 & L\\
+					riepilogo 		& R & 2 & L\\
+					info\_gara 		& E & 1 & L\\
+					risultati\_gara & E & 1 & L\\
+					giro 			& E & 1 & L\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}\\
+	senza ridondanza:
+	\begin{table}[h!]
+		\centering
+		\begin{center}
+			\scalebox{1.3}{
+				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\toprule
+					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+					\midrule
+					campionato 	& E & 1 	& L\\
+					riepilogo 	& R & 2 	& L\\
+					info\_gara 	& E & 1 	& L\\
+					giro 		& E & 21 	& L\\
+					\bottomrule
+			\end{tabular}}
+		\end{center}
+	\end{table}
+
 \end{document}
