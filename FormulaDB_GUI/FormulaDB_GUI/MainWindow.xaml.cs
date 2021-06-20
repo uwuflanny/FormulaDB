@@ -98,5 +98,10 @@ namespace FormulaDB_GUI
         {
             new GetClassificaMacchine().Show();
         }
+
+        private void Btn_add_circuito_Click(object sender, RoutedEventArgs e)
+        {
+            new AddCircuito().Show();
+        }
     }
 }

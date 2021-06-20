@@ -1,9 +1,33 @@
-Raffinamento dello schema
+Raffinamento dello schema:
+
 Eliminazione delle gerarchie:
 Per l'eliminazione della gerarchia 'Persona' si è scelto di adottare la'approccio del collasso verso il basso
-inserendo in ingegnere e in Pilota gli attributi prima appartenenti al padre, al pilota, l'identificatore Codice Fiscale,
-e' stato rimosso, poiche' non piu' necessario.
+inserendo in ingegnere e in Pilota gli attributi prima appartenenti al padre.
 La scelta di questo approccio deriva dalla presenza dell'associazione tra pilota e Riepilogo, la piu' inportante dello schema
 e in quanto le interazioni con i piloti sono molto piu' frequenti rispetto a quelle con gli ingegneri
 
-Sono s
+Scelta delle chiavi primarie:
+Le chiavi primarie selezionate sono rimaste quali completamente fedeli a quelle definite nello schema ER,
+a differenza dell, identificatore di Riepilogo, sostituito da un singolo numero intero per facilitarne l'utilizzo
+in chiavi esterne successivamente; per lo stesso motivo, anche per le entità info_gara e campionato è stato scelto come identificatore
+una singola cifra numerica.
+All' entità pilota è stata inoltre rimossa la chiave primaria CF, in quanto non più necessaria.
+
+Sono state eliminate le seguenti relaizoni
+provenienza: 			importando nazione.sigla in Ingegnere e Pilota, una volta rimossa la gerarchia
+appartenenza: 			importando nazione.sigla in Scuderia
+contratto: 				reificando l'associazione importando CF da ingegnere e nome da scuderia
+stipula, Riguarda: 		importando pilota.sigla e scuderia.nome in contratto_pilota
+costruisce, gareggia: 	importando campionato.ID e scuderia.nome in macchina
+progetta: 				importando scuderia.nome in motore
+monta: 					importando motore.nome in macchina
+locazione: 				importando nazione.sigla in circuito
+svolgimento: 			importando circuito.nome in info_gara
+compone: 				importando campionato.ID in info_gara
+detiene: 				importando pilota.sigla in riepilogo
+lega:					importando scuderia.nome in riepilogo
+percorre:				importando riepilogo.ID in giro
+effettua:				importando riepilogo.ID in pit_stop
+segna:					importando riepilogo.ID in risultati_gara
+registra:				importando riepilogo.ID in risultati_qualifica
+valore:					importando punteggio.valore in risultati_qualifica

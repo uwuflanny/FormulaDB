@@ -15,6 +15,7 @@
             <Button Name="btn_new_pilota" Content="nuovo pilota" Canvas.Left="10" Canvas.Top="65" Width="123" Height="39" Click="Btn_new_pilota_Click"/>
             <Button Name="btn_newscuderia" Content="aggiungi scuderia" Canvas.Left="156" Canvas.Top="65" Width="119" Height="39" Click="Btn_newscuderia_Click"/>
             <Button Name="btn_nuovo_motore" Content="nuovo motore" Canvas.Left="300" Canvas.Top="65" Width="117" Height="39" Click="Btn_nuovo_motore_Click"/>
+            <Button Name="btn_add_circuito" Content="nuovo_circuito" Canvas.Left="443" Canvas.Top="65" Width="122" Height="39" Click="Btn_add_circuito_Click"/>
         </Canvas>
         <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="66" Margin="21,172,0,0" VerticalAlignment="Top" Width="583" Background="#FFB42A2A">
             <Button Name="risultaticampionato" Content="classifica campionato" Canvas.Left="10" Canvas.Top="10" Width="122" Height="40" Click="Risultaticampionato_Click"/>

@@ -98,6 +98,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="finestre\AddCircuito.xaml.cs">
+      <DependentUpon>AddCircuito.xaml</DependentUpon>
+    </Compile>
     <Compile Include="finestre\AddGara.xaml.cs">
       <DependentUpon>AddGara.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
     <Compile Include="utility.cs" />
     <Compile Include="queryExecutor.cs" />
     <Page Include="finestre\AddCampionato.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finestre\AddCircuito.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
