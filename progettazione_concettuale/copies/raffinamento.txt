@@ -1,17 +1,19 @@
 Raffinamento dello schema:
 
 Eliminazione delle gerarchie:
-Per l'eliminazione della gerarchia 'Persona' si è scelto di adottare la'approccio del collasso verso il basso
-inserendo in ingegnere e in Pilota gli attributi prima appartenenti al padre.
+Per l'eliminazione della gerarchia 'Persona' si è scelto di adottare l'approccio del collasso verso il basso,
+inserendo in Ingegnere e in Pilota gli attributi prima appartenenti al padre.
 La scelta di questo approccio deriva dalla presenza dell'associazione tra pilota e Riepilogo, la piu' inportante dello schema
-e in quanto le interazioni con i piloti sono molto piu' frequenti rispetto a quelle con gli ingegneri
+e in quanto le interazioni con i piloti sono molto piu' frequenti rispetto a quelle con gli ingegneri.
 
 Scelta delle chiavi primarie:
-Le chiavi primarie selezionate sono rimaste quali completamente fedeli a quelle definite nello schema ER,
-a differenza dell, identificatore di Riepilogo, sostituito da un singolo numero intero per facilitarne l'utilizzo
-in chiavi esterne successivamente; per lo stesso motivo, anche per le entità info_gara e campionato è stato scelto come identificatore
-una singola cifra numerica.
-All' entità pilota è stata inoltre rimossa la chiave primaria CF, in quanto non più necessaria.
+Le chiavi primarie selezionate sono rimaste quasi completamente fedeli a quelle definite nello schema ER,
+a differenza dell' identificatore di Riepilogo, sostituito da un numero intero per facilitarne il successivo utilizzo
+in chiavi esterne; per lo stesso motivo, anche per le entità info_gara e campionato è stato scelto come identificatore
+una cifra numerica.
+All' entità pilota è stata inoltre rimossa la chiave primaria CF, in quanto non più necessaria e per rendere
+più significativi i valori della tabella riepilogo, memorizzando il pilota con la sua sigla al posto che il codice fiscale.
+
 
 Sono state eliminate le seguenti relaizoni
 provenienza: 			importando nazione.sigla in Ingegnere e Pilota, una volta rimossa la gerarchia
