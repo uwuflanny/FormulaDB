@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
         mc:Ignorable="d"
-        Title="GetCampionatoData" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
-        <DataGrid x:Name="dg_campionato" HorizontalAlignment="Left" Height="110" Margin="30,37,0,0" VerticalAlignment="Top" Width="189"/>
-        <DataGrid Name="dg_res" HorizontalAlignment="Left" Height="325" Margin="366,49,0,0" VerticalAlignment="Top" Width="369"/>
-        <Button Name="btn_piloti" Content="classifica piloti" HorizontalAlignment="Left" Margin="65,182,0,0" VerticalAlignment="Top" Width="154" Height="32" Click="btn_press"/>
-        <Button Name="btn_scuderie" Content="classifica scuderie" HorizontalAlignment="Left" Margin="65,295,0,0" VerticalAlignment="Top" Width="154" Height="31" Click="btn_press"/>
+        Title="Classifica Campionato" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F">
+        <DataGrid x:Name="dg_campionato" Background="#FFC7C7C7" HorizontalAlignment="Left" Height="110" Margin="48,83,0,0" VerticalAlignment="Top" Width="189"/>
+        <DataGrid Name="dg_res" Background="#FFC7C7C7" HorizontalAlignment="Left" Height="317" Margin="277,57,0,0" VerticalAlignment="Top" Width="458"/>
+        <Button Name="btn_piloti" Content="classifica piloti" HorizontalAlignment="Left" Margin="67,241,0,0" VerticalAlignment="Top" Width="154" Height="32" Click="btn_press"/>
+        <Button Name="btn_scuderie" Content="classifica scuderie" HorizontalAlignment="Left" Margin="67,300,0,0" VerticalAlignment="Top" Width="154" Height="31" Click="btn_press"/>
+        <Label Content="selezione il campionato:" HorizontalAlignment="Left" Margin="48,57,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="classifica:" HorizontalAlignment="Left" Margin="277,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.566,0.763" Foreground="White"/>
     </Grid>
 </Window>

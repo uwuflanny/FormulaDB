@@ -5,41 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="AddRiepilogo" Height="680.447" Width="1295" Loaded="Window_Loaded">
-    <Grid Name="main">
-        <GroupBox Name="grp_risultati" Header="risultati" HorizontalAlignment="Left" Height="587" Margin="702,19,0,0" VerticalAlignment="Top" Width="526">
+        Title="Aggiungi un riepilogo" Height="680.447" Width="1295" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F" Name="main">
+        <GroupBox Name="grp_risultati" Header="risultati" HorizontalAlignment="Left" Height="587" Margin="702,19,0,0" VerticalAlignment="Top" Width="526" Foreground="White">
             <Grid HorizontalAlignment="Left" Height="555" Margin="10,10,-2,-12" VerticalAlignment="Top" Width="507">
                 <ComboBox Name="cmb_poiszione_gara" HorizontalAlignment="Left" Margin="42,57,0,0" VerticalAlignment="Top" Width="133"/>
                 <ComboBox Name="cmb_risultati_qualifica" HorizontalAlignment="Left" Margin="42,121,0,0" VerticalAlignment="Top" Width="133"/>
-                <Label Content="posizione in gara" HorizontalAlignment="Left" Margin="42,31,0,0" VerticalAlignment="Top"/>
-                <Label Content="posizione in qualifica" HorizontalAlignment="Left" Margin="42,95,0,0" VerticalAlignment="Top"/>
+                <Label Content="posizione in gara" HorizontalAlignment="Left" Margin="42,31,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label Content="posizione in qualifica" HorizontalAlignment="Left" Margin="42,95,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <ComboBox Name="cmb_stato" HorizontalAlignment="Left" Margin="42,187,0,0" VerticalAlignment="Top" Width="132"/>
-                <Label Content="stato della gara" HorizontalAlignment="Left" Margin="42,161,0,0" VerticalAlignment="Top"/>
-                <ListBox x:Name="lst_giri" HorizontalAlignment="Left" Height="303" Margin="235,22,0,0" VerticalAlignment="Top" Width="228"/>
+                <Label Content="stato della gara" HorizontalAlignment="Left" Margin="42,161,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <ListBox Background="#FFC7C7C7" x:Name="lst_giri" HorizontalAlignment="Left" Height="303" Margin="235,22,0,0" VerticalAlignment="Top" Width="228"/>
                 <Button Name="btninsert" Content="inserisci" HorizontalAlignment="Left" Margin="43,464,0,0" VerticalAlignment="Top" Width="132" Height="46" Click="Btninsert_Click"/>
                 <TextBox Name="txttempoquali" HorizontalAlignment="Left" Height="24" Margin="42,301,0,0" TextWrapping="Wrap" Text="00:01:08.303" VerticalAlignment="Top" Width="133"/>
-                <Label Content="tempo qualifica" HorizontalAlignment="Left" Margin="42,275,0,0" VerticalAlignment="Top"/>
+                <Label Content="tempo qualifica" HorizontalAlignment="Left" Margin="42,275,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <ComboBox Name="cmb_npit" HorizontalAlignment="Left" Margin="43,393,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="Cmb_npit_SelectionChanged"/>
-                <Label Content="pitstop effettuati" HorizontalAlignment="Left" Margin="43,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.289,0.077" Width="120"/>
-                <ListBox x:Name="lst_pit" HorizontalAlignment="Left" Height="180" Margin="235,330,0,0" VerticalAlignment="Top" Width="228"/>
+                <Label Content="pitstop effettuati" HorizontalAlignment="Left" Margin="43,367,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.289,0.077" Width="120" Foreground="White"/>
+                <ListBox Background="#FFC7C7C7" x:Name="lst_pit" HorizontalAlignment="Left" Height="180" Margin="235,330,0,0" VerticalAlignment="Top" Width="228"/>
                 <Button Name="randvalues" Content="randomize" HorizontalAlignment="Left" Margin="388,515,0,0" VerticalAlignment="Top" Width="75" Click="Randvalues_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox Name="grp_info" Header="dati riepilogo" HorizontalAlignment="Left" Height="587" Margin="29,19,0,0" VerticalAlignment="Top" Width="614">
+        <GroupBox Name="grp_info" Header="dati riepilogo" HorizontalAlignment="Left" Height="587" Margin="29,19,0,0" VerticalAlignment="Top" Width="614" Foreground="White">
             <Grid HorizontalAlignment="Left" Height="577" Margin="0,0,-2,-12" VerticalAlignment="Top" Width="604">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="51*"/>
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Name="dg_campionato" HorizontalAlignment="Left" Height="214" Margin="22,57,0,0" VerticalAlignment="Top" Width="252" SelectionChanged="Dg_campionato_SelectionChanged"/>
-                <DataGrid Name="dg_gare" HorizontalAlignment="Left" Height="214" Margin="10,57,0,0" VerticalAlignment="Top" Width="265" SelectionChanged="Dg_gare_SelectionChanged" Grid.Column="1"/>
-                <DataGrid Name="dg_piloti" HorizontalAlignment="Left" Height="212" Margin="22,326,0,0" VerticalAlignment="Top" Width="252" SelectionChanged="Dg_piloti_SelectionChanged"/>
-                <DataGrid Name="dg_scuderie" HorizontalAlignment="Left" Height="213" Margin="10,325,0,0" VerticalAlignment="Top" Width="265" Grid.Column="1"/>
-                <Label Content="seleziona gara" Grid.Column="1" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
-                <Label Content="seleziona pilota" HorizontalAlignment="Left" Margin="22,300,0,0" VerticalAlignment="Top"/>
-                <Label Content="seleziona scuderia" Grid.Column="1" HorizontalAlignment="Left" Margin="10,299,0,0" VerticalAlignment="Top"/>
+                <DataGrid Background="#FFC7C7C7" Name="dg_campionato" HorizontalAlignment="Left" Height="214" Margin="22,57,0,0" VerticalAlignment="Top" Width="252" SelectionChanged="Dg_campionato_SelectionChanged"/>
+                <DataGrid Background="#FFC7C7C7" Name="dg_gare" HorizontalAlignment="Left" Height="214" Margin="10,57,0,0" VerticalAlignment="Top" Width="265" SelectionChanged="Dg_gare_SelectionChanged" Grid.Column="1"/>
+                <DataGrid Background="#FFC7C7C7" Name="dg_piloti" HorizontalAlignment="Left" Height="212" Margin="22,326,0,0" VerticalAlignment="Top" Width="252" SelectionChanged="Dg_piloti_SelectionChanged"/>
+                <DataGrid Background="#FFC7C7C7" Name="dg_scuderie" HorizontalAlignment="Left" Height="213" Margin="10,325,0,0" VerticalAlignment="Top" Width="265" Grid.Column="1"/>
+                <Label Content="seleziona gara" Grid.Column="1" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label Content="seleziona pilota" HorizontalAlignment="Left" Margin="22,300,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label Content="seleziona scuderia" Grid.Column="1" HorizontalAlignment="Left" Margin="10,299,0,0" VerticalAlignment="Top" Foreground="White"/>
             </Grid>
         </GroupBox>
-        <Label Content="seleziona campionato" HorizontalAlignment="Left" Margin="59,66,0,0" VerticalAlignment="Top"/>
+        <Label Content="seleziona campionato" HorizontalAlignment="Left" Margin="59,66,0,0" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </Window>

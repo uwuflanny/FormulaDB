@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="nuovo campionato" Height="193.648" Width="230.627">
-    <Grid>
-        <TextBox Name="txt_anno" HorizontalAlignment="Left" Height="23" Margin="19,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157"/>
-        <TextBox Name="txt_classe" HorizontalAlignment="Left" Height="23" Margin="19,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="157"/>
-        <Label Content="anno:" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="classe:" HorizontalAlignment="Left" Margin="19,58,0,0" VerticalAlignment="Top"/>
-        <Button Name="btn_insert" Content="aggiungi" HorizontalAlignment="Left" Margin="48,121,0,0" VerticalAlignment="Top" Width="104" Click="Btn_insert_Click"/>
+        Title="aggiungi un campionato" Height="229.148" Width="286.127">
+    <Grid Background="#FF4F4F4F">
+        <TextBox Name="txt_anno" HorizontalAlignment="Left" Height="28" Margin="19,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
+        <TextBox Name="txt_classe" HorizontalAlignment="Left" Height="28" Margin="19,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
+        <Label Content="anno:" HorizontalAlignment="Left" Margin="19,14,0,0" VerticalAlignment="Top" Foreground="White" Height="32" Width="54"/>
+        <Label Content="classe:" HorizontalAlignment="Left" Margin="19,75,0,0" VerticalAlignment="Top" Foreground="White" Height="31" Width="61"/>
+        <Button Name="btn_insert" Content="aggiungi" HorizontalAlignment="Left" Margin="59,146,0,0" VerticalAlignment="Top" Width="145" Click="Btn_insert_Click" Height="30"/>
 
     </Grid>
 </Window>

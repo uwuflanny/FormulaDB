@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
         mc:Ignorable="d"
-        Title="AddScuderia" Height="307.992" Width="387.807" Loaded="Window_Loaded">
-    <Grid>
+        Title="Nuova scuderia" Height="307.992" Width="338.579" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F">
         <TextBox Name="txtnome" HorizontalAlignment="Left" Height="23" Margin="36,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
-        <Button Name="btninsert" Content="Button" HorizontalAlignment="Left" Margin="49,218,0,0" VerticalAlignment="Top" Width="75" Click="Btninsert_Click"/>
-        <DataGrid Name="dgnazione" HorizontalAlignment="Left" Height="111" Margin="36,73,0,0" VerticalAlignment="Top" Width="240"/>
+        <Button Name="btninsert" Content="aggiungi" HorizontalAlignment="Left" Margin="93,213,0,0" VerticalAlignment="Top" Width="122" Click="Btninsert_Click" Height="34"/>
+        <DataGrid Background="#FFC7C7C7" Name="dgnazione" HorizontalAlignment="Left" Height="106" Margin="36,88,0,0" VerticalAlignment="Top" Width="240"/>
+        <Label Content="nome della scuderia:" HorizontalAlignment="Left" Margin="36,8,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="nazionalita'" HorizontalAlignment="Left" Margin="36,62,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>

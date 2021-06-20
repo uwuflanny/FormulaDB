@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
         mc:Ignorable="d"
-        Title="GetBestGiri" Height="355.943" Width="570.389" Loaded="Window_Loaded">
-    <Grid>
-        <DataGrid Name="content" HorizontalAlignment="Left" Height="249" Margin="30,23,0,0" VerticalAlignment="Top" Width="429"/>
+        Title="Miglior giro di ogni circuito" Height="355.943" Width="523.708" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F">
+        <DataGrid Background="#FFC7C7C7" Name="content" HorizontalAlignment="Left" Height="254" Margin="31,40,0,0" VerticalAlignment="Top" Width="429"/>
+        <Label Content="miglior tempo per circuito" HorizontalAlignment="Left" Margin="31,14,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>

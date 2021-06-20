@@ -41,42 +41,8 @@ namespace FormulaDB_GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.load_buttons();
+            
         }
-
-        private void load_buttons()
-        {
-            btn_insert.IsEnabled = false;
-            cnv_storico.Visibility = Visibility.Hidden;
-            btn_insert.Click += switch_button;
-            btn_history.Click += switch_button;
-        }
-
-
-
-        private void switch_button(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).IsEnabled = false;
-            if(sender as Button == btn_insert)
-            {
-                cnv_insert.Visibility = Visibility.Visible;
-                cnv_storico.Visibility = Visibility.Hidden;
-                btn_history.IsEnabled = true;
-            }
-            else
-            {
-                cnv_storico.Visibility = Visibility.Visible;
-                cnv_insert.Visibility = Visibility.Hidden;
-                btn_insert.IsEnabled = true;
-            }
-        }
-
-
-
-
-
-
-
 
         private void add_cammpionato_click(object sender, RoutedEventArgs e)
         {

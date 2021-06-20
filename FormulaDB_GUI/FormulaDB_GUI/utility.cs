@@ -22,8 +22,9 @@ namespace FormulaDB_GUI.finestre
                     DependencyObject child = VisualTreeHelper.GetChild(root, i);
 
                     if (child.GetType() == typeof(TextBox) && (child as TextBox).Text == "") checks.Add(false);
-                    if (child.GetType() == typeof(ComboBox) && (child as ComboBox).SelectedIndex == -1) checks.Add(false);
-                    if (child.GetType() == typeof(DataGrid) && (child as DataGrid).SelectedIndex == -1) checks.Add(false);
+                    else if (child.GetType() == typeof(ComboBox) && (child as ComboBox).SelectedIndex == -1) checks.Add(false);
+                    else if(child.GetType() == typeof(DataGrid) && (child as DataGrid).SelectedIndex == -1) checks.Add(false);
+                    else if(child.GetType() == typeof(DatePicker) && (child as DatePicker).SelectedDate == null) checks.Add(false);
 
                     checks.AddRange(getChildrenRec(child));
                 }

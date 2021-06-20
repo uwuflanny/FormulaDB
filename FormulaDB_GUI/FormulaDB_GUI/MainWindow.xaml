@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="Formula DB" Height="516.056" Width="732.833" Loaded="Window_Loaded">
-    <Grid>
-        <Canvas Name="cnv_insert" HorizontalAlignment="Left" Height="114" Margin="21,53,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
+        Title="Formula DB" Height="288.056" Width="650.833" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F">
+        <Canvas Name="cnv_insert" HorizontalAlignment="Left" Height="114" Margin="21,23,0,0" VerticalAlignment="Top" Width="583" Background="#FFB42A2A">
             <Button Name="btn_new_camionato" Content="nuovo campionato" Canvas.Left="10" Canvas.Top="10" Width="123" Click="add_cammpionato_click" Height="40"/>
             <Button Name="btn_new_gara" Content="nuova gara" Canvas.Left="156" Canvas.Top="10" Width="119" Height="40" Click="Btn_new_gara_Click"/>
             <Button Name="btn_new_riepilogo" Content="nuovo riepilogo" Canvas.Left="300" Canvas.Top="10" Width="117" Height="40" Click="Btn_new_riepilogo_Click"/>
@@ -16,13 +16,11 @@
             <Button Name="btn_newscuderia" Content="aggiungi scuderia" Canvas.Left="156" Canvas.Top="65" Width="119" Height="39" Click="Btn_newscuderia_Click"/>
             <Button Name="btn_nuovo_motore" Content="nuovo motore" Canvas.Left="300" Canvas.Top="65" Width="117" Height="39" Click="Btn_nuovo_motore_Click"/>
         </Canvas>
-        <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="114" Margin="21,229,0,0" VerticalAlignment="Top" Width="602" Background="#FFE2E2E2">
+        <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="66" Margin="21,172,0,0" VerticalAlignment="Top" Width="583" Background="#FFB42A2A">
             <Button Name="risultaticampionato" Content="classifica campionato" Canvas.Left="10" Canvas.Top="10" Width="122" Height="40" Click="Risultaticampionato_Click"/>
             <Button x:Name="btn_winner" Content="vincitori" Canvas.Left="157" Canvas.Top="10" Width="122" Height="40" Click="btn_winner_Click"/>
             <Button Name="btn_best_giri" Content="giri migliori" Canvas.Left="306" Canvas.Top="10" Width="108" Height="40" Click="Btn_best_giri_Click"/>
             <Button Name="btn_best_macchine" Content="classifica automobili" Canvas.Left="441" Canvas.Top="10" Width="120" Height="40" Click="Btn_best_macchine_Click"/>
         </Canvas>
-        <Button Name="btn_insert" Content="insert" HorizontalAlignment="Left" Margin="399,14,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="btn_history" Content="history" HorizontalAlignment="Left" Margin="501,14,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

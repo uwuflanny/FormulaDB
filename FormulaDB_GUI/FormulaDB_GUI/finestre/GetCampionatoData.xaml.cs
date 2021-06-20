@@ -30,7 +30,7 @@ namespace FormulaDB_GUI.finestre
 
         private void load_queries()
         {
-            btn_piloti.Tag = @"select res1.pilota, punteggio + IFNULL(girimigliori, 0)*2 as punteggio from
+            btn_piloti.Tag = @"select res1.pilota, punteggio + IFNULL(girimigliori, 0) as punteggio from
 	                            (select pilota, sum(punteggio) as punteggio from (
 		                            select gara, pilota, posizione as pos
 		                            from (riepilogo join info_gara on riepilogo.gara = info_gara.ID join risultati_gara on risultati_gara.ID_riepilogo = riepilogo.ID)

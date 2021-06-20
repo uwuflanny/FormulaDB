@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormulaDB_GUI"
         mc:Ignorable="d"
-        Title="AddGara" Height="438.934" Width="684.734" Loaded="Window_Loaded">
-    <Grid>
-        <Button Name="btn_add_gara" Content="aggiungi" HorizontalAlignment="Left" Margin="249,116,0,0" VerticalAlignment="Top" Width="75" Click="Btn_add_gara_Click"/>
-        <DataGrid Name="dg_campionato" HorizontalAlignment="Left" Height="123" Margin="407,47,0,0" VerticalAlignment="Top" Width="228"/>
-        <DataGrid Name="dg_circuito" HorizontalAlignment="Left" Height="196" Margin="28,188,0,0" VerticalAlignment="Top" Width="607"/>
-        <Label Content="seleziona il campionato" HorizontalAlignment="Left" Margin="407,21,0,0" VerticalAlignment="Top"/>
-        <Label Content="seleziona il circuito" HorizontalAlignment="Left" Margin="28,157,0,0" VerticalAlignment="Top" Width="136" RenderTransformOrigin="-1.035,0.3"/>
+        Title="aggiungi una gara" Height="438.934" Width="659.549" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F">
+        <Button Name="btn_add_gara" Content="aggiungi" HorizontalAlignment="Left" Margin="399,76,0,0" VerticalAlignment="Top" Width="124" Click="Btn_add_gara_Click" Height="40"/>
+        <DataGrid Background="#FFC7C7C7" Name="dg_campionato" HorizontalAlignment="Left" Height="196" Margin="351,188,0,0" VerticalAlignment="Top" Width="228"/>
+        <DataGrid Background="#FFC7C7C7" Name="dg_circuito" HorizontalAlignment="Left" Height="196" Margin="28,188,0,0" VerticalAlignment="Top" Width="285"/>
+        <Label Content="seleziona il campionato" HorizontalAlignment="Left" Margin="351,162,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="seleziona il circuito" HorizontalAlignment="Left" Margin="28,157,0,0" VerticalAlignment="Top" Width="136" RenderTransformOrigin="-1.035,0.3" Foreground="White"/>
         <DatePicker Name="datepicker" HorizontalAlignment="Left" Margin="28,47,0,0" VerticalAlignment="Top"/>
-        <Label Content="data svolgimento" HorizontalAlignment="Left" Margin="28,21,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txtgiri" HorizontalAlignment="Left" Height="23" Margin="28,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
-        <Label Content="numero giri" HorizontalAlignment="Left" Margin="28,90,0,0" VerticalAlignment="Top" Width="144"/>
-        <ComboBox Name="cmbmeteo" HorizontalAlignment="Left" Margin="230,47,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="meteo" HorizontalAlignment="Left" Margin="230,21,0,0" VerticalAlignment="Top"/>
+        <Label Content="data svolgimento" HorizontalAlignment="Left" Margin="28,21,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox Name="txtgiri" HorizontalAlignment="Left" Height="23" Margin="28,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
+        <Label Content="numero giri" HorizontalAlignment="Left" Margin="28,83,0,0" VerticalAlignment="Top" Width="144" Foreground="White"/>
+        <ComboBox Name="cmbmeteo" HorizontalAlignment="Left" Margin="214,47,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="meteo" HorizontalAlignment="Left" Margin="214,21,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>
