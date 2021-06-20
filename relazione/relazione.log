@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.21)  20 JUN 2021 17:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.21)  20 JUN 2021 22:45
 entering extended mode
 **./relazione.tex
 (relazione.tex
@@ -159,22 +159,22 @@ LaTeX Warning: Label `tab:table1@cref' multiply defined.
 )
 \openout1 = `relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Info: Redefining \it@ocap on input line 17.
-LaTeX Info: Redefining \it@ccap on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Info: Redefining \it@ocap on input line 16.
+LaTeX Info: Redefining \it@ccap on input line 16.
 
 
 File italian.ldf warning: 
@@ -182,7 +182,7 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 17.
+italian.ldf    on input line 16.
 
 
 (C:\Users\Monta\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
@@ -207,178 +207,247 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 19.
+(Font)              <14.4> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 19.
+(Font)              <7> on input line 17.
  [1
 
 {C:/Users/Monta/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
 Capitolo 1.
 [1
 
+] [2]
+Capitolo 2.
+<copies/scheletro1.pdf, id=14, 631.35875pt x 766.865pt>
+File: copies/scheletro1.pdf Graphic file (type pdf)
+<use copies/scheletro1.pdf>
+Package pdftex.def Info: copies/scheletro1.pdf  used on input line 64.
+(pdftex.def)             Requested size: 505.08769pt x 613.49284pt.
+
+Overfull \hbox (115.08769pt too wide) in paragraph at lines 64--65
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 21.49284pt on input line 65.
+
+[3
+
+] [4 <./copies/scheletro1.pdf>]
+<copies/scheletro2.pdf, id=54, 1280.785pt x 607.26875pt>
+File: copies/scheletro2.pdf Graphic file (type pdf)
+<use copies/scheletro2.pdf>
+Package pdftex.def Info: copies/scheletro2.pdf  used on input line 77.
+(pdftex.def)             Requested size: 1024.6294pt x 485.81566pt.
+
+Overfull \hbox (634.6294pt too wide) in paragraph at lines 77--78
+ [][] 
+ []
+
+[5] [6 <./copies/scheletro2.pdf>]
+<copies/scheletro3.pdf, id=119, 1320.935pt x 562.1pt>
+File: copies/scheletro3.pdf Graphic file (type pdf)
+<use copies/scheletro3.pdf>
+Package pdftex.def Info: copies/scheletro3.pdf  used on input line 87.
+(pdftex.def)             Requested size: 1056.74945pt x 449.68062pt.
+
+Overfull \hbox (666.74945pt too wide) in paragraph at lines 87--88
+ [][] 
+ []
+
+[7 <./copies/scheletro3.pdf>]
+<copies/scheletrone.pdf, id=174, 939.51pt x 575.14874pt>
+File: copies/scheletrone.pdf Graphic file (type pdf)
+<use copies/scheletrone.pdf>
+Package pdftex.def Info: copies/scheletrone.pdf  used on input line 92.
+(pdftex.def)             Requested size: 751.60902pt x 460.11961pt.
+
+Overfull \hbox (361.60902pt too wide) in paragraph at lines 92--93
+ [][] 
+ []
+
+[8] [9 <./copies/scheletrone.pdf>]
+Capitolo 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 130.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 130.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 130.
+
+Overfull \hbox (13.4143pt too wide) in paragraph at lines 130--131
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10
+
 ]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 80.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 80.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 80.
-
-Overfull \hbox (12.21432pt too wide) in paragraph at lines 80--81
- [] 
- []
-
-[2]
-Overfull \hbox (24.3764pt too wide) in paragraph at lines 112--113
- [] 
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 117--120
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--120
-
- []
-
-
-Overfull \hbox (29.09924pt too wide) in paragraph at lines 135--136
+Overfull \hbox (25.2564pt too wide) in paragraph at lines 161--162
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--138
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
 
-Overfull \hbox (29.09924pt too wide) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+
+ []
+
+
+Overfull \hbox (30.13924pt too wide) in paragraph at lines 182--183
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--155
+Underfull \hbox (badness 10000) in paragraph at lines 168--185
 
  []
 
-
-Overfull \hbox (64.8764pt too wide) in paragraph at lines 172--173
+[12]
+Overfull \hbox (30.13924pt too wide) in paragraph at lines 199--200
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
+Underfull \hbox (badness 10000) in paragraph at lines 186--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--175
-
- []
-
-[4]
-Overfull \hbox (36.88945pt too wide) in paragraph at lines 192--193
+Overfull \hbox (65.9164pt too wide) in paragraph at lines 219--220
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--195
+Underfull \hbox (badness 10000) in paragraph at lines 203--222
 
  []
 
-[5]
-Overfull \hbox (29.09924pt too wide) in paragraph at lines 210--211
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--222
+
+ []
+
+
+Overfull \hbox (37.92943pt too wide) in paragraph at lines 239--240
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--213
+Underfull \hbox (badness 10000) in paragraph at lines 223--242
 
  []
 
-
-Overfull \hbox (36.88945pt too wide) in paragraph at lines 226--227
+[13]
+Overfull \hbox (30.13924pt too wide) in paragraph at lines 257--258
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--229
+Underfull \hbox (badness 10000) in paragraph at lines 244--260
 
  []
 
 
-Overfull \hbox (36.88945pt too wide) in paragraph at lines 244--245
+Overfull \hbox (37.92943pt too wide) in paragraph at lines 273--274
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--247
+Underfull \hbox (badness 10000) in paragraph at lines 261--276
 
  []
 
 
-Overfull \hbox (73.44731pt too wide) in paragraph at lines 274--275
+Overfull \hbox (37.92943pt too wide) in paragraph at lines 291--292
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--277
+Underfull \hbox (badness 10000) in paragraph at lines 277--294
 
  []
 
-[6]
-Overfull \hbox (83.20627pt too wide) in paragraph at lines 295--296
+
+Overfull \hbox (74.4873pt too wide) in paragraph at lines 321--322
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--298
+Underfull \hbox (badness 10000) in paragraph at lines 295--324
 
  []
 
-
-Overfull \hbox (83.20627pt too wide) in paragraph at lines 315--316
+[14]
+Overfull \hbox (84.24625pt too wide) in paragraph at lines 342--343
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--318
+Underfull \hbox (badness 10000) in paragraph at lines 325--345
 
  []
 
-
-Overfull \hbox (46.71628pt too wide) in paragraph at lines 331--332
+[15]
+Overfull \hbox (84.24625pt too wide) in paragraph at lines 362--363
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 319--334
+Underfull \hbox (badness 10000) in paragraph at lines 346--365
 
  []
 
-[7]
-Overfull \hbox (36.88945pt too wide) in paragraph at lines 350--351
+
+Overfull \hbox (47.75626pt too wide) in paragraph at lines 378--379
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--353
+Underfull \hbox (badness 10000) in paragraph at lines 366--381
 
  []
 
-[8] [9]
-Overfull \hbox (46.71628pt too wide) in paragraph at lines 375--376
+
+Overfull \hbox (37.92943pt too wide) in paragraph at lines 397--398
  [] 
  []
 
 
-Overfull \hbox (36.88945pt too wide) in paragraph at lines 392--393
+Underfull \hbox (badness 10000) in paragraph at lines 382--400
+
+ []
+
+[16]
+Overfull \hbox (47.75626pt too wide) in paragraph at lines 424--425
  [] 
  []
 
-[10] (relazione.aux
+
+Overfull \hbox (37.92943pt too wide) in paragraph at lines 441--442
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[17] [18]
+Capitolo 4.
+[19
+
+] (relazione.aux
 Package cleveref Info: loaded `italian' language definitions on input line 4.
 Package cleveref Info: loaded `italian' language definitions on input line 5.
 )
@@ -387,21 +456,21 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4814 strings out of 479334
- 81881 string characters out of 2857084
+ 4840 strings out of 479334
+ 82550 string characters out of 2857084
  436685 words of memory out of 3000000
- 22254 multiletter control sequences out of 15000+200000
+ 22275 multiletter control sequences out of 15000+200000
  409504 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,12n,74p,292b,424s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 68i,12n,74p,311b,424s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Monta/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><C:/Users/Monta/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr10.pfb><C:/Users/Monta/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmr12.pfb><C:/Users/Monta/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr17.pfb>
-Output written on relazione.pdf (11 pages, 79672 bytes).
+Output written on relazione.pdf (20 pages, 447268 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
+ 254 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

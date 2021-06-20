@@ -10,19 +10,23 @@
 \usepackage{float}
 
 \title{Relazione\break``progetto FormulaDB''}
-
 \author{Migliarini Gianluca - Montali Giacomo}
 \date{Giugno 2021}
 
-\begin{document}
-	
-\maketitle
-\chapter{Analisi dei requisiti}
-	\section{intervista}
+\begin{document}	
+	\maketitle
+	%Chapter Analisi ---> progetto viste
+	%Chapter concettuale ---> aggiunta raffinamenti per schemi parziali, scheletro to schema
+	%Chapter logica  ---> raffinamento schema, traduzione entità e associazioni in relazioni
+	%					  schema relazionale finale, creazione tabelle in SQL, operazioni in sql
+	%Chapter applicazione ---> tutto
+	\chapter{Analisi dei requisiti}
+		\section{intervista}
+		
 		Si vuole tenere traccia dei campionati del mondo Formula, memorizzando per ciascuno l'anno del campionato e la categoria di auto che corre al suo interno.
 		
 		In ogni campionato gareggiano circa 20 piloti, dei quale vengono salvate informazioni quali il ed il cognome del concorrente,
-		la nazionalita', la data di nascita ed il numero di macchina con il quale corre.
+		la nazionalità, la data di nascita ed il numero di macchina con il quale corre.
 		
 		Per poter gareggiare, ogni pilota stipula un contratto con una scuderia, la quale gli offre un veicolo, con il quale
 		prendere parte alle competizioni. Il contratto ha solitamente durata di qualche anno, tuttavia, in rare occasioni,
@@ -32,8 +36,8 @@
 		
 		Nei test effettuati durante il periodo di pausa tra le varie competizioni, eseguiti da ingegneri specializzati appartenenti al team,
 		permettono alla scuderia di migliorare la propria autovettura, offrendo cosi' la possibilità di gareggiare
-		con un nuovo modello per il campionato che verra'. In particolare, le migliorie apportate interessano il peso e le dimensioni dell'auto.
-		Inoltre, le scuderie, in caso di budget ridotto, possono eventulmente acquistare il motore da team avversari.
+		con un nuovo modello per il campionato che verrà. In particolare, le migliorie apportate interessano il peso e le dimensioni dell'auto.
+		Inoltre, le scuderie, in caso di budget ridotto, possono eventualmente acquistare il motore da team avversari.
 		
 		Per ogni scuderia, e' necessario tenere traccia degli ingegneri che ci lavorano e della loro specializzazione.
 		
@@ -43,8 +47,53 @@
 		Per quanto riguarda i circuiti, e' necessario permetterne la localizzazione salvando il nome, la nazione in cui sono situati e il loro indirizzo.
 		
 		Inoltre, per una memorizzazione migliore di ogni gara, viene memorizzato ogni giro di ogni pilota effettuato in gara con il rispettivo tempo,
-		i pitstop effettuati con il tempo impiegato in essi, l'ordine di partenza (dato dalle qualifiche) e l'ordine di arrivo.
-		
+		i pit-stop effettuati con il tempo impiegato in essi, l'ordine di partenza (dato dalle qualifiche) e l'ordine di arrivo
+	\chapter{Progettazione concettuale}
+		\section{Pilota}
+	Le entità Pilota e Ingegnere ereditano gli attributi dal padre 'Persona', il quale tiene traccia dei
+	dati anagrafici e viene identificato tramite il Codice Fiscale.\\
+	Dell'entità ingegnere inoltre teniamo traccia della specializzazione.\\
+	Per una migliore rappresentazione dei dati e per evitare casi di omocodia, il pilota viene identificato
+	da una sigla, formata dalle prime tre lettere del cognome, in caso di sigle identiche, e' compito della
+	Federazione Internazionale dell'Automobilismo di scegliere un'abbreviazione adeguata al concorrente
+	per evitare duplicati.\\
+	Mentre un ingegnere stipula un contratto con una scuderia per tutta la durata della sua carriera,
+	solitamente i contratti con i piloti sono di durata indeterminata.
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.8]{copies/scheletro1.pdf}
+	\end{figure}
+		\section{Scuderia}
+	Per ogni campionato, le scuderie schierano il veicolo risultato dalle migliorie ingegneristiche apportate al modello
+	precedente, per regolamento una scuderia può offrire ai suoi piloti solamente un modello di veicolo per campionato.
+	L' unica parte dell'automobile che in molti casi non e' progettata dalla scuderia e' il motore, il quale può essere
+	acquistato da un team avversario, e, a differenza del telaio, non richiede di essere sostituito ogni campionato.
+	Un campionato si svolge in più gare, ognuna delle quali prende parte in un circuito ad una certa ora e con un numero
+	di giri variabile, deciso dagli organizzatori in base a diversi fattori, quali l'orario e le condizioni meteorologiche,
+	ragione per la quale, ogni Gran Premio viene identificato dal nome circuito e dalla data e ora di svolgimento, in quanto
+	nella stessa giornata possono avvenire più gare dello stesso campionato sulla stessa pista.
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.8]{copies/scheletro2.pdf}
+	\end{figure}
+		\section{Risultati}
+	Il risultato di un pilota in una gara viene memorizzato tramite l'entità Riepilogo.
+	I giri, i pit-stop ed i risultati delle gare e delle qualifiche si collegano a Riepilogo tramite chiavi esterne.
+	Ogni pilota può avere solamente un Riepilogo relativo ad una gara.
+	Nonostante i veicoli derivanti dal contratto tra pilota e team, in casi rari, ai corridori viene data la possibilità
+	di partecipare ad una gara con una scuderia diversa da quella con la quale ha stipulato il contratto.
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.8]{copies/scheletro3.pdf}
+	\end{figure}
+		\section{Schema concettuale finale}
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[scale=0.8]{copies/scheletrone.pdf}
+		\end{figure}
+
+
+	\chapter{Progettazione logica}
 	\hfill
 	\small\addtolength{\tabcolsep}{+10pt}
 	\begin{table}[h!]
@@ -54,11 +103,12 @@
 			\label{tab:table1}
 			
 			\scalebox{1.5}{
-			\begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-				\toprule
+			\begin{tabular}{|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				%\toprule
+				\hline\rowcolor{green}
 				\textbf{Dato} & \textbf{Tipo} & \textbf{Quantità}\\
-				
-				\midrule		
+				\hline\hline
+				%\midrule		
 				Nazione				&	E	&	210\\     
 				Circuito			&	E 	&	100\\
 				scuderia			&	E	&	35\\
@@ -80,7 +130,6 @@
 			\end{tabular}}
 		\end{center}
 	\end{table}
-	
 	\section{Operazioni principali e frequenza:}
 	Le operazioni da effettuare sono quelle già elencate nella fase di analisi. Segue una tabella
 	riportante la loro descrizione e relativa frequenza:
@@ -92,7 +141,7 @@
 			\caption{Stima volume dati}
 			\label{tab:table1}
 			\scalebox{1.1}{
-				\begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|l|r|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Operazione} & \textbf{Frequenza}\\
 					\midrule
@@ -114,9 +163,7 @@
 	\end{table}
 	\newpage
 	\section{Schemi navigazione accessi}
-	Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riportate; inoltre, ove
-	non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo degli
-	costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura.\\\\
+	Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riportate; inoltre, ove non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo dei costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura.\\\\
 	\subsection{aggiunta di un motore}
 	Aggiunta di un motore:\\
 	viene aggiunto un motore, oltre a specificarne i valori viene scelto dall'utente
@@ -125,7 +172,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -142,7 +189,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -160,7 +207,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -180,7 +227,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -200,7 +247,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -217,7 +264,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -233,7 +280,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -254,7 +301,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -281,7 +328,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -301,7 +348,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -321,7 +368,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -338,7 +385,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -353,6 +400,8 @@
 
 
 	\section{Analisi delle ridondanze}
+
+
 	È stata introdotto l'attributo ridondante `posizione` all'entità risultati\_gara al fine di evitare i passi che coinvolgono il calcolo, quali, per esempio, la somma di tutti i tempi dei vari giri per calcolare in quanto un pilota ha concluso una gara;	
 	Questa ridondanza semplifica notevolmente tutte le query ove è necessario calcolare la posizione dei piloti\\
 	Esempio nella operazione: Classifica del campionato\\
@@ -362,7 +411,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -380,7 +429,7 @@
 		\centering
 		\begin{center}
 			\scalebox{1.3}{
-				\begin{tabular}{l|c|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
 					\toprule
 					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
 					\midrule
@@ -393,4 +442,27 @@
 		\end{center}
 	\end{table}
 
+
+	\chapter{Progettazione dell'applicazione}
+		\begin{table}
+			\parbox{.45\linewidth}{
+				\centering
+				\begin{tabular}{|c|c|c|}
+					\hline
+					a&b&c\\
+					\hline
+				\end{tabular}
+				\caption{Foo}
+			}
+			\hfill
+			\parbox{.45\linewidth}{
+				\centering
+				\begin{tabular}{ccc}
+					\hline
+					d&e&f\\
+					\hline
+				\end{tabular}
+				\caption{Bar}
+			}
+		\end{table}
 \end{document}
