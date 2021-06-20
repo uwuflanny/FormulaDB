@@ -1,0 +1,9 @@
+Raffinamento dello schema
+Eliminazione delle gerarchie:
+Per l'eliminazione della gerarchia 'Persona' si è scelto di adottare la'approccio del collasso verso il basso
+inserendo in ingegnere e in Pilota gli attributi prima appartenenti al padre, al pilota, l'identificatore Codice Fiscale,
+e' stato rimosso, poiche' non piu' necessario.
+La scelta di questo approccio deriva dalla presenza dell'associazione tra pilota e Riepilogo, la piu' inportante dello schema
+e in quanto le interazioni con i piloti sono molto piu' frequenti rispetto a quelle con gli ingegneri
+
+Sono s
