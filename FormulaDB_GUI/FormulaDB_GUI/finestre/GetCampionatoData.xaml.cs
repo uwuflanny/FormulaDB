@@ -45,7 +45,8 @@ namespace FormulaDB_GUI.finestre
 		                            (select * 
 		                            from (
 			                            select ID_riepilogo, gara, pilota ,scuderia ,min(tempo) as best
-			                            from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo
+			                            from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo  join info_gara on info_gara.ID = riepilogo.gara
+                                        where info_gara.campionato = xx
 			                            group by gara, pilota
 			                            order by gara, best ) as res
 		                            group by gara ) as res2
@@ -56,7 +57,7 @@ namespace FormulaDB_GUI.finestre
             btn_scuderie.Tag = @"select res1.scuderia, punteggio + IFNULL(girimigliori, 0) as punteggio from 
 	                            ( select scuderia, sum(punteggio) as punteggio
 	                            from (riepilogo join info_gara on riepilogo.gara = info_gara.ID join risultati_gara on risultati_gara.ID_riepilogo = riepilogo.ID join punti_posizione on risultati_gara.posizione = punti_posizione.posizione)
-	                            where campionato = 1 
+	                            where campionato = xx 
 	                            group by scuderia) as res1
     
                                 left join 
@@ -65,7 +66,8 @@ namespace FormulaDB_GUI.finestre
 		                            select *
 		                            from (
 			                            select ID_riepilogo, gara, pilota ,scuderia ,min(tempo) as best
-			                            from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo
+			                            from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo join info_gara on info_gara.ID = riepilogo.gara
+                                        where info_gara.campionato = xx
 			                            group by gara, pilota
 			                            order by gara, best ) as res
 		                            group by gara ) as res
