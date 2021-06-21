@@ -27,7 +27,7 @@ namespace FormulaDB_GUI.finestre
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             utility.setDataGridReadOnly(this as DependencyObject);
-            string query = @"select circuito.nome, riepilogo.id, min(giro.tempo)
+            string query = @"select circuito.nome, min(giro.tempo) as 'miglior tempo'
                             from circuito join info_gara on (circuito.nome = info_gara.circuito) join riepilogo on (info_gara.id = riepilogo.gara) join giro on (riepilogo.id = giro.ID_riepilogo)
                             group by circuito.nome";
 

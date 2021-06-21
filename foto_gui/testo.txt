@@ -1,0 +1,20 @@
+1) L'applicazione per interfacciarsi al database è relizzata in C#, utilizzando il framework
+WPF per la creazione di pagine con la quale l'utente è in grado in interagire.
+Il DBMS scelto e' MySql.
+All'avvio del programma l'utente potrà scegliere quale operazione effettuare cliccando uno dei 12 bottoni 
+presenti nella schermata; ogni operazione sarà svolta su una finestra assestante e la correttezza dei dati obbligatori
+sarà garantita da controlli eseguiti da codice a runtime (ad esempio se una casella di testo non è stata riempita) e 
+da messaggi visualizzati all'utente sotto forma di pop-up in caso di errore nell'operazione.
+
+riepilogo) L'inserimento del riepilogo di una gara per un certo pilota e' un processo che richiede vari passaggi:
+inizialmente l'utente dovra' scegliere un campionato tra i disponibili ed in seguito la gara della quale si desidera registrare
+l'ennupla.
+Una volta selezionata la gara dall'apposita tabella, verra' data la possibilità di selezionare un pilota tra quelli 
+ai quali non risulta ancora un riepilogo nella gara selezionata in precedenza, e una volta selezionato il gareggiante,
+sarà inoltre possibile scegliere la scuderia per la quale gareggia; quella di contratto viene selezionata di default;
+Per completare l'operazione sarà inoltre necessario impostare la posizione guadagnata in qualifica e in gara, selezionabile
+dalle opportune combobox tra quelle non occupate, e specificare i tempi dei vari giri e pit-stop.
+
+risultati) Per tutte le operazioni sotto la voce "visualizza lo storico", l'utente non dovra' inserire dati ma scegliere solamente
+cosa visualizzare, nell'esempio riportato, una volta premuto il bottone "Giri Migliori" nella schermata principale, sei aprirà una nuova
+finestra contenenti i giri più veloci effettuati in tutti i circuiti registrati
