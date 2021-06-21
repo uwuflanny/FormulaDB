@@ -9,6 +9,10 @@
 \usepackage[section]{placeins}
 \usepackage{float}
 \usepackage{tabto}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{color}
+
 
 \title{Relazione\break``progetto FormulaDB''}
 \author{Migliarini Gianluca - Montali Giacomo}
@@ -17,9 +21,7 @@
 \begin{document}	
 	\maketitle
 	%Chapter Analisi ---> controllo analisi
-	%Chapter logica  ---> raffinamento schema, traduzione entità e associazioni in relazioni,
-	%					  schema relazionale finale, creazione tabelle in SQL, operazioni in sql, elenchi puntati
-	%Chapter applicazione ---> tutto
+	%Chapter logica  ---> elenchi puntati
 	\chapter{Analisi dei requisiti}
 		\section{intervista}
 		
@@ -96,465 +98,636 @@
 		\end{figure}
 
 	\chapter{Progettazione logica}
-	\section{Stima volume dati}
-	\hfill
-	\small\addtolength{\tabcolsep}{+10pt}
-	\begin{table}[h!]
-		\centering
-		\begin{center}
-			\label{tab:table1}
-			
-			\scalebox{1.5}{
-			\begin{tabular}{|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-				%\toprule
-				\hline\rowcolor{green}
-				\textbf{Dato} & \textbf{Tipo} & \textbf{Quantità}\\
-				\hline\hline
-				%\midrule		
-				Nazione				&	E	&	210\\     
-				Circuito			&	E 	&	100\\
-				scuderia			&	E	&	40\\
-				Pilota				&	E	&	110\\
-				contratto\_pilota	&   R 	&	365\\
-				Ingegnere			&	E 	&	2200\\
-				Contratto			&	R 	&	2200\\
-				Campionato			&	E	&	15\\	     
-				Giro 				&	E 	&	360000\\
-				info\_gara			&	E   &	300\\ 
-				riepilogo			&	R	&	6000\\
-				risultati\_gara		&	E	&	6000\\
-				risultati\_qualifica&	E	&	6000\\
-				pit\_stop			&	E	&	9000\\
-				Motore				&	E	&	18\\
-				Macchina			&	E	&	160\\
-				Posizione			&	E	& 	20\\
-				
-				\bottomrule
-			\end{tabular}}
-		\end{center}
-	\end{table}
-	\section{Operazioni principali e frequenza}
-	Le operazioni da effettuare sono quelle già elencate nella fase di analisi. Segue una tabella
-	riportante la loro descrizione e relativa frequenza:
-	
-	\hfill
-	\small\addtolength{\tabcolsep}{+1pt}
-	\begin{table}[h!]
-		\begin{center}
-			\caption{Stima volume dati}
-			\label{tab:table1}
-			\scalebox{1.1}{
-				\begin{tabular}{|l|r|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Operazione} & \textbf{Frequenza}\\
-					\midrule
-					aggiungere un pilota								& 7 / anno\\
-					aggiungere una scuderia								& 1 / anno\\
-					aggiungere un motore								& 12 / 3 anni\\
-					aggiungere macchina ad una scuderia					& 30 / anno\\
-					aggiungere un circuito								& 1 / 5 anni\\
-					aggiungere un campionato							& 3 / anno\\
-					aggiungere gara ad un campionato					& 60 / anno\\
-					aggiungere un riepilogo di un pilota				& 1200 / anno\\		
-					ottenere la classifica piloti di un campionato  	& 60 / anno\\
-					ottenere la classifica scuderie di un campionato 	& 60 / anno\\
-					ottenere numero vittorie di ogni pilota				& 12 / anno\\
-					ottenere classifica veicoli di una certa categoria	& 10 / anno\\
-					\bottomrule
-			\end{tabular}}
-		\end{center}
-	\end{table}
-	\newpage
-	\section{Schemi navigazione e tabelle degli accessi}
-	Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riportate; inoltre, ove non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo dei costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura.\\\\
-	\subsection{aggiunta di un motore}
-	Aggiunta di un motore:\\
-	viene aggiunto un motore, oltre a specificarne i valori viene scelto dall'utente
-	la scuderia produttrice tra le disponibili.
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					scuderia 	& E & 1 & L\\
-					motore	 	& E & 1 & S\\
-					\bottomrule
-			\end{tabular}}
-			\newline\\
-			1L + 1S = 36 ogni 3 anni\\
-		\end{center}
-	\end{table}\\
-	\subsection{aggiunta di una scuderia}
-	Aggiunta di una scuderia:\\
-	viene aggiunta una scuderia, la nazione viene selezionata dall'utente tra quelle disponibili.
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					nazione 	& E & 1 & L\\
-					scuderia	& E & 1 & S\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		1L + 1S = 3 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\subsection{aggiunta di un pilota}
-	Aggiunta di un pilota:\\
-	un pilota novizio viene registrato nel database stipulando un contratto con una scuderia,
-	viene letta la lista delle scuderie con la quale il pilota può eseguire il contratto.
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					nazione 			& E & 1 & L\\
-					scuderia			& E & 1 & L\\
-					pilota 				& E & 1 & S\\
-					contratto\_pilota	& R & 1 & S\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		2L + 2S = 42 ogni anno\\
-		\end{center}
-	\end{table}\\\\
-	\subsection{aggiunta di una macchina ad una scuderia}
-	Aggiunta di una macchina ad una scuderia:\\
-	viene registrata una macchina ad una scuderia con la quale gareggiare in un certo campionato,
-	vengono lette le tabelle scuderia, campionato e motore per la selezione da parte dell'utente.
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato 	& E & 1 & L\\
-					scuderia	& E & 1 & L\\
-					motore 		& E & 1 & L\\
-					macchina	& E & 1 & S\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		3L + 1S = 150 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\newpage
-	\subsection{aggiunta di un circuito}
-	Aggiungere un circuito:
-	viene registrato un nuovo circuito
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					nazione  & E & 1 & L\\
-					circuito & E & 1 & S\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		1L + 1S = 3 ogni 5 anni\\
-		\end{center}
-	\end{table}\\
-	\subsection{aggiunta di un campionato}
-	Aggiungere un campionato:
-	viene aggiunto un nuovo campionato, specificandone l'anno e la classe di veicoli concorrenti
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato  & E & 1 & S\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		1S = 6 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\subsection{aggiungere una gara ad un campionato}
-	Aggiungere una gara ad un campionato:
-	viene registrata una gara in un campionato, vengono accedute le tabelle
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato  & E & 1 & L\\
-					circuito	& E & 1 & L\\
-					info\_gara	& E & 1 & S\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		2L + 1S = 240 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\subsection{aggiungere il riepilogo di un pilota}
-	Aggiungere il riepilogo in un pilota:\\
-	viene registrato di un pilota il risultato nella qualifica, la posizione e lo stato di conclusione della gara,
-	i tempi dei vari giri e dei pit stop effettuati, prima di effettuare l'inserimento dei dati, vengono 
-	controllate le posizioni non ancora riempite nel podio per la gara richiesta, sia per i risultati
-	della gara che per quelli della qualifica. In media per gara si eseguono 60 giri e 3 pit stop
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato  			& E & 1 	& L\\
-					info\_gara				& E & 1 	& L\\
-					pilota 					& E & 1 	& L\\
-					scuderia				& E & 1 	& L\\
-					risultati\_gara			& E & 1 	& L\\
-					risultati\_qualifica 	& E & 1 	& L\\
-					riepilogo 				& R & 1 	& S\\
-					riepilogo 				& R & 1 	& L\\
-					risultati\_gara 		& E & 1 	& S\\
-					risultati\_qualifica 	& E & 1 	& S\\
-					giro 					& E & 60 	& S\\
-					pit\_stop 				& E & 3 	& S\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		7L + 66S = 8340 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\subsection{Classifica piloti nel campionato}
-	una volta selezionato dall'utente un campionato, viene visualizzata la classifica dei piloti
-	tenendo conto dei punteggi delle gare vinte e degli eventuali bonus derivati da giri migliori
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato  			& E & 1 	& L\\
-					punteggi\_posizione		& E & 1		& L\\
-					riepilogo 				& R & 2 	& L\\
-					info\_gara				& E & 1 	& L\\
-					risultati\_gara			& E & 1 	& L\\
-					giro 					& E & 1 	& L\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		7L = 420 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\subsection{Classifica scuderie nel campionato}
-	una volta selezionato un campionato, viene visualizzata la classifica delle scuderie
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato  			& E & 1 	& L\\
-					riepilogo 				& R & 2 	& L\\
-					info\_gara				& E & 1 	& L\\
-					risultati\_gara			& E & 1 	& L\\
-					punteggi\_posizione		& E & 1		& L\\
-					giro 					& E & 1 	& L\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		7L = 420 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\subsection{Numero vittorie di ogni pilota}
-	viene visualizzato il numero di vittorie compiute da ogni pilota nella sua carriera
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					riepilogo 				& R & 1 	& L\\
-					risultati\_gara			& E & 1 	& L\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		2L = 24 ogni anno\\
-		\end{center}
-	\end{table}\\
-	\subsection{Classifica veicoli in una categoria}
-	selezionata la categoria dei veicoli, viene visualizzata la classifica delle macchine piu' performanti in base al numero
-	di giri migliori ottenuti nelle varie competizioni
-	\begin{table}[!htb]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato 				& E & 2 	& L\\
-					giro 					& E & 1 	& L\\
-					riepilogo 				& R & 1 	& L\\
-					macchina 				& E & 1 	& L\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		5L = 50 ogni anno\\
-		\end{center}
-	\end{table}\\
-
-
-	\section{Analisi delle ridondanze}
-
-
-	È stata introdotto l'attributo ridondante `posizione` all'entità risultati\_gara al fine di evitare i passi che coinvolgono il calcolo, quali, per esempio, la somma di tutti i tempi dei vari giri per calcolare in quanto un pilota ha concluso una gara;	
-	Questa ridondanza semplifica notevolmente tutte le query ove è necessario calcolare la posizione dei piloti\\
-	Esempio nella operazione: Classifica del campionato\\
-	lettura della posizione di un pilota in una gara.\\\\
-	con ridondanza:
-	\begin{table}[h!]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato 			& E & 1 & L\\
-					punteggio\_posizione & E & 1 & L\\
-					riepilogo 			& R & 2 & L\\
-					info\_gara 			& E & 1 & L\\
-					risultati\_gara 	& E & 1 & L\\
-					giro 				& E & 1 & L\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		7L = 420 ogni anno\\
-		\end{center}
-	\end{table}\\
-	senza ridondanza:
-	\begin{table}[h!]
-		\centering
-		\begin{center}
-			\scalebox{1.3}{
-				\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-					\toprule
-					\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
-					\midrule
-					campionato 				& E & 1 	& L\\
-					punteggio\_posizione 	& E & 1 & L\\
-					riepilogo 				& R & 2 	& L\\
-					info\_gara 				& E & 1 	& L\\
-					giro 					& E & 21 	& L\\
-					\bottomrule
-			\end{tabular}}
-		\newline\\
-		26L = 1560 ogni anno\\
-		\end{center}
-	\end{table}
-	\section{Raffinamento dello schema}
-	Eliminazione delle gerarchie:\\
-	Per l'eliminazione della gerarchia 'Persona' si è scelto di adottare l'approccio del collasso verso il basso,
-	inserendo in Ingegnere e in Pilota gli attributi prima appartenenti al padre.
-	La scelta di questo approccio deriva dalla presenza dell'associazione tra Pilota e Riepilogo, la più importante dello schema, e in quanto le interazioni con i piloti sono molto più frequenti rispetto a quelle con gli ingegneri.
-	\\\\
-	Scelta delle chiavi primarie:\\
-	Le chiavi primarie selezionate sono rimaste quasi completamente fedeli a quelle definite nello schema ER,
-	a differenza dell'identificatore di Riepilogo, sostituito da un numero intero per facilitarne il successivo utilizzo
-	in chiavi esterne; per lo stesso motivo, anche per le entità info\_gara e campionato è stato scelto come identificatore
-	una cifra numerica.
-	All'entità pilota è stata inoltre rimossa la chiave primaria CF, in quanto non più necessaria e per rendere
-	più significativi i valori della tabella riepilogo, memorizzando il pilota con la sua sigla al posto che il codice fiscale.
-	\section{Traduzione delle entità e associazioni in relazioni}
-	Sono state eliminate le seguenti relazioni:\\\\
-	provenienza:\tab 			importando nazione.sigla in Ingegnere 
-	\tab\tab\tab					e Pilota, una volta rimossa la gerarchia\\\\
-	appartenenza:\tab 			importando nazione.sigla in Scuderia\\\\
-	contratto:\tab 				reificando l'associazione importando CF 
-	\tab\tab\tab				da ingegnere e nome da scuderia\\\\
-	stipula, Riguarda:\tab 		importando pilota.sigla e scuderia.nome 
-	\tab\tab\tab				in contratto\_pilota\\\\
-	costruisce, gareggia:\tab 	importando campionato.ID e scuderia.nome 
-	\tab\tab\tab				in macchina\\\\
-	progetta:\tab 				importando scuderia.nome in motore\\\\
-	monta:\tab 					importando motore.nome in macchina\\\\
-	locazione:\tab 				importando nazione.sigla in circuito\\\\
-	svolgimento:\tab 			importando circuito.nome in info\_gara\\\\
-	compone:\tab 				importando campionato.ID in info\_gara\\\\
-	detiene:\tab 				importando pilota.sigla in riepilogo\\\\
-	lega:\tab					importando scuderia.nome in riepilogo\\\\
-	percorre:\tab				importando riepilogo.ID in giro\\\\
-	effettua:\tab				importando riepilogo.ID in pit\_stop\\\\
-	segna:\tab					importando riepilogo.ID in risultati\_gara\\\\
-	registra:\tab				importando riepilogo.ID in risultati\_qualifica\\\\
-	valore:\tab					importando punteggio.valore in risultati\_gara\\\\
-	nazione(\underline{sigla}, nome)\\
-	campionato(\underline{ID}, anno, classe)\\
-	circuito(\underline{nome}, lunghezza, nazione:nazione, città)\\
-	scuderia(\underline{nome}, nazionalità:nazione)\\
-	motore(\underline{nome}, produttore:scuderia, cavalli, alimentazione)\\
-	macchina(\underline{ID\_scuderia}:scuderia, \underline{ID\_campionato}:campionato, nome, cognome,
-	\tab\tab motore:motore, peso, lunghezza, larghezza)\\
-	pilota(\underline{sigla}, numero, nazionalità:nazione, nascita, nome, cognome)\\
-	contratto\_pilota(\underline{ID\_pilota}:pilota, \underline{ID\_scuderia}:scuderia, data\_inizio, durata\_anni)\\
-	punti\_posizione(\underline{posizione}, punteggio)\\
-	ingegnere(\underline{CF}, specialità, nazionalità:nazione, nascita, nome, cognome)\\
-	contratto(\underline{CF}:ingegnere, \underline{ID\_scuderia}:scuderia)\\
-	info\_gara(\underline{ID}, data\_gara, n\_giri, meteo, circuito:circuito, campionato:campionato)\\
-	riepilogo(\underline{ID}, gara:info\_gara, pilota:pilota, scuderia:scuderia)\\
-	giro(\underline{ID\_riepilogo}:riepilogo, \underline{numero}, tempo)\\
-	risultati\_gara(\underline{ID\_riepilogo}:riepilogo, posizione:punti\_posizione, stato)\\
-	risultati\_qualifica(\underline{ID\_riepilogo}:riepilogo, posizione, tempo)\\
-	pit\_stop(\underline{numero}, \underline{ID\_riepilogo}:riepilogo, durata)\\
-	\section{Schema relazionale finale}
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[scale=0.8]{copies/schemaFinale.pdf}
-	\end{figure}
-	\section{}
-	
-	\chapter{Progettazione dell'applicazione}
-		\begin{table}
-			\parbox{.45\linewidth}{
-				\centering
-				\begin{tabular}{|c|c|c|}
-					\hline
-					a&b&c\\
-					\hline
-				\end{tabular}
-				\caption{Foo}
-			}
+		\section{Stima volume dati}
 			\hfill
-			\parbox{.45\linewidth}{
+			\small\addtolength{\tabcolsep}{+10pt}
+			\begin{table}[h!]
 				\centering
-				\begin{tabular}{ccc}
-					\hline
-					d&e&f\\
-					\hline
-				\end{tabular}
-				\caption{Bar}
+				\begin{center}
+					\label{tab:table1}
+					
+					\scalebox{1.5}{
+					\begin{tabular}{|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+						%\toprule
+						\hline\rowcolor{green}
+						\textbf{Dato} & \textbf{Tipo} & \textbf{Quantità}\\
+						\hline\hline
+						%\midrule		
+						Nazione				&	E	&	210\\     
+						Circuito			&	E 	&	100\\
+						scuderia			&	E	&	40\\
+						Pilota				&	E	&	110\\
+						contratto\_pilota	&   R 	&	365\\
+						Ingegnere			&	E 	&	2200\\
+						Contratto			&	R 	&	2200\\
+						Campionato			&	E	&	15\\	     
+						Giro 				&	E 	&	360000\\
+						info\_gara			&	E   &	300\\ 
+						riepilogo			&	R	&	6000\\
+						risultati\_gara		&	E	&	6000\\
+						risultati\_qualifica&	E	&	6000\\
+						pit\_stop			&	E	&	9000\\
+						Motore				&	E	&	18\\
+						Macchina			&	E	&	160\\
+						Posizione			&	E	& 	20\\
+						
+						\bottomrule
+					\end{tabular}}
+				\end{center}
+			\end{table}
+		\section{Operazioni principali e frequenza}
+			Le operazioni da effettuare sono quelle già elencate nella fase di analisi. Segue una tabella
+			riportante la loro descrizione e relativa frequenza:
+			
+			\hfill
+			\small\addtolength{\tabcolsep}{+1pt}
+			\begin{table}[h!]
+				\begin{center}
+					\caption{Stima volume dati}
+					\label{tab:table1}
+					\scalebox{1.1}{
+						\begin{tabular}{|l|r|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Operazione} & \textbf{Frequenza}\\
+							\midrule
+							aggiungere un pilota								& 7 / anno\\
+							aggiungere una scuderia								& 1 / anno\\
+							aggiungere un motore								& 12 / 3 anni\\
+							aggiungere macchina ad una scuderia					& 30 / anno\\
+							aggiungere un circuito								& 1 / 5 anni\\
+							aggiungere un campionato							& 3 / anno\\
+							aggiungere gara ad un campionato					& 60 / anno\\
+							aggiungere un riepilogo di un pilota				& 1200 / anno\\		
+							ottenere la classifica piloti di un campionato  	& 60 / anno\\
+							ottenere la classifica scuderie di un campionato 	& 60 / anno\\
+							ottenere numero vittorie di ogni pilota				& 12 / anno\\
+							ottenere classifica veicoli di una certa categoria	& 10 / anno\\
+							\bottomrule
+					\end{tabular}}
+				\end{center}
+			\end{table}
+			\newpage
+		\section{Schemi navigazione e tabelle degli accessi}
+			Sono riportate in seguito le tabelle degli accessi delle operazioni sopra riportate; inoltre, ove non risulti banale, sono stati inseriti i relativi schemi di navigazione. Al fine del calcolo dei costi, si considerano di peso doppio gli accessi in scrittura rispetto a quelli in lettura.\\\\
+			\subsection{aggiunta di un motore}
+			Aggiunta di un motore:\\
+			viene aggiunto un motore, oltre a specificarne i valori viene scelto dall'utente
+			la scuderia produttrice tra le disponibili.
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							scuderia 	& E & 1 & L\\
+							motore	 	& E & 1 & S\\
+							\bottomrule
+					\end{tabular}}
+					\newline\\
+					1L + 1S = 36 ogni 3 anni\\
+				\end{center}
+			\end{table}\\
+			\subsection{aggiunta di una scuderia}
+			Aggiunta di una scuderia:\\
+			viene aggiunta una scuderia, la nazione viene selezionata dall'utente tra quelle disponibili.
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							nazione 	& E & 1 & L\\
+							scuderia	& E & 1 & S\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				1L + 1S = 3 ogni anno\\
+				\end{center}
+			\end{table}\\
+			\subsection{aggiunta di un pilota}
+			Aggiunta di un pilota:\\
+			un pilota novizio viene registrato nel database stipulando un contratto con una scuderia,
+			viene letta la lista delle scuderie con la quale il pilota può eseguire il contratto.
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							nazione 			& E & 1 & L\\
+							scuderia			& E & 1 & L\\
+							pilota 				& E & 1 & S\\
+							contratto\_pilota	& R & 1 & S\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				2L + 2S = 42 ogni anno\\
+				\end{center}
+			\end{table}\\\\
+			\subsection{aggiunta di una macchina ad una scuderia}
+			Aggiunta di una macchina ad una scuderia:\\
+			viene registrata una macchina ad una scuderia con la quale gareggiare in un certo campionato,
+			vengono lette le tabelle scuderia, campionato e motore per la selezione da parte dell'utente.
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato 	& E & 1 & L\\
+							scuderia	& E & 1 & L\\
+							motore 		& E & 1 & L\\
+							macchina	& E & 1 & S\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				3L + 1S = 150 ogni anno\\
+				\end{center}
+			\end{table}\\
+			\newpage
+			\subsection{aggiunta di un circuito}
+			Aggiungere un circuito:
+			viene registrato un nuovo circuito
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							nazione  & E & 1 & L\\
+							circuito & E & 1 & S\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				1L + 1S = 3 ogni 5 anni\\
+				\end{center}
+			\end{table}\\
+			\subsection{aggiunta di un campionato}
+			Aggiungere un campionato:
+			viene aggiunto un nuovo campionato, specificandone l'anno e la classe di veicoli concorrenti
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato  & E & 1 & S\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				1S = 6 ogni anno\\
+				\end{center}
+			\end{table}\\
+			\subsection{aggiungere una gara ad un campionato}
+			Aggiungere una gara ad un campionato:
+			viene registrata una gara in un campionato, vengono accedute le tabelle
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato  & E & 1 & L\\
+							circuito	& E & 1 & L\\
+							info\_gara	& E & 1 & S\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				2L + 1S = 240 ogni anno\\
+				\end{center}
+			\end{table}\\
+			\subsection{aggiungere il riepilogo di un pilota}
+			Aggiungere il riepilogo in un pilota:\\
+			viene registrato di un pilota il risultato nella qualifica, la posizione e lo stato di conclusione della gara,
+			i tempi dei vari giri e dei pit stop effettuati, prima di effettuare l'inserimento dei dati, vengono 
+			controllate le posizioni non ancora riempite nel podio per la gara richiesta, sia per i risultati
+			della gara che per quelli della qualifica. In media per gara si eseguono 60 giri e 3 pit stop
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[scale=0.8]{copies/navigazioneRiepilogo.png}
+			\end{figure}
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato  			& E & 1 	& L\\
+							info\_gara				& E & 1 	& L\\
+							pilota 					& E & 1 	& L\\
+							scuderia				& E & 1 	& L\\
+							risultati\_gara			& E & 1 	& L\\
+							risultati\_qualifica 	& E & 1 	& L\\
+							riepilogo 				& R & 1 	& S\\
+							riepilogo 				& R & 1 	& L\\
+							risultati\_gara 		& E & 1 	& S\\
+							risultati\_qualifica 	& E & 1 	& S\\
+							giro 					& E & 60 	& S\\
+							pit\_stop 				& E & 3 	& S\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				7L + 66S = 8340 ogni anno
+				\end{center}
+			\end{table}\\
+		
+			\subsection{Classifica piloti nel campionato}
+			una volta selezionato dall'utente un campionato, viene visualizzata la classifica dei piloti
+			tenendo conto dei punteggi delle gare vinte e degli eventuali bonus derivati da giri migliori
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato  			& E & 1 	& L\\
+							punteggi\_posizione		& E & 1		& L\\
+							riepilogo 				& R & 2 	& L\\
+							info\_gara				& E & 2 	& L\\
+							risultati\_gara			& E & 1 	& L\\
+							giro 					& E & 1 	& L\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				8L = 480 ogni anno\\
+				\end{center}
+			\end{table}\\
+			\subsection{Classifica scuderie nel campionato}
+			una volta selezionato un campionato, viene visualizzata la classifica delle scuderie
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato  			& E & 1 	& L\\
+							riepilogo 				& R & 2 	& L\\
+							info\_gara				& E & 1 	& L\\
+							risultati\_gara			& E & 2 	& L\\
+							punteggi\_posizione		& E & 1		& L\\
+							giro 					& E & 1 	& L\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				8L = 480 ogni anno\\
+				\end{center}
+			\end{table}\\
+			\subsection{Numero vittorie di ogni pilota}
+			viene visualizzato il numero di vittorie compiute da ogni pilota nella sua carriera
+			\begin{table}[!htb]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							riepilogo 				& R & 1 	& L\\
+							risultati\_gara			& E & 1 	& L\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				2L = 24 ogni anno\\
+				\end{center}
+			\end{table}\\
+			\subsection{Classifica veicoli in una categoria}
+		selezionata la categoria dei veicoli, viene visualizzata la classifica delle macchine piu' performanti in base al numero
+		di giri migliori ottenuti nelle varie competizioni
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[scale=0.8]{copies/navigazioneClassifica.png}
+		\end{figure}
+		\begin{table}[!htb]
+			\centering
+			\begin{center}
+				\scalebox{1.3}{
+					\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+						\toprule
+						\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+						\midrule
+						campionato 				& E & 2 	& L\\
+						giro 					& E & 1 	& L\\
+						riepilogo 				& R & 1 	& L\\
+						macchina 				& E & 1 	& L\\
+						\bottomrule
+				\end{tabular}}
+			\newline\\
+			5L = 50 ogni anno\\
+			\end{center}
+		\end{table}\\
+		\section{Analisi delle ridondanze}
+			È stata introdotto l'attributo ridondante `posizione` all'entità risultati\_gara al fine di evitare i passi che coinvolgono il calcolo, quali, per esempio, la somma di tutti i tempi dei vari giri per calcolare in quanto un pilota ha concluso una gara;	
+			Questa ridondanza semplifica notevolmente tutte le query ove è necessario calcolare la posizione dei piloti\\
+			Esempio nella operazione: Classifica del campionato\\
+			lettura della posizione di un pilota in una gara.\\\\
+			con ridondanza:
+			\begin{table}[h!]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato 			& E & 1 & L\\
+							punteggio\_posizione & E & 1 & L\\
+							riepilogo 			& R & 2 & L\\
+							info\_gara 			& E & 1 & L\\
+							risultati\_gara 	& E & 1 & L\\
+							giro 				& E & 1 & L\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				7L = 420 ogni anno\\
+				\end{center}
+			\end{table}\\
+			senza ridondanza:
+			\begin{table}[h!]
+				\centering
+				\begin{center}
+					\scalebox{1.3}{
+						\begin{tabular}{|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+							\toprule
+							\textbf{Concetto} & \textbf{Costrutto} & \textbf{Accessi} & \textbf{Tipo}\\
+							\midrule
+							campionato 				& E & 1 	& L\\
+							punteggio\_posizione 	& E & 1 & L\\
+							riepilogo 				& R & 2 	& L\\
+							info\_gara 				& E & 1 	& L\\
+							giro 					& E & 21 	& L\\
+							\bottomrule
+					\end{tabular}}
+				\newline\\
+				26L = 1560 ogni anno\\
+				\end{center}
+			\end{table}
+		\section{Raffinamento dello schema}
+			Eliminazione delle gerarchie:\\
+			Per l'eliminazione della gerarchia 'Persona' si è scelto di adottare l'approccio del collasso verso il basso,
+			inserendo in Ingegnere e in Pilota gli attributi prima appartenenti al padre.
+			La scelta di questo approccio deriva dalla presenza dell'associazione tra Pilota e Riepilogo, la più importante dello schema, e in quanto le interazioni con i piloti sono molto più frequenti rispetto a quelle con gli ingegneri.
+			\\\\
+			Scelta delle chiavi primarie:\\
+			Le chiavi primarie selezionate sono rimaste quasi completamente fedeli a quelle definite nello schema ER,
+			a differenza dell'identificatore di Riepilogo, sostituito da un numero intero per facilitarne il successivo utilizzo
+			in chiavi esterne; per lo stesso motivo, anche per le entità info\_gara e campionato è stato scelto come identificatore
+			una cifra numerica.
+			All'entità pilota è stata inoltre rimossa la chiave primaria CF, in quanto non più necessaria e per rendere
+			più significativi i valori della tabella riepilogo, memorizzando il pilota con la sua sigla al posto che il codice fiscale.
+		\section{Traduzione delle entità e associazioni in relazioni}
+			Sono state eliminate le seguenti relazioni:\\\\
+			provenienza:\tab 			importando nazione.sigla in Ingegnere 
+			\tab\tab\tab					e Pilota, una volta rimossa la gerarchia\\\\
+			appartenenza:\tab 			importando nazione.sigla in Scuderia\\\\
+			contratto:\tab 				reificando l'associazione importando CF 
+			\tab\tab\tab				da ingegnere e nome da scuderia\\\\
+			stipula, Riguarda:\tab 		importando pilota.sigla e scuderia.nome 
+			\tab\tab\tab				in contratto\_pilota\\\\
+			costruisce, gareggia:\tab 	importando campionato.ID e scuderia.nome 
+			\tab\tab\tab				in macchina\\\\
+			progetta:\tab 				importando scuderia.nome in motore\\\\
+			monta:\tab 					importando motore.nome in macchina\\\\
+			locazione:\tab 				importando nazione.sigla in circuito\\\\
+			svolgimento:\tab 			importando circuito.nome in info\_gara\\\\
+			compone:\tab 				importando campionato.ID in info\_gara\\\\
+			detiene:\tab 				importando pilota.sigla in riepilogo\\\\
+			lega:\tab					importando scuderia.nome in riepilogo\\\\
+			percorre:\tab				importando riepilogo.ID in giro\\\\
+			effettua:\tab				importando riepilogo.ID in pit\_stop\\\\
+			segna:\tab					importando riepilogo.ID in risultati\_gara\\\\
+			registra:\tab				importando riepilogo.ID in risultati\_qualifica\\\\
+			valore:\tab					importando punteggio.valore in risultati\_gara\\\\
+			nazione(\underline{sigla}, nome)\\
+			campionato(\underline{ID}, anno, classe)\\
+			circuito(\underline{nome}, lunghezza, nazione:nazione, città)\\
+			scuderia(\underline{nome}, nazionalità:nazione)\\
+			motore(\underline{nome}, produttore:scuderia, cavalli, alimentazione)\\
+			macchina(\underline{ID\_scuderia}:scuderia, \underline{ID\_campionato}:campionato, nome, cognome,
+			\tab\tab motore:motore, peso, lunghezza, larghezza)\\
+			pilota(\underline{sigla}, numero, nazionalità:nazione, nascita, nome, cognome)\\
+			contratto\_pilota(\underline{ID\_pilota}:pilota, \underline{ID\_scuderia}:scuderia, data\_inizio, durata\_anni)\\
+			punti\_posizione(\underline{posizione}, punteggio)\\
+			ingegnere(\underline{CF}, specialità, nazionalità:nazione, nascita, nome, cognome)\\
+			contratto(\underline{CF}:ingegnere, \underline{ID\_scuderia}:scuderia)\\
+			info\_gara(\underline{ID}, data\_gara, n\_giri, meteo, circuito:circuito, campionato:campionato)\\
+			riepilogo(\underline{ID}, gara:info\_gara, pilota:pilota, scuderia:scuderia)\\
+			giro(\underline{ID\_riepilogo}:riepilogo, \underline{numero}, tempo)\\
+			risultati\_gara(\underline{ID\_riepilogo}:riepilogo, posizione:punti\_posizione, stato)\\
+			risultati\_qualifica(\underline{ID\_riepilogo}:riepilogo, posizione, tempo)\\
+			pit\_stop(\underline{numero}, \underline{ID\_riepilogo}:riepilogo, durata)\\
+		\section{Schema relazionale finale}
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[scale=0.8]{copies/schemaFinale.pdf}
+			\end{figure}
+		\section{Traduzione delle operazioni in query SQL}
+			\lstset{
+				language=SQL,
+				basicstyle=\small\ttfamily,
+				columns=fullflexible,
+				keywords=[2]{fail},
+				keywords=[3]{pass},
+				keywordstyle={\color{blue!80!black}},
+				keywordstyle=[2]{\color{red!80!black}},
+				keywordstyle=[3]{\color{green!50!black}},
 			}
-		\end{table}
+			\begin{lstlisting}[language=SQL]
+01 - aggiunta di un motore
+select * from scuderia;
+insert into motore (nome, produttore, cavalli, alimentazione) values ('?', '?', ?, '?');
+
+
+02 - aggiunta di una scuderia
+select * from nazione;
+insert into scuderia (nome, nazionalita) values ('?', '?');
+
+
+03 - aggiunta di un pilota
+select * from nazione;
+select * from scuderia;
+insert into pilota (numero, sigla, nazionalita, nascita, nome, cognome) value (?, '?', '?', '?', '?', '?');
+insert into contratto_pilota(ID_pilota, ID_scuderia, data_inizio) values('?', '?', '?', ?);
+
+
+04 - aggiunta di una macchina ad una scuderia
+select * from campionato;
+select * from motore;
+select * from scuderia;
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ('?', ?, '?', '?');
+
+
+05 - aggiunta di un circuito
+select * from nazione;
+insert into circuito (lunghezza, nome, nazione, citta) values (?, '?', '?', '?');
+
+
+06 - aggiunta di un campionato
+insert into campionato (anno, classe) values (?, '?');
+
+
+07 - aggiunta di una gara ad un campionato
+select * from campionato;
+select * from circuito;
+insert into info_gara (data_gara, n_giri, meteo, circuito, campionato) values ('?', ?, '?', '?', ?);
+
+
+08 - aggiungere il riepilogo di un pilota
+select * from campionato;
+select * from info_gara where campionato = ?;
+	-- guardo quali piloti non hanno una entry nella gara scelta
+select * from pilota where pilota.sigla not in (select Riepilogo.pilota as numero 
+											    from riepilogo 
+											    where gara = ?);
+	-- prendo le posizione non occupate
+select posizione from risultati_gara where ID_riepilogo in (select ID as ID_riepilogo from riepilogo where gara = ?);
+select posizione from risultati_qualifica where ID_riepilogo in (select ID as ID_riepilogo from riepilogo where gara = ?);										
+select * from scuderia;
+select ID_scuderia from Contratto_pilota where ID_pilota = '?';
+	-- inserisco i dati
+insert into riepilogo(gara, pilota, scuderia) values(?, '?', '?');
+select max(ID) from Riepilogo; -- si potrebbe anche usare LAST_INSERT_ID() nei campi ID_riepilogo
+insert into Risultati_qualifica (ID_riepilogo, posizione, tempo) values (?, ?, '?');
+insert into Risultati_gara (ID_riepilogo, posizione, stato) values (?, ?, '?');
+insert into Pit_stop(numero, durata, ID_riepilogo) values(?, '?', ?);	-- da eseguire per ongi pit stop
+insert into giro(numero, tempo, ID_riepilogo) values(?, '?', ?);			-- da eseguire per ogni giro
+	
+	
+09 - visualizzare la classifica dei piloti in un campionato
+select res1.pilota, punteggio + IFNULL(girimigliori, 0) as punteggio from
+	-- punti dati dalle posizioni in gara
+	(select pilota, sum(punteggio) as punteggio from (
+		select gara, pilota, posizione as pos
+		from (riepilogo join info_gara on riepilogo.gara = info_gara.ID join risultati_gara on risultati_gara.ID_riepilogo = riepilogo.ID)
+		where campionato = ?) as res
+		join punti_posizione on punti_posizione.posizione = res.pos
+	group by pilota
+	order by punteggio desc ) as res1
+
+	left join 
+	-- punti dati dai giri migliori
+	(select pilota, count(*) as girimigliori from 
+		(select * 
+		from (
+			select ID_riepilogo, gara, pilota ,scuderia ,min(tempo) as best
+			from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo  join info_gara on info_gara.ID = riepilogo.gara
+			where info_gara.campionato = ?
+			group by gara, pilota
+			order by gara, best ) as res
+		group by gara ) as res2
+	group by pilota) as res2
+
+	on res1.pilota = res2.pilota;
+
+	
+10 - visualizzare la classifica delle autombili
+select res1.scuderia, punteggio + IFNULL(girimigliori, 0) as punteggio from 
+	-- punti dati dalle posizioni in gara
+	( select scuderia, sum(punteggio) as punteggio
+	from (riepilogo join info_gara on riepilogo.gara = info_gara.ID join risultati_gara on risultati_gara.ID_riepilogo = riepilogo.ID join punti_posizione on risultati_gara.posizione = punti_posizione.posizione)
+	where campionato = ? 
+	group by scuderia) as res1
+
+	left join 
+	-- punti dati dai giri migliori
+	(select scuderia, count(*) as girimigliori from ( -- migliore giro per scuderia
+		select *
+		from (
+			select ID_riepilogo, gara, pilota ,scuderia ,min(tempo) as best
+			from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo join info_gara on info_gara.ID = riepilogo.gara
+			where info_gara.campionato = ?
+			group by gara, pilota
+			order by gara, best ) as res
+		group by gara ) as res
+	group by scuderia) as res2
+
+	on res1.scuderia = res2.scuderia
+	order by punteggio desc;
+
+	
+11 - visualizzare il numero di vittorie di ogni pilota
+select riepilogo.pilota, nome, cognome, numero, count(*) as vittorie
+from riepilogo join Risultati_gara on Riepilogo.ID = risultati_gara.ID_riepilogo join pilota on pilota.sigla = riepilogo.pilota
+where risultati_gara.stato = 'END' and risultati_gara.posizione = 1
+group by riepilogo.pilota
+order by vittorie desc;
+
+
+12 - ottenere la classifica dei veicoli piu veloci per classe a partire dal numero di giri migliori fatti
+select scuderia, sum(bestlaps) as girimigliori, nome, motore, peso, lunghezza, larghezza from (
+	select scuderia, count(*) as bestlaps, campionato from (
+		select * from(
+			select ID_riepilogo, gara, pilota ,scuderia ,min(tempo) as best, campionato
+			from giro join riepilogo on riepilogo.ID = giro.ID_riepilogo join info_gara on info_gara.ID = riepilogo.gara join campionato on campionato.ID = info_gara.campionato
+			where campionato.classe = '?'
+			group by gara, pilota
+			order by gara, best ) as res
+		group by gara ) as res
+	group by scuderia ) as res
+	join macchina on macchina.ID_scuderia = res.scuderia and macchina.ID_campionato = res.campionato
+	group by nome
+	order by bestlaps desc;
+	
+	
+13 - ottenere il giro piu veloce di ogni circuito
+select circuito.nome, min(giro.tempo) as 'miglior tempo'
+	from circuito join info_gara on (circuito.nome = info_gara.circuito) join riepilogo on (info_gara.id = riepilogo.gara) join giro on (riepilogo.id = giro.ID_riepilogo)
+	group by circuito.nome;
+
+			\end{lstlisting}
+	\chapter{Progettazione dell'applicazione}
+		\section{Descrizione dell'architettura dell'applicazione realizzata}
+			L'applicazione per interfacciarsi al database è realizzata in C\#, utilizzando il framework
+			WPF per la creazione di pagine con la quale l'utente è in grado in interagire.
+			Il DBMS scelto e' MySql.\\
+			All'avvio del programma l'utente potrà scegliere quale operazione effettuare cliccando uno dei 12 bottoni 
+			presenti nella schermata; ogni operazione sarà svolta su una finestra assestante e la correttezza dei dati obbligatori
+			sarà garantita da controlli eseguiti da codice a runtime (ad esempio se una casella di testo non è stata riempita) e 
+			da messaggi visualizzati all'utente sotto forma di pop-up in caso di errore nell'operazione.
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[scale=1]{copies/gui.png}
+			\end{figure}
+			\subsection{Operazioni di inserimento}
+				Tramite le operazioni di inserimento l'utente è in grado di inserire tutti i dati necessari per riguardare ogni aspetto di un campionato.
+				\subsubsection{Aggiunta di un riepilogo}
+					L'inserimento del riepilogo di una gara per un certo pilota e' un processo che richiede vari passaggi:
+					inizialmente l'utente dovrà scegliere un campionato tra i disponibili ed in seguito la gara della quale si desidera registrare
+					l'ennupla.
+					Una volta selezionata la gara dall'apposita tabella, verrà data la possibilità di selezionare un pilota tra quelli 
+					ai quali non risulta ancora un riepilogo nella gara selezionata in precedenza, e una volta selezionato il gareggiante,
+					sarà inoltre possibile scegliere la scuderia per la quale gareggia; quella di contratto viene selezionata di default;
+					Per completare l'operazione sarà inoltre necessario impostare la posizione guadagnata in qualifica e in gara, selezionabile
+					dalle opportune combobox tra quelle non occupate, e specificare i tempi dei vari giri e pit-stop.
+					\begin{figure}[htbp]
+						\centering
+						\includegraphics[scale=0.8]{copies/riepilogo.png}
+					\end{figure}
+			\subsection{Operazioni di visualizzazione}
+				Per tutte le operazioni sotto la voce "visualizza lo storico", l'utente non dovrà inserire dati ma scegliere solamente
+				cosa visualizzare, nell'esempio riportato, una volta premuto il bottone "Giri Migliori" nella schermata principale, sei aprirà una nuova
+				finestra contenenti i giri più veloci effettuati in tutti i circuiti registrati
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[scale=1]{copies/risultati.png}
+				\end{figure}
 \end{document}
