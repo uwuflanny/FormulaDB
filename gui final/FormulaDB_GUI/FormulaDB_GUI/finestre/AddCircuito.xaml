@@ -1,0 +1,21 @@
+﻿<Window x:Class="FormulaDB_GUI.finestre.AddCircuito"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
+        mc:Ignorable="d"
+        Title="AddCircuito" Height="378.996" Width="549.18">
+    <Grid Background="#FF4F4F4F">
+        <TextBox Name="txtnome" HorizontalAlignment="Left" Height="23" Margin="39,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116"/>
+        <Button Name="btninsert" Content="aggiungi" HorizontalAlignment="Left" Margin="82,294,0,0" VerticalAlignment="Top" Width="122" Height="34" Click="Btninsert_Click"/>
+        <DataGrid Background="#FFC7C7C7" Name="dgnazione" HorizontalAlignment="Left" Height="162" Margin="36,112,0,0" VerticalAlignment="Top" Width="348"/>
+        <Label Content="nome:" HorizontalAlignment="Left" Margin="39,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="nazione:" HorizontalAlignment="Left" Margin="36,86,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="txtlung" HorizontalAlignment="Left" Height="23" Margin="189,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116"/>
+        <Label Content="lunghezza:" HorizontalAlignment="Left" Margin="189,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="txtcitta" HorizontalAlignment="Left" Height="23" Margin="335,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116"/>
+        <Label Content="città:" HorizontalAlignment="Left" Margin="335,22,0,0" VerticalAlignment="Top" Foreground="White"/>
+
+    </Grid>
+</Window>

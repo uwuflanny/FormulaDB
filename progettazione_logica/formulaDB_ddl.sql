@@ -12,7 +12,7 @@
 -- Database Section
 -- ________________ 
 
-DROP database FormulaDB;
+DROP database if exists FormulaDB;
 create database FormulaDB;
 use FormulaDB;
 

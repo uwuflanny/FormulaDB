@@ -1,0 +1,32 @@
+﻿<Window x:Class="FormulaDB_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormulaDB_GUI"
+        mc:Ignorable="d"
+        Title="Formula DB" Height="375.056" Width="650.833" Loaded="Window_Loaded">
+    <Grid Background="#FFD4D4D4">
+        <GroupBox Header="Inserisci i dati" HorizontalAlignment="Left" Height="141" Margin="10,76,0,0" VerticalAlignment="Top" Width="602"/>
+        <GroupBox Header="Visualizza lo storico" HorizontalAlignment="Left" Height="95" Margin="10,224,0,0" VerticalAlignment="Top" Width="602"/>
+        <Canvas Name="cnv_insert" HorizontalAlignment="Left" Height="114" Margin="19,94,0,0" VerticalAlignment="Top" Width="583" Background="#FFB9B9B9">
+            <Button Name="btn_new_camionato" Content="Nuovo Campionato" Canvas.Left="10" Canvas.Top="10" Width="123" Click="add_cammpionato_click" Height="40" Background="#FFDDDDDD"/>
+            <Button Name="btn_new_gara" Content="Nuova Gara" Canvas.Left="156" Canvas.Top="10" Width="119" Height="40" Click="Btn_new_gara_Click"/>
+            <Button Name="btn_new_riepilogo" Content="Nuovo Riepilogo" Canvas.Left="300" Canvas.Top="10" Width="117" Height="40" Click="Btn_new_riepilogo_Click"/>
+            <Button Name="btn_new_macchina" Content="Nuova Macchina" Canvas.Left="443" Canvas.Top="10" Width="122" Height="40" Click="Btn_new_macchina_Click"/>
+            <Button Name="btn_new_pilota" Content="Nuovo Pilota" Canvas.Left="10" Canvas.Top="65" Width="123" Height="39" Click="Btn_new_pilota_Click"/>
+            <Button Name="btn_newscuderia" Content="Nuova Scuderia" Canvas.Left="156" Canvas.Top="65" Width="119" Height="39" Click="Btn_newscuderia_Click"/>
+            <Button Name="btn_nuovo_motore" Content="Nuovo Motore" Canvas.Left="300" Canvas.Top="65" Width="117" Height="39" Click="Btn_nuovo_motore_Click"/>
+            <Button Name="btn_add_circuito" Content="Nuovo Circuito" Canvas.Left="443" Canvas.Top="65" Width="122" Height="39" Click="Btn_add_circuito_Click"/>
+        </Canvas>
+        <Canvas Name="cnv_storico" HorizontalAlignment="Left" Height="66" Margin="19,243,0,0" VerticalAlignment="Top" Width="583" Background="#FFB9B9B9">
+            <Button Name="risultaticampionato" Content="Classifica Campionato" Canvas.Left="10" Canvas.Top="13" Width="122" Height="40" Click="Risultaticampionato_Click"/>
+            <Button x:Name="btn_winner" Content="Vittorie per Pilota" Canvas.Left="157" Canvas.Top="13" Width="118" Height="40" Click="btn_winner_Click"/>
+            <Button Name="btn_best_giri" Content="Giri Migliori" Canvas.Left="303" Canvas.Top="13" Width="113" Height="40" Click="Btn_best_giri_Click"/>
+            <Button Name="btn_best_macchine" Content="Classifica Automobili" Canvas.Left="445" Canvas.Top="13" Width="118" Height="40" Click="Btn_best_macchine_Click"/>
+        </Canvas>
+        <Grid HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="643" Background="#FFFF5151"/>
+        <Label Content="🏁 Formula DB 🏁   " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Height="71" Width="368" FontSize="36" FontFamily="Impact" Margin="19,10,0,0" FontStyle="Italic"/>
+
+    </Grid>
+</Window>

@@ -339,7 +339,19 @@ insert into motore (nome, produttore, cavalli, alimentazione) values ("M11 EQ Pe
 insert into motore (nome, produttore, cavalli, alimentazione) values ("RA620H, V6 1.6 a 90° Turbo", "Red Bull", 740, "ibrido");
 insert into motore (nome, produttore, cavalli, alimentazione) values ("E-TECH 20, V6 1.6 turbo", "Renault", 780, "ibrido");
 
--- TODO MACCHINE
+
+
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Mercedes", 1, "F1ME2020", "E-TECH 20, V6 1.6 turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Ferrari", 1, "F1ME2020", "E-TECH 20, V6 1.6 turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Red Bull", 1, "F1RE2020", "065 1.6 V6 turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Renault", 1, "F1MFR020", "E-TECH 20, V6 1.6 turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Haas", 1, "F1HA2020", "RA620H, V6 1.6 a 90° Turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("McLaren", 1, "F1MC2020", "M11 EQ Performance V6 turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Racing Point", 1, "F1RP2020", "RA620H, V6 1.6 a 90° Turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Alfa Romeo", 1, "F1MAR020", "M11 EQ Performance V6 turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("AlphaTauri", 1, "F1AT2020", "RA620H, V6 1.6 a 90° Turbo");
+insert into macchina (ID_scuderia, ID_campionato, nome, motore) values ("Williams", 1, "F1WI2020", "M11 EQ Performance V6 turbo");
+
 
 
 -- info_gara

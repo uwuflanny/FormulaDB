@@ -1,0 +1,13 @@
+﻿<Window x:Class="FormulaDB_GUI.finestre.getWinner"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormulaDB_GUI.finestre"
+        mc:Ignorable="d"
+        Title="vittorie per pilota" Height="450" Width="336.607" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F">
+        <DataGrid x:Name="dg_winner" HorizontalAlignment="Left" Height="357" Margin="10,42,0,0" VerticalAlignment="Top" Width="302" Foreground="Black" Background="#FFC7C7C7" BorderBrush="Black"/>
+        <Label Content="numero di vittorie conseguite da un pilota se esistenti:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Foreground="White"/>
+    </Grid>
+</Window>
