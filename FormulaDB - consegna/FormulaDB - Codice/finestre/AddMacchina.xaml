@@ -1,0 +1,21 @@
+﻿<Window x:Class="FormulaDB_GUI.AddMacchina"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormulaDB_GUI"
+        mc:Ignorable="d"
+        Title="aggiungi una macchina" Height="287.705" Width="777.869" Loaded="Window_Loaded">
+    <Grid Background="#FF4F4F4F">
+        <TextBox Name="txtnome" HorizontalAlignment="Left" Height="23" Margin="37,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.841,2.172"/>
+        <DataGrid Background="#FFC7C7C7" Name="dgmotore" HorizontalAlignment="Left" Height="132" Margin="27,100,0,0" VerticalAlignment="Top" Width="215"/>
+        <DataGrid Background="#FFC7C7C7" Name="dgscuderia" HorizontalAlignment="Left" Height="132" Margin="272,100,0,0" VerticalAlignment="Top" Width="215"/>
+        <DataGrid Background="#FFC7C7C7" Name="dgcampionato" HorizontalAlignment="Left" Height="132" Margin="511,100,0,0" VerticalAlignment="Top" Width="215"/>
+        <Button Content="aggiungi" HorizontalAlignment="Left" Margin="392,14,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click" Height="38"/>
+        <Label Content="nome del veicolo" HorizontalAlignment="Left" Margin="37,12,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="seleziona il motore" HorizontalAlignment="Left" Margin="28,74,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="seleziona la scuderia" HorizontalAlignment="Left" Margin="272,74,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="seleziona il campionato" HorizontalAlignment="Left" Margin="511,74,0,0" VerticalAlignment="Top" Foreground="White"/>
+
+    </Grid>
+</Window>
